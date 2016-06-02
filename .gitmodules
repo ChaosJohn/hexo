@@ -1,6 +1,3 @@
-[submodule ".deploy_git"]
-	path = .deploy_git
-	url = git@github.com:ChaosJohn/hexo.git
 [submodule "themes/hueman"]
 	path = themes/hueman
 	url = git@github.com:ppoffice/hexo-theme-hueman.git

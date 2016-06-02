@@ -31,3 +31,4 @@ public
 themes/landscape
 scaffolds
 db.json
+.deploy_git
