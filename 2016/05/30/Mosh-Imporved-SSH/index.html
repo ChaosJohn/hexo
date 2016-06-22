@@ -21,7 +21,7 @@ Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用
 SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
 SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:image" content="http://7xqld8.com1.z0.glb.clouddn.com/mosh.png">
-<meta property="og:updated_time" content="2016-06-22T15:50:01.000Z">
+<meta property="og:updated_time" content="2016-06-22T15:50:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mosh(Mobile Shell) -- 增强版SSH">
 <meta name="twitter:description" content="开场白
@@ -219,7 +219,7 @@ SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH�
 </ul>
 <h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ul>
 <li>错误<code>Nothing received from the server on UDP port 60003</code>：简单来说，Mosh的网络通信由两部分组成，TCP用于SSH会话+UDP用于会话保持。TCP部分的端口就是SSH的端口，而UDP的端口则是60000~61000之间的随机数。该错误的解决方案将UDP端口加入防火墙的白名单<code>$ sudo iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT</code></li>
-<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<br><img src="http://7xqld8.com1.z0.glb.clouddn.com/osx-mosh-exception.png" alt="">原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<code>$ mosh macbook --server=/usr/local/bin/mosh-server</code></li>
+<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<img src="http://7xqld8.com1.z0.glb.clouddn.com/osx-mosh-exception.png" alt="">原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<code>$ mosh macbook --server=/usr/local/bin/mosh-server</code></li>
 </ul>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="http://7xqld8.com1.z0.glb.clouddn.com/donate-me.png" alt=""></p>
 
