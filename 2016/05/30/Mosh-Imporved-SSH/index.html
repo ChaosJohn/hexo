@@ -8,17 +8,26 @@
     
         <meta name="keywords" content="Software,Dev" />
     
-    <meta name="description" content="开场白Mosh，是Mobile Shell的缩写（Mo+Sh），是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。SSH相信大家应该都不陌生，">
+    <meta name="description" content="开场白
+Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。
+SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
+SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mosh(Mobile Shell) -- 增强版SSH">
 <meta property="og:url" content="http://hexo.chaosjohn.com/2016/05/30/Mosh-Imporved-SSH/index.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="开场白Mosh，是Mobile Shell的缩写（Mo+Sh），是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。SSH相信大家应该都不陌生，">
+<meta property="og:description" content="开场白
+Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。
+SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
+SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:image" content="http://7xqld8.com1.z0.glb.clouddn.com/mosh.png">
-<meta property="og:updated_time" content="2016-06-22T14:39:42.000Z">
+<meta property="og:updated_time" content="2016-06-22T15:49:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mosh(Mobile Shell) -- 增强版SSH">
-<meta name="twitter:description" content="开场白Mosh，是Mobile Shell的缩写（Mo+Sh），是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。SSH相信大家应该都不陌生，">
+<meta name="twitter:description" content="开场白
+Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。
+SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
+SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta name="twitter:image" content="http://7xqld8.com1.z0.glb.clouddn.com/mosh.png">
     
 
@@ -156,7 +165,63 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p><img src="http://7xqld8.com1.z0.glb.clouddn.com/mosh.png" alt=""> </p>
-<h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><p>Mosh，是Mobile Shell的缩写（Mo+Sh），是一个增强版的SSH，或者套用官方的话来说，<code>Mosh is a replacement for SSH</code>。<br>SSH相信大家应该都不陌生，</p>
+<h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
+<li>Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，<code>Mosh is a replacement for SSH</code>。</li>
+<li>SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。</li>
+<li>SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。</li>
+<li>Mosh就是用来解决这个问题的，它可以“漫游”。网断了，重连，或者从一个WiFi切换到另一个WiFi，然后又切换成数据流量，会话一直都在。</li>
+<li>另外一个笔者非常喜欢的特点是–本地响应特别快(intelligent local echo)。笔者有好几台国外的服务器，几乎都是美国的。从中国大陆到美国的Ping值一般都超过200ms，有时候甚至在400ms以上，在这种情况下对比SSH与Mosh的表现：<ul>
+<li>SSH：键盘按下每一个字符，比如“a”，远程服务器接收到本地键盘的响应，然后再告诉本地“这边已接到你按下字母a”，这之后，本地的终端才会显示出字母a。假设Ping值是200ms，那么每次按下按键之后，得有400ms的延迟屏幕才有显示，so，打字一卡一卡的很难受，体验很糟糕。</li>
+<li>Mosh：键盘每按下一个字符，屏幕上立马就会显示，发送给远程服务器的工作则在后台静默执行，打字非常流畅。</li>
+</ul>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>Mac OS X <ul>
+<li>从pkg软件包安装：<a href="https://mosh.mit.edu/mosh-1.2.5-leopard.pkg" target="_blank" rel="external">OS X 10.5–10.9</a> &amp;&amp; <a href="https://mosh.mit.edu/mosh-1.2.5.pkg" target="_blank" rel="external">OS X 10.9+</a></li>
+<li>HomeBrew：<code>$ brew install mosh</code></li>
+<li>MacPorts：<code>$ sudo port install mosh</code></li>
+</ul>
+</li>
+<li>Windows - Cygwin: <code>C:\&gt; setup.exe -q mobile-shell</code></li>
+<li>Chrome浏览器：插件<a href="https://chrome.google.com/webstore/detail/mosh/ooiklbnjmhbcgemelgfhaeaocllobloj" target="_blank" rel="external">Mosh for Chrome</a></li>
+<li>Linux<ul>
+<li>Ubuntu/Debian: <code>$ sudo apt-get install mosh</code></li>
+<li>ArchLinux: <code>$ sudo pacman -S mosh</code> </li>
+<li>CentOS/Fedaro：<code>$ sudo yum install mosh</code> </li>
+</ul>
+</li>
+<li>FreeBSD: <code>$ sudo pkg install net/mosh</code></li>
+<li><p>编译安装</p>
+<ul>
+<li><p>下载源码包进行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://mosh.mit.edu/mosh-1.2.5.tar.gz</span><br><span class="line">$ tar xvzf mosh-1.2.5.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mosh-1.2.5</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line"><span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从git拉取源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mobile-shell/mosh</span><br><span class="line">$ <span class="built_in">cd</span> mosh</span><br><span class="line">$ ./autogen.sh</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line"><span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li>基本上和SSH一模一样，直接<code>$ mosh server-address</code>就好了，因为Mosh的本质还是SSH</li>
+<li>如果远程主机的SSH端口不是22，比如是2022，则需要<code>$ mosh remotehost --ssh=&quot;ssh -p 2022&quot;</code></li>
+<li><p>一般来说，远程主机的环境要配置成<code>en_US.UTF-8</code>，不然会报“mosh requires a UTF-8 locale.”之类的异常，根本用不了。琢磨了好久，研究出一套多平台的解决方案。 </p>
+<ul>
+<li><p>Linux</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 在/etc/environment中追加一句LC_ALL=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">2.A [Ubuntu/Debian] $ sudo locale-gen en_US.UTF-8  </span><br><span class="line">2.B [CentOS/Fedaro] $ sudo localedef -v -c -i en_US <span class="_">-f</span> UTF-8 en_US.UTF-8</span><br><span class="line">3. reboot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FreeBSD：只需在<code>~/.login_conf</code>中追加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">me:\</span><br><span class="line">       :charset=UTF-8:\</span><br><span class="line">       :lang=en_US.UTF-8:\</span><br><span class="line">       :setenv=LC_COLLATE=C:</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ul>
+<li>错误<code>Nothing received from the server on UDP port 60003</code>：简单来说，Mosh的网络通信由两部分组成，TCP用于SSH会话+UDP用于会话保持。TCP部分的端口就是SSH的端口，而UDP的端口则是60000~61000之间的随机数。该错误的解决方案将UDP端口加入防火墙的白名单<code>$ sudo iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT</code></li>
+<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<br><img src="http://7xqld8.com1.z0.glb.clouddn.com/osx-mosh-exception.png" alt=""><br>原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<code>$ mosh macbook --server=/usr/local/bin/mosh-server</code></li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="http://7xqld8.com1.z0.glb.clouddn.com/donate-me.png" alt=""></p>
 
         </div>
         <footer class="article-footer">
