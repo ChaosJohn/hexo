@@ -81,5 +81,10 @@ theme: hueman
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git 
-  repository: git@github.com:ChaosJohn/hexo.git 
-  branch: gh-pages 
+  #repository: git@github.com:ChaosJohn/hexo.git 
+  #branch: gh-pages 
+  repo: 
+    github: git@github.com:ChaosJohn/hexo.git,gh-pages 
+    bitbucket: git@git.bitbucket.org:ChaosJohn/chaosjohn.bitbucket.org.git,master
+    coding.net: git@git.coding.net:ChaosJohn/hexo.git,pages
+    oschina.net: git@git.oschina.net:ChaosJohn/hexo.git,pages
