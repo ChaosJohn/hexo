@@ -20,7 +20,7 @@ tags: [Nginx]
 
 ## 4. 结语
 下次打算记录一下php的配置，包含Nginx和CaddyServer。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](http://7xqld8.com1.z0.glb.clouddn.com/donate-me.png)
+![](//image.blog.chaosjohn.com/donate-me.png)
 
 
 [img01]: http://oxjeuoq48.bkt.clouddn.com/Nginx-Real-Client-IP/demo-of-ip.chaosjohn.com.png

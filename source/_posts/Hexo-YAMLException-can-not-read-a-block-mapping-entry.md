@@ -15,7 +15,7 @@ tags: [hexo]
 
 ## 捐赠
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](http://7xqld8.com1.z0.glb.clouddn.com/donate-me.png)
+![](//image.blog.chaosjohn.com/donate-me.png)
 
 [img01]: http://oxjeuoq48.bkt.clouddn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png
 [img02]: http://oxjeuoq48.bkt.clouddn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-markdown.png
