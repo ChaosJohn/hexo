@@ -104,6 +104,8 @@ theme: hueman
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  github: git@github.com:ChaosJohn/hexo.git,gh-pages
+  repo: git@github.com:ChaosJohn/hexo.git
+  branch: gh-pages
+  #github: git@github.com:ChaosJohn/hexo.git,gh-pages
   #bitbucket: git@git.bitbucket.org:ChaosJohn/chaosjohn.bitbucket.org.git,master
   #coding.net: git@git.coding.net:ChaosJohn/hexo.git,pages
