@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://avatars2.githubusercontent.com/u/6375567?v=4&s=200">
 <meta property="article:published_time" content="2017-10-09T07:28:03.000Z">
-<meta property="article:modified_time" content="2020-11-24T06:47:03.000Z">
+<meta property="article:modified_time" content="2020-11-24T09:35:12.000Z">
 <meta property="article:author" content="Chaos John">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -170,9 +170,9 @@
         </div>
         <div class="article-entry" itemprop="articleBody">
             <p><img src="https://avatars2.githubusercontent.com/u/6375567?v=4&s=200"></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>好久没写博客，刚刚写了一篇<a href="http://hexo.chaosjohn.com/2017/10/09/Nginx-Real-Client-IP/">Nginx反向代理获取真实客户端IP</a>，然后执行<code>hexo d -g</code>是报了错：<code>YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</code><br><img src="http://oxjeuoq48.bkt.clouddn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>好久没写博客，刚刚写了一篇<a href="http://hexo.chaosjohn.com/2017/10/09/Nginx-Real-Client-IP/">Nginx反向代理获取真实客户端IP</a>，然后执行<code>hexo d -g</code>是报了错：<code>YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</code><br><img src="//image.blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png"></p>
 <h2 id="查错"><a href="#查错" class="headerlink" title="查错"></a>查错</h2><ul>
-<li>先来看看刚刚写的Markdown文件<img src="http://oxjeuoq48.bkt.clouddn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-markdown.png"></li>
+<li>先来看看刚刚写的Markdown文件<img src="//image.blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-markdown.png"></li>
 <li>很明显，第四行只是一个分隔符，怎么可能出问题</li>
 <li>谷歌一下错误，发现问题所在，其实是第三行的错误，tags:后面没有跟空格，yaml处理出错。<a target="_blank" rel="noopener" href="https://github.com/fbrctr/fabricator/issues/241">参考</a></li>
 </ul>
