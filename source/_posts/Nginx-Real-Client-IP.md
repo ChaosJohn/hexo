@@ -2,7 +2,7 @@ title: Nginx反向代理获取真实客户端IP
 date: 2017-10-09 10:51:57
 tags: [Nginx]
 ---
-![](http://nginx.org/nginx.png)
+![](https://nginx.org/nginx.png)
 
 ## 起因
 　　此前做了一个小项目，php实现，[ip.chaosjohn.com](http://ip.chaosjohn.com), 可以用命令行来获取当前客户端ip地址，效果如下：![][img01] 
