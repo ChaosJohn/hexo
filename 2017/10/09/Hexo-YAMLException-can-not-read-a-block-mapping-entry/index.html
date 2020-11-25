@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+
+    
+
     
     <title>Hexo YAMLException: can not read a block mapping entry | 湿科技</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="hexo" />
+    <meta name="keywords" content="hexo" />
     
     <meta name="description" content="问题好久没写博客，刚刚写了一篇Nginx反向代理获取真实客户端IP，然后执行hexo d -g是报了错：YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1: 查错 先来看看刚刚写的Markdown文件 很明显，第四行只是一">
 <meta property="og:type" content="article">
@@ -25,17 +29,19 @@
     
 
     
-
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
     
 
     
-<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
 
     
-<link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
     
-<link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
     
@@ -43,21 +49,23 @@
 
 
     
-<script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
         
-<link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
 
     
     
         
-<link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
     
     
     
+    
+
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
@@ -82,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        
                                     
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
@@ -136,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -146,6 +155,7 @@
     未分类
     </h1>
 </div>
+
                         <div class="main-body-content">
                             <article id="post-Hexo-YAMLException-can-not-read-a-block-mapping-entry" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
@@ -160,15 +170,47 @@
 
             </header>
         
-        <div class="article-subtitle">
-            <a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" class="article-date">
-    <time datetime="2017-10-09T07:28:03.000Z" itemprop="datePublished">2017-10-09</time>
-</a>
-            
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" class="article-date">
+       <time datetime="2017-10-09T07:28:03.000Z" itemprop="datePublished">2017-10-09</time>
+    </a>
+  </div>
 
-        </div>
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" class="article-date">
+     <time datetime="2020-11-24T09:35:12.000Z" itemprop="dateModified">2020-11-24</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/hexo/" rel="tag">hexo</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="https://avatars2.githubusercontent.com/u/6375567?v=4&s=200"></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>好久没写博客，刚刚写了一篇<a href="http://hexo.chaosjohn.com/2017/10/09/Nginx-Real-Client-IP/">Nginx反向代理获取真实客户端IP</a>，然后执行<code>hexo d -g</code>是报了错：<code>YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</code><br><img src="//image.blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png"></p>
 <h2 id="查错"><a href="#查错" class="headerlink" title="查错"></a>查错</h2><ul>
@@ -246,6 +288,31 @@
 
         </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "Hexo YAMLException: can not read a block mapping entry",
+        "image": "https://hexo.chaosjohn.comhttps://avatars2.githubusercontent.com/u/6375567?v=4&s=200",
+        "keywords": "hexo",
+        "genre": "",
+        "datePublished": "2017-10-09",
+        "dateCreated": "2017-10-09",
+        "dateModified": "2020-11-24",
+        "url": "https://hexo.chaosjohn.com/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/",
+        "description": "
+问题好久没写博客，刚刚写了一篇Nginx反向代理获取真实客户端IP，然后执行hexo d -g是报了错：YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:
+查错
+先来看看刚刚写的Markdown文件
+很明显，第四行只是一",
+        "wordCount": 42
+    }
+</script>
+
 </article>
 
     <section id="comments">
@@ -255,8 +322,11 @@
         <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
+
     
     </section>
+
+
 
                         </div>
                     </section>
@@ -268,7 +338,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank">
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -276,7 +346,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="weibo" href="http://weibo.com/p/1005052801242907?is_all=1" target="_blank">
+                    <a class="social-tooltip" title="weibo" href="https://weibo.com/p/1005052801242907?is_all=1" target="_blank" rel="noopener">
                         <i class="icon fa fa-weibo"></i>
                     </a>
                 </li>
@@ -284,7 +354,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
                         <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
@@ -310,6 +380,9 @@
         
             
                 
+
+            
+                
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
@@ -325,6 +398,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -344,6 +418,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -363,6 +438,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -382,6 +458,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -401,6 +478,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -467,6 +545,7 @@
         
     </div>
 </aside>
+
                 </div>
             </div>
         </div>
@@ -479,12 +558,22 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2020 Chaos John</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
             </div>
         </div>
     </div>
 </footer>
-        
+
+    </div>
+    
     
     <script>
     var disqus_shortname = 'hexo-chaosjohn';
@@ -503,20 +592,48 @@
 
 
 
-    
-        
-<script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
 
-    
 
     
         
-<script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
         
-<script src="/vendor/scrollLoading/main.js"></script>
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
 
     
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -524,6 +641,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

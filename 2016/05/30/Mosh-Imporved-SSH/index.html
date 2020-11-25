@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+
+    
+
     
     <title>Mosh(Mobile Shell) -- 增强版SSH | 湿科技</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Software,Dev" />
+    <meta name="keywords" content="Software,Dev" />
     
     <meta name="description" content="开场白 Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。 SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。 SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:type" content="article">
@@ -26,17 +30,19 @@
     
 
     
-
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
     
 
     
-<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
 
     
-<link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
     
-<link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
     
@@ -44,21 +50,23 @@
 
 
     
-<script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
         
-<link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
 
     
     
         
-<link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
     
     
     
+    
+
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
@@ -83,8 +91,8 @@
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        
                                     
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
                                 </li>
@@ -137,6 +145,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -147,6 +156,7 @@
     未分类
     </h1>
 </div>
+
                         <div class="main-body-content">
                             <article id="post-Mosh-Imporved-SSH" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
@@ -161,15 +171,47 @@
 
             </header>
         
-        <div class="article-subtitle">
-            <a href="/2016/05/30/Mosh-Imporved-SSH/" class="article-date">
-    <time datetime="2016-05-30T06:25:15.000Z" itemprop="datePublished">2016-05-30</time>
-</a>
-            
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software/" rel="tag">Software</a></li></ul>
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/05/30/Mosh-Imporved-SSH/" class="article-date">
+       <time datetime="2016-05-30T06:25:15.000Z" itemprop="datePublished">2016-05-30</time>
+    </a>
+  </div>
 
-        </div>
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/05/30/Mosh-Imporved-SSH/" class="article-date">
+     <time datetime="2020-11-24T06:47:03.000Z" itemprop="dateModified">2020-11-24</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Dev/" rel="tag">Dev</a>, <a class="tag-link-link" href="/tags/Software/" rel="tag">Software</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png"> </p>
 <h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
 <li>Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，<code>Mosh is a replacement for SSH</code>。</li>
@@ -309,6 +351,32 @@
 
         </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "Mosh(Mobile Shell) -- 增强版SSH",
+        "image": "https://hexo.chaosjohn.com//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png",
+        "keywords": "Software Dev",
+        "genre": "",
+        "datePublished": "2016-05-30",
+        "dateCreated": "2016-05-30",
+        "dateModified": "2020-11-24",
+        "url": "https://hexo.chaosjohn.com/2016/05/30/Mosh-Imporved-SSH/",
+        "description": " 
+开场白
+Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。
+SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
+SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。
+",
+        "wordCount": 245
+    }
+</script>
+
 </article>
 
     <section id="comments">
@@ -318,8 +386,11 @@
         <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
+
     
     </section>
+
+
 
                         </div>
                     </section>
@@ -331,7 +402,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank">
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
                     </a>
                 </li>
@@ -339,7 +410,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="weibo" href="http://weibo.com/p/1005052801242907?is_all=1" target="_blank">
+                    <a class="social-tooltip" title="weibo" href="https://weibo.com/p/1005052801242907?is_all=1" target="_blank" rel="noopener">
                         <i class="icon fa fa-weibo"></i>
                     </a>
                 </li>
@@ -347,7 +418,7 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
                         <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
@@ -383,6 +454,9 @@
         
             
                 
+
+            
+                
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
@@ -398,6 +472,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -417,6 +492,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -436,6 +512,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -455,6 +532,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -474,6 +552,7 @@
     
     
 </a>
+
                         </div>
                         
                         <div class="item-inner">
@@ -540,6 +619,7 @@
         
     </div>
 </aside>
+
                 </div>
             </div>
         </div>
@@ -552,12 +632,22 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2020 Chaos John</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
             </div>
         </div>
     </div>
 </footer>
-        
+
+    </div>
+    
     
     <script>
     var disqus_shortname = 'hexo-chaosjohn';
@@ -576,20 +666,48 @@
 
 
 
-    
-        
-<script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
 
-    
 
     
         
-<script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
         
-<script src="/vendor/scrollLoading/main.js"></script>
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
 
     
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -597,6 +715,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>
