@@ -23,6 +23,6 @@ tags: [Nginx]
 ![](//image.blog.chaosjohn.com/donate-me.png)
 
 
-[img01]: http://oxjeuoq48.bkt.clouddn.com/Nginx-Real-Client-IP/demo-of-ip.chaosjohn.com.png
-[img02]: http://oxjeuoq48.bkt.clouddn.com/Nginx-Real-Client-IP/wrong-ip-when-using-proxypass.png
-[img03]: http://oxjeuoq48.bkt.clouddn.com/Nginx-Real-Client-IP/correct-ip-when-using-proxypass.png
+[img01]: //image.blog.chaosjohn.com/Nginx-Real-Client-IP/demo-of-ip.chaosjohn.com.png
+[img02]: //image.blog.chaosjohn.com/Nginx-Real-Client-IP/wrong-ip-when-using-proxypass.png
+[img03]: //image.blog.chaosjohn.com/Nginx-Real-Client-IP/correct-ip-when-using-proxypass.png
