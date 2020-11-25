@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png">
 <meta property="article:published_time" content="2016-05-30T06:25:15.000Z">
-<meta property="article:modified_time" content="2020-11-24T06:47:03.000Z">
+<meta property="article:modified_time" content="2020-11-25T03:21:45.000Z">
 <meta property="article:author" content="Chaos John">
 <meta property="article:tag" content="Software">
 <meta property="article:tag" content="Dev">
@@ -185,7 +185,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2016/05/30/Mosh-Imporved-SSH/" class="article-date">
-     <time datetime="2020-11-24T06:47:03.000Z" itemprop="dateModified">2020-11-24</time>
+     <time datetime="2020-11-25T03:21:45.000Z" itemprop="dateModified">2020-11-25</time>
   </a>
 </div>
 
@@ -212,7 +212,7 @@
 
             
 
-            <p><img src="//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png"> </p>
+            <p><img src="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png"> </p>
 <h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
 <li>Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，<code>Mosh is a replacement for SSH</code>。</li>
 <li>SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。</li>
@@ -277,11 +277,11 @@
 </ul>
 <h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ul>
 <li>错误<code>Nothing received from the server on UDP port 60003</code>：简单来说，Mosh的网络通信由两部分组成，TCP用于SSH会话+UDP用于会话保持。TCP部分的端口就是SSH的端口，而UDP的端口则是60000~61000之间的随机数。该错误的解决方案将UDP端口加入防火墙的白名单<code>$ sudo iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT</code></li>
-<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<img src="//image.blog.chaosjohn.com/Mosh-Imporved-SSH/osx-mosh-exception.png">原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mosh macbook --server&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;mosh-server</span><br></pre></td></tr></table></figure>
+<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<img src="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/osx-mosh-exception.png">原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mosh macbook --server&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;mosh-server</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="//image.blog.chaosjohn.com/donate-me.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
 
         </div>
         <footer class="article-footer">
@@ -360,12 +360,12 @@
             "name": "Chaos John"
         },
         "headline": "Mosh(Mobile Shell) -- 增强版SSH",
-        "image": "https://hexo.chaosjohn.com//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png",
+        "image": "https://hexo.chaosjohn.comhttps://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png",
         "keywords": "Software Dev",
         "genre": "",
         "datePublished": "2016-05-30",
         "dateCreated": "2016-05-30",
-        "dateModified": "2020-11-24",
+        "dateModified": "2020-11-25",
         "url": "https://hexo.chaosjohn.com/2016/05/30/Mosh-Imporved-SSH/",
         "description": " 
 开场白
@@ -404,14 +404,6 @@ SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH�
                 <li>
                     <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="https://weibo.com/p/1005052801242907?is_all=1" target="_blank" rel="noopener">
-                        <i class="icon fa fa-weibo"></i>
                     </a>
                 </li>
                 
@@ -508,7 +500,7 @@ SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH�
                             <a href="/2016/11/04/Crack-Bartender2/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png)" alt="破解Mac菜单栏神器 -- Bartender2" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png)" alt="破解Mac菜单栏神器 -- Bartender2" class="thumbnail-image"></span>
     
     
 </a>
@@ -528,7 +520,7 @@ SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH�
                             <a href="/2016/05/30/Gradle-Could-not-find-tools-jar/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)" alt="解决“Gradle -- Could not find tools.jar”" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)" alt="解决“Gradle -- Could not find tools.jar”" class="thumbnail-image"></span>
     
     
 </a>
@@ -548,7 +540,7 @@ SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH�
                             <a href="/2016/05/30/Mosh-Imporved-SSH/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png)" alt="Mosh(Mobile Shell) -- 增强版SSH" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png)" alt="Mosh(Mobile Shell) -- 增强版SSH" class="thumbnail-image"></span>
     
     
 </a>

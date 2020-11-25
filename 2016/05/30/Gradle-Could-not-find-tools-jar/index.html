@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png">
 <meta property="article:published_time" content="2016-05-30T06:48:44.000Z">
-<meta property="article:modified_time" content="2020-11-24T06:47:03.000Z">
+<meta property="article:modified_time" content="2020-11-25T03:21:44.000Z">
 <meta property="article:author" content="Chaos John">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Gradle">
@@ -186,7 +186,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2016/05/30/Gradle-Could-not-find-tools-jar/" class="article-date">
-     <time datetime="2020-11-24T06:47:03.000Z" itemprop="dateModified">2020-11-24</time>
+     <time datetime="2020-11-25T03:21:44.000Z" itemprop="dateModified">2020-11-25</time>
   </a>
 </div>
 
@@ -213,7 +213,7 @@
 
             
 
-            <p><img src="//image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png"></p>
+            <p><img src="https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png"></p>
 <h2 id="错误出现的环境"><a href="#错误出现的环境" class="headerlink" title="错误出现的环境"></a>错误出现的环境</h2><ul>
 <li>CentOS 7 x86_64</li>
 <li>已通过<code>sudo yum install java-1.8.0-openjdk</code>安装OpenJDK8</li>
@@ -224,10 +224,10 @@
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
 <li>经StackOverFlow搜索，发现<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/11345193/gradle-does-not-find-tools-jar">Gradle does not find tools.jar</a>和<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/25626757/correct-way-of-referencing-tools-jar-in-a-cross-platform-way/25628156#25628156">Correct way of referencing tools.jar in a cross-platform way</a>两篇，主要是通过改build.gradle，强制加入tools的搜寻路径来解决问题。目测有效，但是因为在其他机子上都正常运行不报错，所以放弃该方案。</li>
 <li>突然想起来在很多情况下报错都是因为没有安装dev包（或devel包），比如pip安装模块却没有安装python-dev等等。就寻思着，OpenJDK会不会也要安装dev组件呢？</li>
-<li>键入<code>sudo yum search openjdk | grep -i dev</code>进行搜索，果然有<code>java-1.8.0-openjdk-devel</code><img src="//image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/yum-search-openjdk-dev.png"></li>
+<li>键入<code>sudo yum search openjdk | grep -i dev</code>进行搜索，果然有<code>java-1.8.0-openjdk-devel</code><img src="https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/yum-search-openjdk-dev.png"></li>
 <li><code>sudo yum install java-1.8.0-openjdk-devel</code>，再次<code>./gradlew bootRun</code>，成功运行不报错</li>
 </ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>开发过程中出现问题了，不仅要勤搜索，还要勤动脑思考。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="//image.blog.chaosjohn.com/donate-me.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>开发过程中出现问题了，不仅要勤搜索，还要勤动脑思考。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
 
         </div>
         <footer class="article-footer">
@@ -306,12 +306,12 @@
             "name": "Chaos John"
         },
         "headline": "解决“Gradle -- Could not find tools.jar”",
-        "image": "https://hexo.chaosjohn.com//image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png",
+        "image": "https://hexo.chaosjohn.comhttps://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png",
         "keywords": "Java Gradle Error",
         "genre": "",
         "datePublished": "2016-05-30",
         "dateCreated": "2016-05-30",
-        "dateModified": "2020-11-24",
+        "dateModified": "2020-11-25",
         "url": "https://hexo.chaosjohn.com/2016/05/30/Gradle-Could-not-find-tools-jar/",
         "description": "
 错误出现的环境
@@ -354,14 +354,6 @@ CentOS 7 x86_64
                 <li>
                     <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="https://weibo.com/p/1005052801242907?is_all=1" target="_blank" rel="noopener">
-                        <i class="icon fa fa-weibo"></i>
                     </a>
                 </li>
                 
@@ -458,7 +450,7 @@ CentOS 7 x86_64
                             <a href="/2016/11/04/Crack-Bartender2/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png)" alt="破解Mac菜单栏神器 -- Bartender2" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png)" alt="破解Mac菜单栏神器 -- Bartender2" class="thumbnail-image"></span>
     
     
 </a>
@@ -478,7 +470,7 @@ CentOS 7 x86_64
                             <a href="/2016/05/30/Gradle-Could-not-find-tools-jar/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)" alt="解决“Gradle -- Could not find tools.jar”" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)" alt="解决“Gradle -- Could not find tools.jar”" class="thumbnail-image"></span>
     
     
 </a>
@@ -498,7 +490,7 @@ CentOS 7 x86_64
                             <a href="/2016/05/30/Mosh-Imporved-SSH/" class="thumbnail">
     
     
-        <span style="background-image:url(//image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png)" alt="Mosh(Mobile Shell) -- 增强版SSH" class="thumbnail-image"></span>
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png)" alt="Mosh(Mobile Shell) -- 增强版SSH" class="thumbnail-image"></span>
     
     
 </a>
