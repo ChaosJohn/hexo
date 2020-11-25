@@ -2,7 +2,7 @@ title: 只为体验小红点--我的“ThinkPad X200”
 date: 2016-05-28 16:50:50
 tags: [Toy, Hardware, ThinkPad, TrackPoint]
 ---
-![](//image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg)
+![](https://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg)
 
 ## 1. 手贱入坑X200
 * 之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint）
@@ -32,7 +32,7 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 	* Wifi居然支持2.4GHz和5GHz双频段！！！天哪，08年的电脑啊！！！
 
 ## 3. 体验小红点 
-* 其实说是说小红点，但不仅仅是在按键“B”上方的红色的橡胶点，还包括了空格下方的三个按键，从左往右分别对应鼠标的左键、中键和右键。如下图所示。![](//image.blog.chaosjohn.com/My-ThinkPad-X200/x200-trackpoint.jpg)
+* 其实说是说小红点，但不仅仅是在按键“B”上方的红色的橡胶点，还包括了空格下方的三个按键，从左往右分别对应鼠标的左键、中键和右键。如下图所示。![](https://image.blog.chaosjohn.com/My-ThinkPad-X200/x200-trackpoint.jpg)
 * 按住小红点，手指往哪边用力，光标就会往哪边移动。一开始真的很难把握移动的角度和速度，总是很难非常快速地把光标移动到目标位置，用力小了，移动地太慢，用力大了，一下子就移动过头了。还好没有买带触摸板的型号，强迫自己使用小红点半天不到，就差不多能顺畅使用它了。
 * 左键和右键的功能就不说了，如果在浏览网页或文档时，按住中键后再给小红点用力，就能滚屏啦。“哗哗哗”非常顺畅，个人感觉比鼠标滚轮要好用得多，简直能媲美MacBook触控板的双指滚屏，很是喜欢！
 * 因为尚未在X200上安装过Windows，所以关于小红点在Windows下的表现笔者不进行描述，一般要去ThinkPad官网下载相关驱动以启动。
@@ -60,4 +60,4 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 ## 4. 结语
 体验下来，MacBook和ThinkPad都很赞，现在这台290收来的X200已经成为了笔者的半个主力机，晚上下班回去，如果不写博客的话，大多数时间是抱着ThinkPad。如果读者也想体验体验的话，上闲鱼收个X200是个很不错的选择，当然，X61也可以考虑哦，虽然性能比X200差，但是最近民间有“厂子”有在开发号称“X62”的主板，[具体详见](https://www.zhihu.com/question/33191167) 。
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](//image.blog.chaosjohn.com/donate-me.png)
+![](https://image.blog.chaosjohn.com/donate-me.png)

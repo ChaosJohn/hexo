@@ -19,7 +19,7 @@ tags: [hexo]
 ### 在GitHub上创建博客仓库
 此时得考虑两种选择：
 *	GitHub Pages (每个GitHub账号只能创建一个，即该仓库的默认分支master就是博客，而且仓库名是固定为*username.github.io*)。如果博客搭建成功，浏览器访问*http://username.github.io*就能打开博客。
-*	gh-pages (可以创建无限多个，每个仓库都能创建一个静态博客，但是博客必须在gh-pages分支下)。在这种情况下，博主必需使用域名通过CNAME解析你的博客仓库，否则文章的CSS样式路径会出错，导致整个页面会是下面这种没有样式的样子![](//image.blog.chaosjohn.com/Getting-Started-With-Hexo/hexo-without-css.png
+*	gh-pages (可以创建无限多个，每个仓库都能创建一个静态博客，但是博客必须在gh-pages分支下)。在这种情况下，博主必需使用域名通过CNAME解析你的博客仓库，否则文章的CSS样式路径会出错，导致整个页面会是下面这种没有样式的样子![](https://image.blog.chaosjohn.com/Getting-Started-With-Hexo/hexo-without-css.png
 )
 
 ### 在本地部署
@@ -69,5 +69,5 @@ tags: [hexo]
 		+	hexo s == hexo server
 		+	hexo d == hexo deploy
 
-![](//image.blog.chaosjohn.com/donate-me.png)
+![](https://image.blog.chaosjohn.com/donate-me.png)
 (各位大侠行行好~给点捐助吧~）
