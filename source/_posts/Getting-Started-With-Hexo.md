@@ -39,7 +39,7 @@ tags: [hexo]
 			repository: git@github.com:username/blog.git
 			branch: master
 		```
-  	*	为避免下一步骤出现 *ERROR Deployer not found : 		git*的报错，需要安装git部署模块`$ npm install hexo-		deployer-git --save`
+  	*	为避免下一步骤出现 *ERROR Deployer not found : 	git*的报错，需要安装git部署模块`$ npm install hexo-deployer-git --save`
 	*	生成静态文章`$ hexo generate`
 	* 	部署到GitHub`$ hexo deploy`
 7.	测试博客 
