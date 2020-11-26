@@ -8,7 +8,7 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 * 之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint）
 * 作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔者一直是TrackPad的重度使用者，电脑包里只有MacBook而从来不携带鼠标，也从来没有使用鼠标的习惯。（PS：笔者是一只非常稀少的不打游戏的雄性程序猿）
 * 看多了“TrackPad Vs. TrackPoint“之争，自然心里痒痒的。咋办哩？那就买一台体验体验！可是ThinkPad还挺贵的，买一台大几千呢，笔者可是勤俭持家的好男人，老婆本可不能随便动。。。于是默默地掏出爪机刷起了闲鱼(🙈捂脸逃)
-* 选机上，笔者看中了ThinkPad X200，经典的小黑，[百度百科链接](http://baike.baidu.com/link?url=n3PREfC3wS6VAZKa48VUOa1xtbTG1kaSIgMT4APJN-hmi9CyeGkcfN7E0XfUiSAQlOWXir4nap7KWQmTifFlPq) 
+* 选机上，笔者看中了ThinkPad X200，经典的小黑，[百度百科链接](https://baike.baidu.com/link?url=n3PREfC3wS6VAZKa48VUOa1xtbTG1kaSIgMT4APJN-hmi9CyeGkcfN7E0XfUiSAQlOWXir4nap7KWQmTifFlPq) 
 	* Intel(R) Core(TM)2 Duo CPU -- 至少不是赛扬奔腾之类的处理器
 	* Intel GMA X4500显卡 -- 都说了笔者不打游戏了，要独显干嘛，浪费钱？
 	* DDR3 -- 还好不是DDR2，不然升级低版本的内存得死贵死贵的，还记得之前有买过一根DDR333的1G内存都花了两百左右
@@ -26,7 +26,7 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 * 以下开始进入“拍马屁模式”
 	* 成色非常好（见封面图），键盘完全没有油光，用酒精把整机擦拭了一遍后，保守估计95新吧，噢耶赚到了，闲鱼上很多卖的很贵的，看成色都很旧很脏。
 	* 重量很轻，1.394KG，笔者的MacBook Air重量也达到了1.35KG，只差44g（脑海里莫名地想起初中物理课本，一个鸡蛋50g）
-	* 笔者买的这台X200是P8600的CPU，性能比最早的i3都要强。。。笔者最早的一台MacBook是经典款的[“小白”MC207](http://detail.zol.com.cn/notebook/index218245.shtml)，P7550的CPU，用到现在为止都依然“坚挺”！
+	* 笔者买的这台X200是P8600的CPU，性能比最早的i3都要强。。。笔者最早的一台MacBook是经典款的[“小白”MC207](https://detail.zol.com.cn/notebook/index218245.shtml)，P7550的CPU，用到现在为止都依然“坚挺”！
 	* 键盘手感很好，比Mac的原装键盘要好，键程适中，弹性不错，手感偏软。
 	* 散热真赞！发热真小！电脑开一整天，C面(有键盘的那一面)没有丝毫热感，D面(电脑底部)感觉和人的体温差不多，出风口几乎没有很大的风吹出来，导致整机非常静音，丝毫没有其他电脑风扇为了散热狂转造成的噪音。
 	* Wifi居然支持2.4GHz和5GHz双频段！！！天哪，08年的电脑啊！！！
@@ -55,7 +55,7 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 	```
 	
 * 以上这些xinput命令不是永久性的，每次图形界面(xserver)重启，都得重新执行才能生效。但可以放在`.xsessionrc`内，当xserver启动时会自动执行。
-* 当然，如果不喜欢命令行的话，也有图形界面程序来解决啦。有两个选择，[GPointing Device Settings](http://live.gnome.org/GPointingDeviceSettings)和[configure-trackpoint](http://tpctl.sourceforge.net/configure-trackpoint.html)。笔者在Arch Linux上安装了前者，如下图所示 ![](http://www.thinkwiki.org/w/images/e/ee/Screenshot-GPointing_Device_Settings-TrackPoint.png)
+* 当然，如果不喜欢命令行的话，也有图形界面程序来解决啦。有两个选择，[GPointing Device Settings](https://live.gnome.org/GPointingDeviceSettings)和[configure-trackpoint](https://tpctl.sourceforge.net/configure-trackpoint.html)。笔者在Arch Linux上安装了前者，如下图所示 ![](https://www.thinkwiki.org/w/images/e/ee/Screenshot-GPointing_Device_Settings-TrackPoint.png)
 
 ## 4. 结语
 体验下来，MacBook和ThinkPad都很赞，现在这台290收来的X200已经成为了笔者的半个主力机，晚上下班回去，如果不写博客的话，大多数时间是抱着ThinkPad。如果读者也想体验体验的话，上闲鱼收个X200是个很不错的选择，当然，X61也可以考虑哦，虽然性能比X200差，但是最近民间有“厂子”有在开发号称“X62”的主板，[具体详见](https://www.zhihu.com/question/33191167) 。
