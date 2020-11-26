@@ -1,6 +1,6 @@
 title: HomeBrew -- OSX下的最强软件包管理器
 date: 2016-05-26 17:23:57
-tags: [MacBook,OSX,Software]
+tags: [OS X & macOS,Software]
 ---
 
 ![](https://image.blog.chaosjohn.com/HomeBrew-The-Best-Package-Manager-On-OSX/HomeBrewPoster.jpg)
