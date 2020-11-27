@@ -34,3 +34,5 @@ scaffolds
 db.json
 .deploy_git
 themes/hueman
+
+.DS_Store
