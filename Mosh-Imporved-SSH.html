@@ -6,25 +6,27 @@
     
 
     
-    <title>于2020年末的回归 | 湿科技</title>
+    <title>Mosh(Mobile Shell) -- 增强版SSH | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="Software,Dev" />
     
-    <meta name="description" content="是的，我回来了。 距写上一篇文章已经过去3年多了，很汗颜，虽然文章本来就不多。 建站之初，想好好经营这个博客，毕竟我是一个非常乐于分享的技术宅，我想把我学会的，我踩坑的，我创造的，都通过这个博客展示出来。 虽然找借口很不耻，但我不得不解释一下，为啥挺好的抱负却被我荒废了三年之久。  次要原因：工作不得志，职场不称心 主要原因：生活了无希望，前女友掏空我所有的精力，即使把所有的心思都花上，得来的是">
+    <meta name="description" content="开场白 Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。 SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。 SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="于2020年末的回归">
-<meta property="og:url" content="https://hexo.chaosjohn.com/2020/11/25/Comeback-in-2020/index.html">
+<meta property="og:title" content="Mosh(Mobile Shell) -- 增强版SSH">
+<meta property="og:url" content="https://blog.chaosjohn.com/Mosh-Imporved-SSH.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="是的，我回来了。 距写上一篇文章已经过去3年多了，很汗颜，虽然文章本来就不多。 建站之初，想好好经营这个博客，毕竟我是一个非常乐于分享的技术宅，我想把我学会的，我踩坑的，我创造的，都通过这个博客展示出来。 虽然找借口很不耻，但我不得不解释一下，为啥挺好的抱负却被我荒废了三年之久。  次要原因：工作不得志，职场不称心 主要原因：生活了无希望，前女友掏空我所有的精力，即使把所有的心思都花上，得来的是">
+<meta property="og:description" content="开场白 Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。 SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。 SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png">
-<meta property="article:published_time" content="2020-11-25T07:07:01.000Z">
-<meta property="article:modified_time" content="2020-11-25T08:38:45.000Z">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png">
+<meta property="article:published_time" content="2016-05-30T06:25:15.000Z">
+<meta property="article:modified_time" content="2020-11-25T03:21:45.000Z">
 <meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Dev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png">
     
 
     
@@ -158,14 +160,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Comeback-in-2020" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Mosh-Imporved-SSH" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        于2020年末的回归
+        Mosh(Mobile Shell) -- 增强版SSH
         </h1>
     
 
@@ -176,16 +178,16 @@
                 
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/2020/11/25/Comeback-in-2020/" class="article-date">
-       <time datetime="2020-11-25T07:07:01.000Z" itemprop="datePublished">2020-11-25</time>
+    <a href="/Mosh-Imporved-SSH.html" class="article-date">
+       <time datetime="2016-05-30T06:25:15.000Z" itemprop="datePublished">2016-05-30</time>
     </a>
   </div>
 
 
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
-  <a href="/2020/11/25/Comeback-in-2020/" class="article-date">
-     <time datetime="2020-11-25T08:38:45.000Z" itemprop="dateModified">2020-11-25</time>
+  <a href="/Mosh-Imporved-SSH.html" class="article-date">
+     <time datetime="2020-11-25T03:21:45.000Z" itemprop="dateModified">2020-11-25</time>
   </a>
 </div>
 
@@ -193,6 +195,11 @@
                 
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Dev/" rel="tag">Dev</a>, <a class="tag-link-link" href="/tags/Software/" rel="tag">Software</a>
+    </div>
+
                 
 
                 
@@ -207,18 +214,76 @@
 
             
 
-            <p><img src="https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png"></p>
-<p>是的，我回来了。</p>
-<p>距写上一篇文章已经过去3年多了，很汗颜，虽然文章本来就不多。</p>
-<p>建站之初，想好好经营这个博客，毕竟我是一个非常乐于分享的技术宅，我想把我学会的，我踩坑的，我创造的，都通过这个博客展示出来。</p>
-<p>虽然找借口很不耻，但我不得不解释一下，为啥挺好的抱负却被我荒废了三年之久。</p>
-<ol>
-<li>次要原因：工作不得志，职场不称心</li>
-<li>主要原因：生活了无希望，前女友掏空我所有的精力，即使把所有的心思都花上，得来的是无休止的挑刺和吵闹。多次分手无果(懂的人自然懂)，认命了，就像一眼看到了人生的终点，对感情和生活完全丧失信心，进而在自己热爱的工作和行业上失去了奋斗的动力。</li>
-</ol>
-<p>万幸的是，我最后终于摆脱了前任，并且走出了阴影。更加幸运的是，半年前，我遇到了我的小可爱，她的出现，照亮了我的天空。</p>
-<p>我满血复活了！！！</p>
-<p>所以，我回来了！</p>
+            <p><img src="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png"> </p>
+<h2 id="开场白"><a href="#开场白" class="headerlink" title="开场白"></a>开场白</h2><ul>
+<li>Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，<code>Mosh is a replacement for SSH</code>。</li>
+<li>SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。</li>
+<li>SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。</li>
+<li>Mosh就是用来解决这个问题的，它可以“漫游”。网断了，重连，或者从一个WiFi切换到另一个WiFi，然后又切换成数据流量，会话一直都在。</li>
+<li>另外一个笔者非常喜欢的特点是–本地响应特别快(intelligent local echo)。笔者有好几台国外的服务器，几乎都是美国的。从中国大陆到美国的Ping值一般都超过200ms，有时候甚至在400ms以上，在这种情况下对比SSH与Mosh的表现：<ul>
+<li>SSH：键盘按下每一个字符，比如“a”，远程服务器接收到本地键盘的响应，然后再告诉本地“这边已接到你按下字母a”，这之后，本地的终端才会显示出字母a。假设Ping值是200ms，那么每次按下按键之后，得有400ms的延迟屏幕才有显示，so，打字一卡一卡的很难受，体验很糟糕。</li>
+<li>Mosh：键盘每按下一个字符，屏幕上立马就会显示，发送给远程服务器的工作则在后台静默执行，打字非常流畅。</li>
+</ul>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>Mac OS X </p>
+<ul>
+<li>从pkg软件包安装：<a target="_blank" rel="noopener" href="https://mosh.mit.edu/mosh-1.2.5-leopard.pkg">OS X 10.5–10.9</a> &amp;&amp; <a target="_blank" rel="noopener" href="https://mosh.mit.edu/mosh-1.2.5.pkg">OS X 10.9+</a></li>
+<li>HomeBrew：<code>$ brew install mosh</code></li>
+<li>MacPorts：<code>$ sudo port install mosh</code></li>
+</ul>
+</li>
+<li><p>Windows - Cygwin: <code>C:\&gt; setup.exe -q mobile-shell</code></p>
+</li>
+<li><p>Chrome浏览器：插件<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/mosh/ooiklbnjmhbcgemelgfhaeaocllobloj">Mosh for Chrome</a></p>
+</li>
+<li><p>Linux</p>
+<ul>
+<li>Ubuntu/Debian: <code>$ sudo apt-get install mosh</code></li>
+<li>ArchLinux: <code>$ sudo pacman -S mosh</code> </li>
+<li>CentOS/Fedaro：<code>$ sudo yum install mosh</code> </li>
+</ul>
+</li>
+<li><p>FreeBSD: <code>$ sudo pkg install net/mosh</code></p>
+</li>
+<li><p>编译安装</p>
+<ul>
+<li><p>下载源码包进行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://mosh.mit.edu/mosh-1.2.5.tar.gz</span><br><span class="line">$ tar xvzf mosh-1.2.5.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mosh-1.2.5</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line"><span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从git拉取源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mobile-shell/mosh</span><br><span class="line">$ <span class="built_in">cd</span> mosh</span><br><span class="line">$ ./autogen.sh</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line"><span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ul>
+<li><p>基本上和SSH一模一样，直接<code>$ mosh server-address</code>就好了，因为Mosh的本质还是SSH</p>
+</li>
+<li><p>如果远程主机的SSH端口不是22，比如是2022，则需要<code>$ mosh remotehost --ssh=&quot;ssh -p 2022&quot;</code></p>
+</li>
+<li><p>一般来说，远程主机的环境要配置成<code>en_US.UTF-8</code>，不然会报“mosh requires a UTF-8 locale.”之类的异常，根本用不了。琢磨了好久，研究出一套多平台的解决方案。 </p>
+<ul>
+<li><p>Linux</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 在/etc/environment中追加一句LC_ALL=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">2.A [Ubuntu/Debian] $ sudo locale-gen en_US.UTF-8  </span><br><span class="line">2.B [CentOS/Fedaro] $ sudo localedef -v -c -i en_US -f UTF-8 en_US.UTF-8</span><br><span class="line">3. reboot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FreeBSD：只需在<code>~/.login_conf</code>中追加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">me:\</span><br><span class="line">       :charset=UTF-8:\</span><br><span class="line">       :lang=en_US.UTF-8:\</span><br><span class="line">       :setenv=LC_COLLATE=C:</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ul>
+<li>错误<code>Nothing received from the server on UDP port 60003</code>：简单来说，Mosh的网络通信由两部分组成，TCP用于SSH会话+UDP用于会话保持。TCP部分的端口就是SSH的端口，而UDP的端口则是60000~61000之间的随机数。该错误的解决方案将UDP端口加入防火墙的白名单<code>$ sudo iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT</code></li>
+<li>笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。<img src="https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/osx-mosh-exception.png">原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在<code>/usr/local/bin/</code>下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mosh macbook --server&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;mosh-server</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
 
         </div>
         <footer class="article-footer">
@@ -226,7 +291,7 @@
 
 
 
-    <a data-url="https://hexo.chaosjohn.com/2020/11/25/Comeback-in-2020/" data-id="ckhx2qm7c0000b8xr8ink1k72" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://blog.chaosjohn.com/Mosh-Imporved-SSH.html" data-id="ckhvqsqm60007k1xrgo8pf4up" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -296,23 +361,21 @@
             "@type": "Person",
             "name": "Chaos John"
         },
-        "headline": "于2020年末的回归",
-        "image": "https://hexo.chaosjohn.comhttps://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png",
-        "keywords": "",
+        "headline": "Mosh(Mobile Shell) -- 增强版SSH",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png",
+        "keywords": "Software Dev",
         "genre": "",
-        "datePublished": "2020-11-25",
-        "dateCreated": "2020-11-25",
+        "datePublished": "2016-05-30",
+        "dateCreated": "2016-05-30",
         "dateModified": "2020-11-25",
-        "url": "https://hexo.chaosjohn.com/2020/11/25/Comeback-in-2020/",
-        "description": "
-是的，我回来了。
-距写上一篇文章已经过去3年多了，很汗颜，虽然文章本来就不多。
-建站之初，想好好经营这个博客，毕竟我是一个非常乐于分享的技术宅，我想把我学会的，我踩坑的，我创造的，都通过这个博客展示出来。
-虽然找借口很不耻，但我不得不解释一下，为啥挺好的抱负却被我荒废了三年之久。
-
-次要原因：工作不得志，职场不称心
-主要原因：生活了无希望，前女友掏空我所有的精力，即使把所有的心思都花上，得来的是",
-        "wordCount": 2
+        "url": "https://blog.chaosjohn.com/Mosh-Imporved-SSH.html",
+        "description": " 
+开场白
+Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，Mosh is a replacement for SSH。
+SSH相信大家应该都不陌生，我们都用它来进行远程登录Unix-like的操作系统，比如运行着Linux的云服务器。
+SSH有一个很大的弊病，那就是连接会断。比如新建了一个SSH会话，然后突然网断了，SSH就断开连接终止了。
+",
+        "wordCount": 245
     }
 </script>
 
@@ -361,20 +424,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2020/11/26/Disable-Update-Badge-of-macOS/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/Gradle-Could-not-find-tools-jar.html" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            禁用macOS更新提醒角标
+            解决“Gradle -- Could not find tools.jar”
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Tools-for-Developers-on-Android-Tablet.html" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Hexo YAMLException: can not read a block mapping entry</p>
+        <p class="article-nav-title">安卓平板上的开发者实用工具</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -396,7 +459,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2020/11/27/iCloud-Sync-Exclusion/" class="thumbnail">
+                            <a href="/iCloud-Sync-Exclusion.html" class="thumbnail">
     
     
         <span style="background-image:url(https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/head-image.png)" alt="iCloud同步排除文件/目录" class="thumbnail-image"></span>
@@ -408,7 +471,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/11/27/iCloud-Sync-Exclusion/" class="title">iCloud同步排除文件/目录</a></p>
+                            <p class="item-title"><a href="/iCloud-Sync-Exclusion.html" class="title">iCloud同步排除文件/目录</a></p>
                             <p class="item-date"><time datetime="2020-11-27T06:49:16.000Z" itemprop="datePublished">2020-11-27</time></p>
                         </div>
                     </li>
@@ -416,7 +479,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2020/11/26/Homebrew-upgrade/" class="thumbnail">
+                            <a href="/Homebrew-upgrade.html" class="thumbnail">
     
     
         <span style="background-image:url(https://brew.sh/assets/img/homebrew-256x256.png)" alt="Homebrew更新相关小技巧" class="thumbnail-image"></span>
@@ -428,7 +491,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/11/26/Homebrew-upgrade/" class="title">Homebrew更新相关小技巧</a></p>
+                            <p class="item-title"><a href="/Homebrew-upgrade.html" class="title">Homebrew更新相关小技巧</a></p>
                             <p class="item-date"><time datetime="2020-11-26T07:22:22.000Z" itemprop="datePublished">2020-11-26</time></p>
                         </div>
                     </li>
@@ -436,7 +499,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2020/11/26/Disable-Update-Badge-of-macOS/" class="thumbnail">
+                            <a href="/Disable-Update-Badge-of-macOS.html" class="thumbnail">
     
     
         <span style="background-image:url(https://www.apple.com.cn/v/mac/home/ax/images/overview/hero/dark/mac_mini__gc148mlvnziq_large.jpg)" alt="禁用macOS更新提醒角标" class="thumbnail-image"></span>
@@ -448,7 +511,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/11/26/Disable-Update-Badge-of-macOS/" class="title">禁用macOS更新提醒角标</a></p>
+                            <p class="item-title"><a href="/Disable-Update-Badge-of-macOS.html" class="title">禁用macOS更新提醒角标</a></p>
                             <p class="item-date"><time datetime="2020-11-26T01:23:06.000Z" itemprop="datePublished">2020-11-26</time></p>
                         </div>
                     </li>
@@ -456,7 +519,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2020/11/25/Comeback-in-2020/" class="thumbnail">
+                            <a href="/Comeback-in-2020.html" class="thumbnail">
     
     
         <span style="background-image:url(https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png)" alt="于2020年末的回归" class="thumbnail-image"></span>
@@ -468,7 +531,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2020/11/25/Comeback-in-2020/" class="title">于2020年末的回归</a></p>
+                            <p class="item-title"><a href="/Comeback-in-2020.html" class="title">于2020年末的回归</a></p>
                             <p class="item-date"><time datetime="2020-11-25T07:07:01.000Z" itemprop="datePublished">2020-11-25</time></p>
                         </div>
                     </li>
@@ -476,7 +539,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" class="thumbnail">
+                            <a href="/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html" class="thumbnail">
     
     
         <span style="background-image:url(https://avatars2.githubusercontent.com/u/6375567?v=4&s=200)" alt="Hexo YAMLException: can not read a block mapping entry" class="thumbnail-image"></span>
@@ -488,7 +551,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/10/09/Hexo-YAMLException-can-not-read-a-block-mapping-entry/" class="title">Hexo YAMLException: can not read a block mapping entry</a></p>
+                            <p class="item-title"><a href="/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html" class="title">Hexo YAMLException: can not read a block mapping entry</a></p>
                             <p class="item-date"><time datetime="2017-10-09T07:28:03.000Z" itemprop="datePublished">2017-10-09</time></p>
                         </div>
                     </li>
@@ -584,7 +647,7 @@
     var disqus_shortname = 'hexo-chaosjohn';
     
     
-    var disqus_url = 'https://hexo.chaosjohn.com/2020/11/25/Comeback-in-2020/';
+    var disqus_url = 'https://blog.chaosjohn.com/Mosh-Imporved-SSH.html';
     
     (function() {
     var dsq = document.createElement('script');
