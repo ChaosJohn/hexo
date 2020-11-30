@@ -6,17 +6,28 @@
     
 
     
-    <title>归档 | 湿科技</title>
+    <title>端口转发(篇一) - rinetd | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="湿科技">
-<meta property="og:url" content="https://blog.chaosjohn.com/archives/index.html">
+    <meta name="keywords" content="network,tool,port-forwarding" />
+    
+    <meta name="description" content="前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。 本文为篇一，介绍一个大家常用的工具，rinetd。 简介A: 端口转发英文：Port forwarding 将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。 即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。 简介B: rinetd项目主页 &#x2F; Github rinet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="端口转发(篇一) - rinetd">
+<meta property="og:url" content="https://blog.chaosjohn.com/Port-Forwarding-1.html">
 <meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。 本文为篇一，介绍一个大家常用的工具，rinetd。 简介A: 端口转发英文：Port forwarding 将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。 即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。 简介B: rinetd项目主页 &#x2F; Github rinet">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png">
+<meta property="article:published_time" content="2020-11-30T09:09:13.000Z">
+<meta property="article:modified_time" content="2020-11-30T15:19:04.634Z">
 <meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="tool">
+<meta property="article:tag" content="port-forwarding">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png">
     
 
     
@@ -145,564 +156,225 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Port-Forwarding-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Port-Forwarding-1.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png)" alt="端口转发(篇一) - rinetd" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Port-Forwarding-1.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-30T09:09:13.000Z" itemprop="datePublished">2020-11-30</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Port-Forwarding-1.html">端口转发(篇一) - rinetd</a>
+        端口转发(篇一) - rinetd
         </h1>
     
 
-        <p class="article-excerpt">
-            前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/Port-Forwarding-1.html" class="article-date">
+       <time datetime="2020-11-30T09:09:13.000Z" itemprop="datePublished">2020-11-30</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/Port-Forwarding-1.html" class="article-date">
+     <time datetime="2020-11-30T15:19:04.634Z" itemprop="dateModified">2020-11-30</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/network/" rel="tag">network</a>, <a class="tag-link-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a>, <a class="tag-link-link" href="/tags/tool/" rel="tag">tool</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者准备写一个 <code>端口转发</code> 系列文章，涉及计多个工具和命令。</p>
+<p>本文为篇一，介绍一个大家常用的工具，rinetd。</p>
+<h2 id="简介A-端口转发"><a href="#简介A-端口转发" class="headerlink" title="简介A: 端口转发"></a>简介A: 端口转发</h2><p>英文：Port forwarding</p>
+<p>将一台 <code>主机A</code> 的 <code>端口x</code> 转发到另一台 <code>主机B</code> 的 <code>端口y</code> 并由 <code>主机B</code> 提供转发的网络服务。</p>
+<p>即通过访问 <code>主机B:端口y</code> 来访问部署在 <code>主机A:端口x</code> 上的服务。</p>
+<h2 id="简介B-rinetd"><a href="#简介B-rinetd" class="headerlink" title="简介B: rinetd"></a>简介B: rinetd</h2><p><a target="_blank" rel="noopener" href="http://www.rinetd.com/">项目主页</a> / <a target="_blank" rel="noopener" href="https://github.com/boutell/rinetd">Github</a></p>
+<p>rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。</p>
+<p>rinetd是单一过程的服务器，它处理任何数量的连接到在配置文件etc/rinetd中指定的地址/端口对。</p>
+<p>尽管rinetd使用非闭锁I/O运行作为一个单一过程，它可能重定向很多连接而不对这台机器增加额外的负担。</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>最早接触到这个工具，是几年前购买了阿里云的Redis实例，当初该服务未推出公网连接地址，只能通过内网访问，即只在同一个区域的VPC内可达，在当初的业务环境下，只能从阿里云的ECS访问Redis实例。</p>
+<p>这就很恼怒了，在笔者本地的开发环境，也要连接改Redis实例，咋办哩。</p>
+<p>于是就在阿里云在线文档里找到了这个工具，我还依稀记得那篇文档里，介绍的是如何在CentOS下载rinetd源码（还提供了tar.gz的链接地址），然后编译安装它。（不过伴随着阿里云Redis实例开始支持公网连接后，该文档已经消失在了历史长河里了。）</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>编译安装（适用于任何Linux环境，但个人不推荐，因为还得手动配置开机自启）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ curl -LO &#39;http:&#x2F;&#x2F;www.rinetd.com&#x2F;download&#x2F;rinetd.tar.gz&#39;</span><br><span class="line">$ tar xvzf rinetd.tar.gz</span><br><span class="line">$ cd rinetd</span><br><span class="line">$ sed -i &#39;s&#x2F;65536&#x2F;65535&#x2F;g&#39; rinetd.c （修改端口范围，否则会报错）</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<p>（提示：官方下载的源码包无法在macOS下完成编译，报错 <code>error: implicit declaration of function &#39;inet_addr&#39; is invalid in C99</code>）</p>
+</li>
+<li><p>在 <code>macOS</code> 上借助 <code>Homebrew</code> 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install rinetd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>Debian / Ubuntu</code> 上借助 <code>apt</code> 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install rinetd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>RHEL / CentOS</code> 上借助 <code>yum</code> 安装</p>
+</li>
+</ol>
+<p>官方源中无rinetd，所以需要先安装三方源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;yum.repos.d&#x2F;nux-misc.repo</span><br><span class="line"></span><br><span class="line">[nux-misc]</span><br><span class="line">name&#x3D;Nux Misc</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;li.nux.ro&#x2F;download&#x2F;nux&#x2F;misc&#x2F;el6&#x2F;x86_64&#x2F;</span><br><span class="line">enabled&#x3D;0</span><br><span class="line">gpgcheck&#x3D;1</span><br><span class="line">gpgkey&#x3D;http:&#x2F;&#x2F;li.nux.ro&#x2F;download&#x2F;nux&#x2F;RPM-GPG-KEY-nux.ro</span><br></pre></td></tr></table></figure>
+
+<p>然后再安装rinetd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum --enablerepo&#x3D;nux-misc install rinetd</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件路径为 <code>/etc/rinetd.conf</code>，并附上那台转发Redis的配置内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># this is the configuration file for rinetd, the internet redirection server</span><br><span class="line">#</span><br><span class="line"># you may specify global allow and deny rules here</span><br><span class="line"># only ip addresses are matched, hostnames cannot be specified here</span><br><span class="line"># the wildcards you may use are * and ?</span><br><span class="line">#</span><br><span class="line"># allow 192.168.2.*</span><br><span class="line"># deny 192.168.2.1?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># forwarding rules come here</span><br><span class="line">#</span><br><span class="line"># you may specify allow and deny rules after a specific forwarding rule</span><br><span class="line"># to apply to only that forwarding rule</span><br><span class="line">#</span><br><span class="line"># bindadress    bindport  connectaddress  connectport</span><br><span class="line">0.0.0.0	6379	r-ly25ac35fxxxxx.redis.rds.aliyuncs.com	6379</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># logging information</span><br><span class="line">logfile &#x2F;var&#x2F;log&#x2F;rinetd.log</span><br><span class="line"></span><br><span class="line"># uncomment the following line if you want web-server style logfile format</span><br><span class="line"># logcommon</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>allow</code> 和 <code>deny</code> 是配置 <em>允许和阻止</em> 的 <em>IP地址/IP段</em></li>
+<li>转发规则一行一个，可配置多行 <code>bindadress  bindport  connectaddress  connectport</code>，如示例里配置为：监听本网卡地址的6379端口号，并且转发到VPC内网Redis实例的6379端口号。</li>
+</ul>
+<h2 id="运行和自启"><a href="#运行和自启" class="headerlink" title="运行和自启"></a>运行和自启</h2><ul>
+<li>如果是通过源码编译安装的，命令行直接执行 <code>rinetd</code>；自启的话，得手动编写 <code>Systemd</code> 的Unit文件来管理或者通过 <code>Supervisor</code> 来管理。</li>
+<li>如果是 <code>apt</code> 或 <code>yum</code> 安装的，并且init程序是 <code>Systemd</code><ul>
+<li>启动服务: <code>$ sudo systemctl start rinetd</code></li>
+<li>停止服务: <code>$ sudo systemctl stop rinetd</code></li>
+<li>重启服务: <code>$ sudo systemctl restart rinetd</code></li>
+<li>开机自启: <code>$ sudo systemctl enable rinetd</code></li>
+<li>禁用自启: <code>$ sudo systemctl disable rinetd</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/Port-Forwarding-1.html" data-id="cki4bzchr000h496peeorcbmy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "端口转发(篇一) - rinetd",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png",
+        "keywords": "network tool port-forwarding",
+        "genre": "",
+        "datePublished": "2020-11-30",
+        "dateCreated": "2020-11-30",
+        "dateModified": "2020-11-30",
+        "url": "https://blog.chaosjohn.com/Port-Forwarding-1.html",
+        "description": "前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。
 本文为篇一，介绍一个大家常用的工具，rinetd。
 简介A: 端口转发英文：Port forwarding
 将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。
 即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。
 简介B: rinetd项目主页 / Github
-rinet
-        </p>
-    </div>
+rinet",
+        "wordCount": 368
+    }
+</script>
+
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Clean-APFS-Snapshots.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/Clean-APFS-Snapshots/DiskUtility.png)" alt="清理 APFS 快照的shell脚本" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Clean-APFS-Snapshots.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-29T15:26:03.000Z" itemprop="datePublished">2020-11-29</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Clean-APFS-Snapshots.html">清理 APFS 快照的shell脚本</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。
-笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。
-快照的引入，可以方便并且快速地恢复到过去的某个时间节点，它与 时间机器(Time Mach
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/IPv6-not-working-from-bridged-wireless.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless/vmware.jpg)" alt="IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless.html">0</span>
-    
-</span>
 
 
     
-</a>
+    </section>
 
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-28T10:19:22.000Z" itemprop="datePublished">2020-11-28</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/IPv6-not-working-from-bridged-wireless.html">IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            背景今年年中的时候，在油管上看到 悟空大大 关于 Minisforum GK41 的视频，心里痒痒，于是也入手了一个。主要具体参数为：
-
-CPU: Intel® Celeron® Processor J4125
-内存: LPDDR4 8GB (On Board)
-网络: 双千兆螃蟹卡 + 802.11ac双频Wifi
-
-买之前想的很美妙，买它！当软路由！就奔着它双网口且不到日常使用5~6W的超低功
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/iCloud-Sync-Exclusion.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/head-image.png)" alt="iCloud同步排除文件/目录" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/iCloud-Sync-Exclusion.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-27T06:49:16.000Z" itemprop="datePublished">2020-11-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/iCloud-Sync-Exclusion.html">iCloud同步排除文件/目录</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-前言苹果的iCloud服务，是笔者离不开苹果生态的一大重要原因。
-但是苹果鸡贼的很，免费用户5GB存储空间轻轻松松就存满了，所以早年刚出付费升级容量的时候，我就购买了最低的付费容量，20GB/¥6/月。虽然不多，但是备份iPhone设备（特别是相册），也是够用的。不过后来苹果良心发现，加量不加价，自动给变更成了50GB。
-自从 OS X 10.10 Yosemite 开始，iCloud开始可以用
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Homebrew-upgrade.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://brew.sh/assets/img/homebrew-256x256.png)" alt="Homebrew更新相关小技巧" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Homebrew-upgrade.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-26T07:22:22.000Z" itemprop="datePublished">2020-11-26</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Homebrew-upgrade.html">Homebrew更新相关小技巧</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            前言笔者在四年前曾写过一文HomeBrew – OSX下的最强软件包管理器，篇中详细介绍了HomeBrew以及Cask的使用。
-多年过去了，Homebrew依旧非常流行，但内在也发生了很多变化，比如Cask原先作为第三方Tap的存在，现已整合到Homebrew内，在未安装Cask的环境里，执行 brew cask install $&#123;app&#125;，Homebrew则会自动安装Cas
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Disable-Update-Badge-of-macOS.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://www.apple.com.cn/v/mac/home/ax/images/overview/hero/dark/mac_mini__gc148mlvnziq_large.jpg)" alt="禁用macOS更新提醒角标" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Disable-Update-Badge-of-macOS.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-26T01:23:06.000Z" itemprop="datePublished">2020-11-26</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Disable-Update-Badge-of-macOS.html">禁用macOS更新提醒角标</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-近日来，苹果电脑的操作系统 macOS Catalina 接近了生命周期的尾声，新的操作系统 Big Sur 于2020年11月12日已经发布（很有意思的是正式版的首个版本号为11.0.1，而11.0.0并未对外发布，只预装在Apple M1的三台ARM新机上，详见下图，来源于维基百科）
-
-笔者是Mac死忠粉，自 Mac OS X 10.7 Lion 开始用，经历过系统升级还需付费购买的年代（还
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Comeback-in-2020.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png)" alt="于2020年末的回归" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Comeback-in-2020.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-25T07:07:01.000Z" itemprop="datePublished">2020-11-25</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Comeback-in-2020.html">于2020年末的回归</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-是的，我回来了。
-距写上一篇文章已经过去3年多了，很汗颜，虽然文章本来就不多。
-建站之初，想好好经营这个博客，毕竟我是一个非常乐于分享的技术宅，我想把我学会的，我踩坑的，我创造的，都通过这个博客展示出来。
-虽然找借口很不耻，但我不得不解释一下，为啥挺好的抱负却被我荒废了三年之久。
-
-次要原因：工作不得志，职场不称心
-主要原因：生活了无希望，前女友掏空我所有的精力，即使把所有的心思都花上，得来的是
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://avatars2.githubusercontent.com/u/6375567?v=4&s=200)" alt="Hexo YAMLException: can not read a block mapping entry" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2017-10-09T07:28:03.000Z" itemprop="datePublished">2017-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html">Hexo YAMLException: can not read a block mapping entry</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-问题好久没写博客，刚刚写了一篇Nginx反向代理获取真实客户端IP，然后执行hexo d -g是报了错：YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:
-查错
-先来看看刚刚写的Markdown文件
-很明显，第四行只是一
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Nginx-Real-Client-IP.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://nginx.org/nginx.png)" alt="Nginx反向代理获取真实客户端IP" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Nginx-Real-Client-IP.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2017-10-09T02:51:57.000Z" itemprop="datePublished">2017-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Nginx-Real-Client-IP.html">Nginx反向代理获取真实客户端IP</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-起因　　此前做了一个小项目，php实现，ip.chaosjohn.com, 可以用命令行来获取当前客户端ip地址，效果如下：　　之前是用CaddyServer来运行这个服务，最近把其从CaddyServer迁移到nginx，很顺利的迁移成功。以学习为目的，我在该服务器上用另外一个地址ip.vultr-01.coodiin.com（以下称“反代端”）反向代理到ip.chaosjohn.com（以下
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-        
-            </div></section>
-        
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Crack-Bartender2.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png)" alt="破解Mac菜单栏神器 -- Bartender2" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Crack-Bartender2.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2016-11-04T06:59:31.000Z" itemprop="datePublished">2016-11-04</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Crack-Bartender2.html">破解Mac菜单栏神器 -- Bartender2</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-             
-题外话真的好久好久没有更新blog了，上篇博客还是今年5月30号。虽然好几次想更两篇，但是。。。懒癌晚期。。。哈哈哈，废话不多说，进入正文。
-软件介绍Bartender是一款管理mac菜单栏图标的软件，笔者的mac装了很多很多的应用，很多都会在菜单栏里停驻一个图标，然后顶部的菜单栏悲剧的挤满了。。。用Windows的童鞋都知道，在桌面任务栏右下角都会有一箭头，收起时只显示几个常驻的图标，点击后
-        </p>
-    </div>
-</article>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">第 1 页，共 2 页</span>
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">&raquo;</a>
-    </nav>
 
 
                         </div>
@@ -731,6 +403,19 @@ CPU: Intel® Celeron® Processor J4125
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Clean-APFS-Snapshots.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">清理 APFS 快照的shell脚本</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -935,11 +620,13 @@ CPU: Intel® Celeron® Processor J4125
     var disqus_shortname = 'hexo-chaosjohn';
     
     
+    var disqus_url = 'https://blog.chaosjohn.com/Port-Forwarding-1.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
