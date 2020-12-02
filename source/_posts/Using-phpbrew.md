@@ -297,7 +297,7 @@ PHPBrew 还能方便的帮助你安装 **PHP扩展**（无论是PHP源码内自�
 
 PHPBrew同时会为安装上的扩展创建配置，省去你手写启用扩展的配置文件。配置文件夹位于: `$HOME/.phpbrew/php/{php-version}/var/db`
 
-# 安装扩展 - 最简单的方式
+### 安装扩展 - 最简单的方式
 在你安装任何扩展之前，你应该切换到需要安装扩展的php版本：
 ```
 $ phpbrew use 7.4.13-minimal
@@ -311,11 +311,11 @@ $ phpbrew ext install acpu
 $ phpbrew ext install memcache
 ```
 
-# 安装扩展 - 指定稳定性版本
+### 安装扩展 - 指定稳定性版本
 - 指定 **稳定性标签**，可选项有 `stable` / `latest` / `beta`，不指定即默认为 **stable**，例如：`$ phpbrew ext install xdebug latest`
 - 指定 **扩展版本号**，例如：`$ phpbrew ext install xdebug 3.0.0`
 
-# 查看扩展的配置选项
+### 查看扩展的配置选项
 要查看构建扩展是否有额外的配置选项，使用 `ext show`
 ```
 $ phpbrew ext show redis
@@ -336,18 +336,18 @@ $ phpbrew ext show redis
         --enable-redis-zstd[=no]         enable zstd compression support?
 ```
 
-# 为构建扩展添加额外配置选项
+### 为构建扩展添加额外配置选项
 ```
 $ phpbrew ext install redis -- --enable-redis-lzf=yes
 ```
 
-# 从Github安装扩展
+### 从Github安装扩展
 特殊的前缀 `github:` 则告诉PHPBrew要去 `php-memcached-dev/phpmemcached` 的 `php7` 分支拉取代码进行构建
 ```
 $ phpbrew ext install github:php-memcached-dev/php-memcached php7 -- --disable-memcached-sasl
 ```
 
-# 指定下载器进行安装扩展
+### 指定下载器进行安装扩展
 目前，PHPBrew有4个下载器实现：
 - `php_curl` 内置的 *php curl扩展*，为默认下载器
 - `php_stream` 内置的 *php steam封装*
@@ -364,7 +364,7 @@ $ phpbrew ext install --downloader curl redis
 $ phpbrew ext install --downloader php_curl --http-proxy=... --http-proxy-auth=... apcu
 ```
 
-# 启用扩展
+### 启用扩展
 笔者亲测，通过 `ext install` 安装的扩展，安装完即为启用状态。
 
 另外也可以通过 `PECL` 安装扩展并且手动启用：
@@ -374,7 +374,7 @@ $ phpbrew ext enable mongo
 ```
 `ext enable` 指令帮你创建配置文件 **{current php base}/var/db/{extension name}.ini** 用以启用扩展
 
-# 为当前php版本配置 `php.ini`
+### 为当前php版本配置 `php.ini`
 ```
 $ export EDITOR=vim # 该行为可选项，指定你常用的编辑器
 $ phpbrew config
