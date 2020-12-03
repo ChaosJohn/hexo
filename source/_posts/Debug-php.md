@@ -1,10 +1,11 @@
 ---
-title: php 调试指南
+title: php 调试指南（Xdebug版）
 date: 2020-12-01 23:33:41
 tags: [debug, php, xdebug]
 thumbnail: https://image.blog.chaosjohn.com/Debug-php/banner.png
 ---
 
+（吃透本文，没有人将比你更懂 **`Php Xdebug 调试`**）
 ## 创建一个精简项目（命令行）
 创建项目，并且用 [composer](https://docs.phpcomposer.com/) 安装一个笔者比较喜欢的 **微框架**，作为示例
 ```
@@ -238,15 +239,16 @@ $ curl -H "Cookie: XDEBUG_SESSION=PHPSTORM" localhost:8000
 
 Bingo!!! `PhpStorm` 成功进入了调试状态并且停在了断点处！
 
-## 提出疑问 2
+## 发散 1: 在 `PhpStorm` 调试 `远程服务`
 上文描述的都是调试本地环境，即服务部署在本地 `Nginx`，通过本地的 `php-fpm` 调用 `php 解释器` 进行请求分发处理，“加载”的是本地的 `Xdebug`（调试端口为默认的 **9000**），而同时 `PhpStorm` 也监听本地的 `Xdebug` 的 **9000** 端口进行拦截调试。
 
 可往往更多的情况是，服务并不部署在本地，而在 **远端服务器**，这个时候得如何调试呢？
 
-其实理解了 `Xdebug` 的工作原理，结合[PhpStorm的官方文档](https://www.jetbrains.com/help/phpstorm/run-debug-configuration-php-remote-debug.html)，我们接下来在 **另一台主机(`192.168.1.101`)** 上调试 **本机(`192.168.1.100`)** 的服务，来模拟现实开发中的 `远程调试`。
+接下来在 **另一台主机(`192.168.1.101`)** 上调试 **本机(`192.168.1.100`)** 的服务，来模拟现实开发中的 `远程调试`。
 
-**另一台主机(`192.168.1.101`)** 的 `PhpStorm` 工具栏点击 `Add Configuration`，点击 `+` 号，选择 `PHP Remote Debug`，添加一个 `Server`（`Host` 填写 `192.168.1.100`，`Port` 填写 `8000`，`Debugger` 选择 `Xdebug`），完成后再点击工具栏上的 `监听按钮` 开启监听，并且在代码窗口设置断点
-![PhpStorm 添加配置][img23]
+**本机(`192.168.1.100`)** 上在 `php.ini` 尾部添加 `xdebug.remote_connect_back=1`
+
+**另一台主机(`192.168.1.101`)** 的 `PhpStorm` 点击工具栏上的 `监听按钮` 开启监听，并且在代码窗口设置断点
 
 在 **该主机(`192.168.1.101`)** 的终端上执行
 ```
@@ -256,7 +258,7 @@ $ curl -H "Cookie: XDEBUG_SESSION=PHPSTORM" 192.168.1.100:8000
 即可看到 `PhpStorm` 进入了调试模式并且顺利停在了断点处。
 
 
-## 发散：那如何在 `VSCode` 中调试呢？
+## 发散 2：在 `VSCode` 中调试 `本地服务`
 打开 `VSCode`，安装 `PHP Debug` 扩展
 
 打开项目工程，点击左边栏的 `Run`，点击 `Create a launch.json file`，选择 `PHP` 环境
@@ -271,8 +273,24 @@ VSCode 将会自动创建两个配置：
 选择 `Listen for XDebug` 并点击左侧的 *绿色图标* 开始运行监听，并且打上断点，命令行下执行 `curl --cookie XDEBUG_SESSION=VSCODE localhost:8000`，则能看到**VSCode** 成功进入了调试状态并且停在了断点处。
 ![VSCode 调试模式][img22]
 
-所以，在 `VSCode` 调试部署在 `Nginx` 中的项目，也顺利杀青！
+## 发散 3：在 `VSCode` 调试 `远程服务`
+与 `发散 1` 类似，在 **另一台主机(`192.168.1.101`)** 上：
+- 确保 `php.ini` 已添加 `xdebug.remote_connect_back=1`
+- 选择 `Listen for XDebug` 并点击左侧的 *绿色图标* 开始运行监听，并且打上断点
+- 命令行下执行 `curl --cookie XDEBUG_SESSION=VSCODE 192.168.1.100:8000` 则能看到**VSCode** 成功进入了调试状态并且停在了断点处。
 
+
+所以，在 `VSCode` 调试部署在 `Nginx` 中的服务（本地与远程），也顺利杀青！
+
+## 一些 **思考** 或 **疑惑**
+1. `Xdebug` 的 `IDE key`（即使在 `php.ini` 中配置了 `xdebug.idekey=xxx`）在 `远程调试` 时并不起作用，调试请求时在 **Cookie** 中附加的 `XDEBUG_SESSION` 设置任意非空字符串都生效。是 `Xdebug` 的 **bug** 么？
+2. 无论采用 `PhpStorm` 还是 `VSCode` 进行远程调试中，明明远程服务器的 `Xdebug` 调试端口（默认为9000）对外不可达（仅 `localhost` 可访问），但是 **打上断点** **开启监听** 又能调试了呢？
+3. 多人协同调试，参考 **JetBrains** 文档 [Multiuser debugging via Xdebug proxies](https://www.jetbrains.com/help/phpstorm/multiuser-debugging-via-xdebug-proxies.html) 使用 `DBGp代理`
+
+---
+
+最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
+![](https://image.blog.chaosjohn.com/donate-me.png)
 
 
 [img01]: https://image.blog.chaosjohn.com/Debug-php/create-and-run-project.png
