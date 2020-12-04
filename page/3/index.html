@@ -6,28 +6,17 @@
     
 
     
-    <title>端口转发(篇一) - rinetd | 湿科技</title>
+    <title>湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="network,tool,port-forwarding" />
-    
-    <meta name="description" content="前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。 本文为篇一，介绍一个大家常用的工具，rinetd。 简介A: 端口转发英文：Port forwarding 将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。 即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。 简介B: rinetd项目主页 &#x2F; Github rinet">
-<meta property="og:type" content="article">
-<meta property="og:title" content="端口转发(篇一) - rinetd">
-<meta property="og:url" content="https://blog.chaosjohn.com/Port-Forwarding-1.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="湿科技">
+<meta property="og:url" content="https://blog.chaosjohn.com/page/3/index.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。 本文为篇一，介绍一个大家常用的工具，rinetd。 简介A: 端口转发英文：Port forwarding 将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。 即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。 简介B: rinetd项目主页 &#x2F; Github rinet">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png">
-<meta property="article:published_time" content="2020-11-30T09:09:13.000Z">
-<meta property="article:modified_time" content="2020-11-30T15:19:04.634Z">
 <meta property="article:author" content="Chaos John">
-<meta property="article:tag" content="network">
-<meta property="article:tag" content="tool">
-<meta property="article:tag" content="port-forwarding">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png">
     
 
     
@@ -156,225 +145,135 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    未分类
+    <em class="page-title-link" data-url="home">主页</em>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Port-Forwarding-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/Getting-Started-With-Hexo.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Getting-Started-With-Hexo/hexo-without-css.png)" alt="上手Hexo" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Getting-Started-With-Hexo.html">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2016-01-28T14:18:28.000Z" itemprop="datePublished">2016-01-28</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        端口转发(篇一) - rinetd
+        <a href="/Getting-Started-With-Hexo.html">上手Hexo</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/Port-Forwarding-1.html" class="article-date">
-       <time datetime="2020-11-30T09:09:13.000Z" itemprop="datePublished">2020-11-30</time>
-    </a>
-  </div>
+        <p class="article-excerpt">
+            这篇文章主要记载一下我如何上手Hexo(搭建本博客的技术)。
+前期准备
+   NodeJS
+   GitHub (已配置好SSH接入，详情参考GitHub官网)
+   域名 (可选项，下面会说明何时必须要求绑定域名)
 
+开始安装Hexo$ npm install -g hexo
+在GitHub上创建博客仓库此时得考虑两种选择：
 
-<div class="article-date">
-  <i class="fa fa-calendar-plus-o"></i>
-  <a href="/Port-Forwarding-1.html" class="article-date">
-     <time datetime="2020-11-30T15:19:04.634Z" itemprop="dateModified">2020-11-30</time>
-  </a>
-</div>
-
-
-                
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/network/" rel="tag">network</a>, <a class="tag-link-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a>, <a class="tag-link-link" href="/tags/tool/" rel="tag">tool</a>
+   GitHub Pages (每个GitHub账号只能创建一个，
+        </p>
     </div>
-
-                
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            
-
-            
-
-            
-
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者准备写一个 <code>端口转发</code> 系列文章，涉及计多个工具和命令。</p>
-<p>本文为篇一，介绍一个大家常用的工具，rinetd。</p>
-<h2 id="简介A-端口转发"><a href="#简介A-端口转发" class="headerlink" title="简介A: 端口转发"></a>简介A: 端口转发</h2><p>英文：Port forwarding</p>
-<p>将一台 <code>主机A</code> 的 <code>端口x</code> 转发到另一台 <code>主机B</code> 的 <code>端口y</code> 并由 <code>主机B</code> 提供转发的网络服务。</p>
-<p>即通过访问 <code>主机B:端口y</code> 来访问部署在 <code>主机A:端口x</code> 上的服务。</p>
-<h2 id="简介B-rinetd"><a href="#简介B-rinetd" class="headerlink" title="简介B: rinetd"></a>简介B: rinetd</h2><p><a target="_blank" rel="noopener" href="http://www.rinetd.com/">项目主页</a> / <a target="_blank" rel="noopener" href="https://github.com/boutell/rinetd">Github</a></p>
-<p>rinetd是为在一个Unix和Linux操作系统中为重定向传输控制协议(TCP)连接的一个工具。</p>
-<p>rinetd是单一过程的服务器，它处理任何数量的连接到在配置文件etc/rinetd中指定的地址/端口对。</p>
-<p>尽管rinetd使用非闭锁I/O运行作为一个单一过程，它可能重定向很多连接而不对这台机器增加额外的负担。</p>
-<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>最早接触到这个工具，是几年前购买了阿里云的Redis实例，当初该服务未推出公网连接地址，只能通过内网访问，即只在同一个区域的VPC内可达，在当初的业务环境下，只能从阿里云的ECS访问Redis实例。</p>
-<p>这就很恼怒了，在笔者本地的开发环境，也要连接改Redis实例，咋办哩。</p>
-<p>于是就在阿里云在线文档里找到了这个工具，我还依稀记得那篇文档里，介绍的是如何在CentOS下载rinetd源码（还提供了tar.gz的链接地址），然后编译安装它。（不过伴随着阿里云Redis实例开始支持公网连接后，该文档已经消失在了历史长河里了。）</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
-<li><p>编译安装（适用于任何Linux环境，但个人不推荐，因为还得手动配置开机自启）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ curl -LO &#39;http:&#x2F;&#x2F;www.rinetd.com&#x2F;download&#x2F;rinetd.tar.gz&#39;</span><br><span class="line">$ tar xvzf rinetd.tar.gz</span><br><span class="line">$ cd rinetd</span><br><span class="line">$ sed -i &#39;s&#x2F;65536&#x2F;65535&#x2F;g&#39; rinetd.c （修改端口范围，否则会报错）</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
-<p>（提示：官方下载的源码包无法在macOS下完成编译，报错 <code>error: implicit declaration of function &#39;inet_addr&#39; is invalid in C99</code>）</p>
-</li>
-<li><p>在 <code>macOS</code> 上借助 <code>Homebrew</code> 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install rinetd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>Debian / Ubuntu</code> 上借助 <code>apt</code> 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install rinetd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 <code>RHEL / CentOS</code> 上借助 <code>yum</code> 安装</p>
-</li>
-</ol>
-<p>官方源中无rinetd，所以需要先安装三方源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;yum.repos.d&#x2F;nux-misc.repo</span><br><span class="line"></span><br><span class="line">[nux-misc]</span><br><span class="line">name&#x3D;Nux Misc</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;li.nux.ro&#x2F;download&#x2F;nux&#x2F;misc&#x2F;el6&#x2F;x86_64&#x2F;</span><br><span class="line">enabled&#x3D;0</span><br><span class="line">gpgcheck&#x3D;1</span><br><span class="line">gpgkey&#x3D;http:&#x2F;&#x2F;li.nux.ro&#x2F;download&#x2F;nux&#x2F;RPM-GPG-KEY-nux.ro</span><br></pre></td></tr></table></figure>
-
-<p>然后再安装rinetd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum --enablerepo&#x3D;nux-misc install rinetd</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件路径为 <code>/etc/rinetd.conf</code>，并附上那台转发Redis的配置内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># this is the configuration file for rinetd, the internet redirection server</span><br><span class="line">#</span><br><span class="line"># you may specify global allow and deny rules here</span><br><span class="line"># only ip addresses are matched, hostnames cannot be specified here</span><br><span class="line"># the wildcards you may use are * and ?</span><br><span class="line">#</span><br><span class="line"># allow 192.168.2.*</span><br><span class="line"># deny 192.168.2.1?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># forwarding rules come here</span><br><span class="line">#</span><br><span class="line"># you may specify allow and deny rules after a specific forwarding rule</span><br><span class="line"># to apply to only that forwarding rule</span><br><span class="line">#</span><br><span class="line"># bindadress    bindport  connectaddress  connectport</span><br><span class="line">0.0.0.0	6379	r-ly25ac35fxxxxx.redis.rds.aliyuncs.com	6379</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># logging information</span><br><span class="line">logfile &#x2F;var&#x2F;log&#x2F;rinetd.log</span><br><span class="line"></span><br><span class="line"># uncomment the following line if you want web-server style logfile format</span><br><span class="line"># logcommon</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>allow</code> 和 <code>deny</code> 是配置 <em>允许和阻止</em> 的 <em>IP地址/IP段</em></li>
-<li>转发规则一行一个，可配置多行 <code>bindadress  bindport  connectaddress  connectport</code>，如示例里配置为：监听本网卡地址的6379端口号，并且转发到VPC内网Redis实例的6379端口号。</li>
-</ul>
-<h2 id="运行和自启"><a href="#运行和自启" class="headerlink" title="运行和自启"></a>运行和自启</h2><ul>
-<li>如果是通过源码编译安装的，命令行直接执行 <code>rinetd</code>；自启的话，得手动编写 <code>Systemd</code> 的Unit文件来管理或者通过 <code>Supervisor</code> 来管理。</li>
-<li>如果是 <code>apt</code> 或 <code>yum</code> 安装的，并且init程序是 <code>Systemd</code><ul>
-<li>启动服务: <code>$ sudo systemctl start rinetd</code></li>
-<li>停止服务: <code>$ sudo systemctl stop rinetd</code></li>
-<li>重启服务: <code>$ sudo systemctl restart rinetd</code></li>
-<li>开机自启: <code>$ sudo systemctl enable rinetd</code></li>
-<li>禁用自启: <code>$ sudo systemctl disable rinetd</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="https://blog.chaosjohn.com/Port-Forwarding-1.html" data-id="cki72vf4g0004cw6p0qri5k7e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Chaos John"
-        },
-        "headline": "端口转发(篇一) - rinetd",
-        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png",
-        "keywords": "network tool port-forwarding",
-        "genre": "",
-        "datePublished": "2020-11-30",
-        "dateCreated": "2020-11-30",
-        "dateModified": "2020-11-30",
-        "url": "https://blog.chaosjohn.com/Port-Forwarding-1.html",
-        "description": "前言笔者准备写一个 端口转发 系列文章，涉及计多个工具和命令。
-本文为篇一，介绍一个大家常用的工具，rinetd。
-简介A: 端口转发英文：Port forwarding
-将一台 主机A 的 端口x 转发到另一台 主机B 的 端口y 并由 主机B 提供转发的网络服务。
-即通过访问 主机B:端口y 来访问部署在 主机A:端口x 上的服务。
-简介B: rinetd项目主页 / Github
-rinet",
-        "wordCount": 368
-    }
-</script>
-
 </article>
+    
 
-    <section id="comments">
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/hello-world.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://f.hq88.com/uploadfiles/HQ88_CMS/newsEditor/2015/12/24/png/2015122410373212.png)" alt="Hello World" class="thumbnail-image"></span>
+    
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/hello-world.html">0</span>
+    
+</span>
 
 
     
-    </section>
+</a>
 
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2016-01-28T13:18:28.000Z" itemprop="datePublished">2016-01-28</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/hello-world.html">Hello World</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
+    <nav id="page-nav">
+        <span class="pages">第 3 页，共 3 页</span>
+        <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
 
 
                         </div>
@@ -403,29 +302,6 @@ rinet",
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/Using-phpbrew.html" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            PHPBrew 使用指南
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/Clean-APFS-Snapshots.html" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">清理 APFS 快照的shell脚本</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -630,13 +506,11 @@ rinet",
     var disqus_shortname = 'hexo-chaosjohn';
     
     
-    var disqus_url = 'https://blog.chaosjohn.com/Port-Forwarding-1.html';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
