@@ -4,7 +4,7 @@ tags: [Nginx]
 ---
 ![](https://nginx.org/nginx.png)
 
-[原文链接](https://blog.chaosjohn.com/Nginx-Real-Client-IP.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Nginx-Real-Client-IP.html)
 
 ## 起因
 　　此前做了一个小项目，php实现，[ip.chaosjohn.com](http://ip.chaosjohn.com), 可以用命令行来获取当前客户端ip地址，效果如下：![][img01] 

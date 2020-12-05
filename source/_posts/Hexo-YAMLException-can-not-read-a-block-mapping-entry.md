@@ -4,7 +4,7 @@ tags: [hexo]
 ---
 ![](https://avatars2.githubusercontent.com/u/6375567?v=4&s=200)
 
-[原文链接](https://blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry.html)
 
 ## 问题
 好久没写博客，刚刚写了一篇[Nginx反向代理获取真实客户端IP](/2017/10/09/Nginx-Real-Client-IP/)，然后执行`hexo d -g`是报了错：`YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:`

@@ -4,7 +4,7 @@ tags: [Java, Gradle, Error]
 ---
 ![](https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)
 
-[原文链接](https://blog.chaosjohn.com/Gradle-Could-not-find-tools-jar.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Gradle-Could-not-find-tools-jar.html)
 
 ## 错误出现的环境 
 * CentOS 7 x86_64

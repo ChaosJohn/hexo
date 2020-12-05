@@ -5,7 +5,7 @@ tags: [php, fix, composer]
 thumbnail: https://image.blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer/logo-composer-transparent.png
 ---
 
-[原文链接](https://blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer.html)
 
 [composer](https://docs.phpcomposer.com/) 在 **2020-11-24** 发布了全新的 `2.0` 版本。[参考官方博客](https://blog.packagist.com/composer-2-0-is-now-available/)
 

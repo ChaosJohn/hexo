@@ -5,7 +5,7 @@ tags: [git]
 thumbnail: https://image.blog.chaosjohn.com/Git-set-remote/banner.png
 ---
 
-[原文链接](https://blog.chaosjohn.com/Git-set-remote.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Git-set-remote.html)
 
 前段时间，公司开了一个新项目，买了另一家公司的源码做二次开发。
 

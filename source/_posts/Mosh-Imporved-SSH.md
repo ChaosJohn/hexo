@@ -4,7 +4,7 @@ tags: [Dev, Software]
 ---
 ![](https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png) 
 
-[原文链接](https://blog.chaosjohn.com/Mosh-Imporved-SSH.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Mosh-Imporved-SSH.html)
 
 ## 开场白
 * Mosh，是Mobile Shell的缩写(Mo+Sh)，是一个增强版的SSH，或者套用官方的话来说，`Mosh is a replacement for SSH`。

@@ -4,7 +4,7 @@ tags: [Software, Utility, Android, Developer]
 ---
 ![](https://image.blog.chaosjohn.com/Tools-for-Developers-on-Android-Tablet/my-mipad.jpg)
 
-[原文链接](https://blog.chaosjohn.com/Tools-for-Developers-on-Android-Tablet.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Tools-for-Developers-on-Android-Tablet.html)
 
 ## 1. 测试机型和本文的受众
 * 你得有一块android平板，或者一只超大屏的android手机(类似小米MAX，其实小米Note也凑合)。

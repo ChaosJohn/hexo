@@ -4,7 +4,7 @@ date: 2016-01-28 22:18:28
 tags: [hexo]
 ---
 
-[原文链接](https://blog.chaosjohn.com/Getting-Started-With-Hexo.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Getting-Started-With-Hexo.html)
 
 这篇文章主要记载一下我如何上手Hexo(搭建本博客的技术)。
 

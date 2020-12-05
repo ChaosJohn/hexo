@@ -4,7 +4,7 @@ tags: [Crack, Software]
 ---
 ![](https://image.blog.chaosjohn.com/Crack-Bartender2/bartender-logo.png) 
 
-[原文链接](https://blog.chaosjohn.com/Crack-Bartender2.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Crack-Bartender2.html)
 
 ## 题外话
 真的好久好久没有更新blog了，上篇博客还是今年5月30号。虽然好几次想更两篇，但是。。。懒癌晚期。。。哈哈哈，废话不多说，进入正文。

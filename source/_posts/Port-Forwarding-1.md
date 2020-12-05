@@ -5,7 +5,7 @@ tags: [tool, port-forwarding, network]
 thumbnail: https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png
 ---
 
-[原文链接](https://blog.chaosjohn.com/Port-Forwarding-1.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Port-Forwarding-1.html)
 
 ## 前言
 笔者准备写一个 `端口转发` 系列文章，涉及计多个工具和命令。

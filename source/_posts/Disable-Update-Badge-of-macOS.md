@@ -4,7 +4,7 @@ date: 2020-11-26 09:23:06
 tags: [OS X & macOS, Skills]
 ---
 
-[原文链接](https://blog.chaosjohn.com/Disable-Update-Badge-of-macOS.html)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Disable-Update-Badge-of-macOS.html)
 
 ![](https://www.apple.com.cn/v/mac/home/ax/images/overview/hero/dark/mac_mini__gc148mlvnziq_large.jpg)
 
