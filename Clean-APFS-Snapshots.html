@@ -12,16 +12,16 @@
     
     <meta name="keywords" content="OS X &amp; macOS,APFS,shell" />
     
-    <meta name="description" content="背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。 笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。 快照的引入，可以方便并且快速地恢复到过去的某个时间节点，它与 时间机器(Time Mach">
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。 笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。 快照的引入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="清理 APFS 快照的shell脚本">
 <meta property="og:url" content="https://blog.chaosjohn.com/Clean-APFS-Snapshots.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。 笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。 快照的引入，可以方便并且快速地恢复到过去的某个时间节点，它与 时间机器(Time Mach">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。 笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。 快照的引入">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.blog.chaosjohn.com/Clean-APFS-Snapshots/DiskUtility.png">
 <meta property="article:published_time" content="2020-11-29T15:26:03.000Z">
-<meta property="article:modified_time" content="2020-11-29T16:01:35.192Z">
+<meta property="article:modified_time" content="2020-12-05T02:23:29.924Z">
 <meta property="article:author" content="Chaos John">
 <meta property="article:tag" content="OS X &amp; macOS">
 <meta property="article:tag" content="APFS">
@@ -188,7 +188,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/Clean-APFS-Snapshots.html" class="article-date">
-     <time datetime="2020-11-29T16:01:35.192Z" itemprop="dateModified">2020-11-30</time>
+     <time datetime="2020-12-05T02:23:29.924Z" itemprop="dateModified">2020-12-05</time>
   </a>
 </div>
 
@@ -215,7 +215,8 @@
 
             
 
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><code>macOS</code> 从 <code>10.13 High Sierra</code>开始，引入了 <code>APFS(Apple File System)</code> 替代原先的 <code>HFS+</code> 作为默认磁盘格式。</p>
+            <p><a href="https://blog.chaosjohn.com/Clean-APFS-Snapshots.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><code>macOS</code> 从 <code>10.13 High Sierra</code>开始，引入了 <code>APFS(Apple File System)</code> 替代原先的 <code>HFS+</code> 作为默认磁盘格式。</p>
 <p>笔者觉得最大的特色在于 <code>写时拷贝(Copy-on-Write)</code> 和 <code>快照(Snapshots)</code>。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。</p>
 <p>快照的引入，可以方便并且快速地恢复到过去的某个时间节点，它与 <code>时间机器(Time Machine)</code> 配合起来，可以极大程度的保证数据安全。</p>
 <p>但快照也导致一个不良后果，即占据了大量的磁盘空间。比如明明没使用很多文件，怎么磁盘空间耗去大半。</p>
@@ -317,12 +318,13 @@
         "genre": "",
         "datePublished": "2020-11-29",
         "dateCreated": "2020-11-29",
-        "dateModified": "2020-11-30",
+        "dateModified": "2020-12-05",
         "url": "https://blog.chaosjohn.com/Clean-APFS-Snapshots.html",
-        "description": "背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。
 笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。
-快照的引入，可以方便并且快速地恢复到过去的某个时间节点，它与 时间机器(Time Mach",
-        "wordCount": 243
+快照的引入",
+        "wordCount": 244
     }
 </script>
 
