@@ -140,7 +140,7 @@ hello world!
 - 如果显示出错，会给出排错信息
 ![出错，显示排错信息][img07]
 
-发现三处警告，按照排错信息排查，发现问题出在了 `Xdebug 3.0.0` 版本[变动了非常多的地方](https://xdebug.org/docs/upgrade_guide)，导致目前 `PhpStorm` 最新的稳定版 `2020.2.4` 对此兼容性欠缺。不过 `2020.3` 有望解决。
+~发现三处警告，按照排错信息排查，发现问题出在了 `Xdebug 3.0.0` 版本[变动了非常多的地方](https://xdebug.org/docs/upgrade_guide)，导致目前 `PhpStorm` 最新的稳定版 `2020.2.4` 对此兼容性欠缺。不过 `2020.3` 有望解决。~ （该文写完发布的第二天（即 **2020-12-02**），`PhpStorm 2020.3` 已释出，新增对 `PHP 8` 和 `Xdebug 3` 的支持，参见文末。亏了亏了，写早了。）
 
 所以笔者将 `Xdebug` 降级到了 `2.X` 版本：`phpbrew ext install xdebug 2.9.8`，再次点击 `Validate` 按钮，怎么还是一样的报错？
 
@@ -288,6 +288,12 @@ VSCode 将会自动创建两个配置：
 1. `Xdebug` 的 `IDE key`（即使在 `php.ini` 中配置了 `xdebug.idekey=xxx`）在 `远程调试` 时并不起作用，调试请求时在 **Cookie** 中附加的 `XDEBUG_SESSION` 设置任意非空字符串都生效。是 `Xdebug` 的 **bug** 么？
 2. 无论采用 `PhpStorm` 还是 `VSCode` 进行远程调试中，明明远程服务器的 `Xdebug` 调试端口（默认为9000）对外不可达（仅 `localhost` 可访问），但是 **打上断点** **开启监听** 又能调试了呢？
 3. 多人协同调试，参考 **JetBrains** 文档 [Multiuser debugging via Xdebug proxies](https://www.jetbrains.com/help/phpstorm/multiuser-debugging-via-xdebug-proxies.html) 使用 `DBGp代理`
+
+## 2020-12-05 补充更新
+### **PhpStorm 2020.3** 已发布
+[发布日志](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+2020.3+Release+Notes)
+![PhpStorm 2020.3 发布日志](https://image.blog.chaosjohn.com/Debug-php/phpstorm-2020.3-release-notes.png)
+![PhpStorm 2020.3 新增对 "PHP 8" 和 "Xdebug 3" 的支持](https://image.blog.chaosjohn.com/Debug-php/phpstorm-2020.3-web-server-debug-validation.png)
 
 ---
 
