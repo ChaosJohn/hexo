@@ -180,8 +180,8 @@ xdebug.remote_enable=1
 
 ### 浏览器作为请求客户端进行调试
 为浏览器安装插件
-- [Xdebug Helper for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/) [源码](https://github.com/BrianGilbert/xdebug-helper-for-firefox)
-- [Xdebug Helper for Chrome](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) [源码](https://github.com/mac-cain13/xdebug-helper-for-chrome)
+- [Xdebug Helper for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/) / [源码](https://github.com/BrianGilbert/xdebug-helper-for-firefox)
+- [Xdebug Helper for Chrome](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) / [源码](https://github.com/mac-cain13/xdebug-helper-for-chrome)
 
 这里笔者以 **Chrome** 浏览器为例，安装完后，右键 `Xdebug Helper` 图标点击 `Options` 打开选项页，选择 `IDE key` 为 `PhpStorm`
 ![Chrome 下 Xdebug Helper 配置][img11]
