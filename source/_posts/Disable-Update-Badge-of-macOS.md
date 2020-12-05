@@ -4,6 +4,8 @@ date: 2020-11-26 09:23:06
 tags: [OS X & macOS, Skills]
 ---
 
+[原文链接](https://blog.chaosjohn.com/Disable-Update-Badge-of-macOS.html)
+
 ![](https://www.apple.com.cn/v/mac/home/ax/images/overview/hero/dark/mac_mini__gc148mlvnziq_large.jpg)
 
 近日来，苹果电脑的操作系统 *macOS Catalina* 接近了生命周期的尾声，新的操作系统 *Big Sur* 于2020年11月12日已经发布（很有意思的是正式版的首个版本号为11.0.1，而11.0.0并未对外发布，只预装在Apple M1的三台ARM新机上，详见下图，来源于维基百科）

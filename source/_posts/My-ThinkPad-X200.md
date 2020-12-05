@@ -4,6 +4,8 @@ tags: [Toy, Hardware, ThinkPad, TrackPoint]
 ---
 ![](https://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg)
 
+[原文链接](https://blog.chaosjohn.com/My-ThinkPad-X200.html)
+
 ## 1. 手贱入坑X200
 * 之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint）
 * 作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔者一直是TrackPad的重度使用者，电脑包里只有MacBook而从来不携带鼠标，也从来没有使用鼠标的习惯。（PS：笔者是一只非常稀少的不打游戏的雄性程序猿）

@@ -5,6 +5,8 @@ tags: [git]
 thumbnail: https://image.blog.chaosjohn.com/Git-set-remote/banner.png
 ---
 
+[原文链接](https://blog.chaosjohn.com/Git-set-remote.html)
+
 前段时间，公司开了一个新项目，买了另一家公司的源码做二次开发。
 
 项目进行了几天后，我突然听到参与开发的几个同学在讨论，关于 “不想把我们修改的版本推给他们”。

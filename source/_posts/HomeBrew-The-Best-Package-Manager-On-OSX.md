@@ -5,6 +5,8 @@ tags: [OS X & macOS,Software]
 
 ![](https://image.blog.chaosjohn.com/HomeBrew-The-Best-Package-Manager-On-OSX/HomeBrewPoster.jpg)
 
+[原文链接](https://blog.chaosjohn.com/HomeBrew-The-Best-Package-Manager-On-OSX.html)
+
 ## 1. 什么是软件包管理器
 软件包管理器（以下简称包管理器），是用来管理系统下面软件和程序的工具，负责它们的搜索、安装、更新升级和卸载。
 

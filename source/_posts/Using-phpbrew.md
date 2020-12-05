@@ -5,6 +5,8 @@ tags: [dev, php, package manager]
 thumbnail: https://image.blog.chaosjohn.com/Using-phpbrew/banner.png
 ---
 
+[原文链接](https://blog.chaosjohn.com/Using-phpbrew.html)
+
 ## 前言
 咋一看，这个名字取得，肯定是跟 `Homebrew` 学的。既然 `Homebrew` 的定位是 **macOS** 上的 **包管理器**，那 `PHPBrew` 肯定也跟 **包管理器** 沾点边。没错，它可以用来 *构建* 和 *安装* 多个版本的 `php` 到用户主目录(**$HOME**)下。
 

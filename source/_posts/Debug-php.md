@@ -5,6 +5,8 @@ tags: [debug, php, xdebug]
 thumbnail: https://image.blog.chaosjohn.com/Debug-php/banner.png
 ---
 
+[原文链接](https://blog.chaosjohn.com/Debug-php.html)
+
 （吃透本文，没有人将比你更懂 **`Php Xdebug 调试`**）
 ## 创建一个精简项目（命令行）
 创建项目，并且用 [composer](https://docs.phpcomposer.com/) 安装一个笔者比较喜欢的 **微框架**，作为示例

@@ -4,6 +4,8 @@ tags: [Java, Gradle, Error]
 ---
 ![](https://image.blog.chaosjohn.com/Gradle-Could-not-find-tools-jar/gradle.png)
 
+[原文链接](https://blog.chaosjohn.com/Gradle-Could-not-find-tools-jar.html)
+
 ## 错误出现的环境 
 * CentOS 7 x86_64
 * 已通过`sudo yum install java-1.8.0-openjdk`安装OpenJDK8

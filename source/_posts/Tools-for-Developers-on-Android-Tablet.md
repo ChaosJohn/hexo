@@ -4,6 +4,8 @@ tags: [Software, Utility, Android, Developer]
 ---
 ![](https://image.blog.chaosjohn.com/Tools-for-Developers-on-Android-Tablet/my-mipad.jpg)
 
+[原文链接](https://blog.chaosjohn.com/Tools-for-Developers-on-Android-Tablet.html)
+
 ## 1. 测试机型和本文的受众
 * 你得有一块android平板，或者一只超大屏的android手机(类似小米MAX，其实小米Note也凑合)。
 * 你还得是个开发者，本文介绍的工具都是为开发者准备，如果你不是，请拉到文章末尾，就只给你安利GMD GestureControl这一个软件啦🙈。

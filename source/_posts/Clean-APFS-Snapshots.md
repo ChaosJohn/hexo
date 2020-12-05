@@ -5,6 +5,8 @@ tags: [OS X & macOS, APFS, shell]
 thumbnail: https://image.blog.chaosjohn.com/Clean-APFS-Snapshots/DiskUtility.png
 ---
 
+[原文链接](https://blog.chaosjohn.com/Clean-APFS-Snapshots.html)
+
 ## 背景
 `macOS` 从 `10.13 High Sierra`开始，引入了 `APFS(Apple File System)` 替代原先的 `HFS+` 作为默认磁盘格式。
 

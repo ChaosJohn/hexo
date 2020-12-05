@@ -5,6 +5,7 @@ tags: [OS X & macOS, Homebrew, Software]
 thumbnail: https://brew.sh/assets/img/homebrew-256x256.png
 ---
 
+[原文链接](https://blog.chaosjohn.com/Homebrew-upgrade.html)
 # 前言
 笔者在四年前曾写过一文[HomeBrew -- OSX下的最强软件包管理器](/2016/05/26/HomeBrew-The-Best-Package-Manager-On-OSX/)，篇中详细介绍了HomeBrew以及Cask的使用。
 

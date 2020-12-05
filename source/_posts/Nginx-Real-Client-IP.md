@@ -4,6 +4,8 @@ tags: [Nginx]
 ---
 ![](https://nginx.org/nginx.png)
 
+[原文链接](https://blog.chaosjohn.com/Nginx-Real-Client-IP.html)
+
 ## 起因
 　　此前做了一个小项目，php实现，[ip.chaosjohn.com](http://ip.chaosjohn.com), 可以用命令行来获取当前客户端ip地址，效果如下：![][img01] 
 　　之前是用[CaddyServer](https://caddyserver.com)来运行这个服务，最近把其从CaddyServer迁移到nginx，很顺利的迁移成功。以学习为目的，我在该服务器上用另外一个地址ip.vultr-01.coodiin.com（以下称“反代端”）反向代理到ip.chaosjohn.com（以下称“后端”），却出现问题了，ip读取不正确，显示的是服务器的IP。Nginx配置如下：![][img02]

@@ -6,6 +6,7 @@ tags: [OS X & macOS, iCloud]
 
 ![iCloud Drive][img1]
 
+[原文链接](https://blog.chaosjohn.com/iCloud-Sync-Exclusion.html)
 ## 前言
 苹果的iCloud服务，是笔者离不开苹果生态的一大重要原因。
 
