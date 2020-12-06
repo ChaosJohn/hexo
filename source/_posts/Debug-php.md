@@ -8,6 +8,7 @@ thumbnail: https://image.blog.chaosjohn.com/Debug-php/banner.png
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Debug-php.html)
 
 （吃透本文，没有人将比你更懂 **`Php Xdebug 调试`**）
+（来自于几天后的打脸，请移步 [php 调试指南（Xdebug版）（续）](https://blog.chaosjohn.com/Debug-php-continued.html)）
 ## 创建一个精简项目（命令行）
 创建项目，并且用 [composer](https://docs.phpcomposer.com/) 安装一个笔者比较喜欢的 **微框架**，作为示例
 ```
