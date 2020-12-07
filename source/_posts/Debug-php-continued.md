@@ -116,7 +116,7 @@ env["PHP_IDE_CONFIG"] = "serverName=UbuntuServer"
   ]
 }
 ```
-这里的 `"/home/chaos/Work/php/demos/debug/": "${workspaceRoot}/"` 是 `"/home/chaos/Work/php/demos/debug/": "/Users/chaos/Work/php/demos/debug//"` 的简化形式，`${workspaceRoot}` 则为 `VSCode` 中打开的 `项目根目录`。
+这里的 `"/home/chaos/Work/php/demos/debug/": "${workspaceRoot}/"` 是 `"/home/chaos/Work/php/demos/debug/": "/Users/chaos/Work/php/demos/debug/"` 的简化形式，`${workspaceRoot}` 则为 `VSCode` 中打开的 `项目根目录`。
 
 ## 服务器的 `php.ini` 在不同情况下的配置
 ### 情况一：`回程网络直接可达`
