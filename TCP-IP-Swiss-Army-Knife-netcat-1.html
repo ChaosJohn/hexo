@@ -6,29 +6,27 @@
     
 
     
-    <title>只为体验小红点--我的“ThinkPad X200” | 湿科技</title>
+    <title>TCP/IP 瑞士军刀 - netcat (篇一) | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Toy,Hardware,ThinkPad,TrackPoint" />
+    <meta name="keywords" content="TCP/IP,netcat" />
     
-    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 1. 手贱入坑X200 之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint） 作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔">
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言本来打算写 端口转发(篇三) - netcat 但是中途发现 netcat 水很深，原因听我细细说来 netcat 被成为 TCP&#x2F;IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。 原版的 netcat 第一版在 199">
 <meta property="og:type" content="article">
-<meta property="og:title" content="只为体验小红点--我的“ThinkPad X200”">
-<meta property="og:url" content="https://blog.chaosjohn.com/My-ThinkPad-X200.html">
+<meta property="og:title" content="TCP&#x2F;IP 瑞士军刀 - netcat (篇一)">
+<meta property="og:url" content="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 1. 手贱入坑X200 之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint） 作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言本来打算写 端口转发(篇三) - netcat 但是中途发现 netcat 水很深，原因听我细细说来 netcat 被成为 TCP&#x2F;IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。 原版的 netcat 第一版在 199">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg">
-<meta property="article:published_time" content="2016-05-28T08:50:50.000Z">
-<meta property="article:modified_time" content="2020-12-05T02:23:29.990Z">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg">
+<meta property="article:published_time" content="2020-12-10T07:53:50.000Z">
+<meta property="article:modified_time" content="2020-12-10T12:25:01.392Z">
 <meta property="article:author" content="Chaos John">
-<meta property="article:tag" content="Toy">
-<meta property="article:tag" content="Hardware">
-<meta property="article:tag" content="ThinkPad">
-<meta property="article:tag" content="TrackPoint">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta property="article:tag" content="netcat">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg">
     
 
     
@@ -162,14 +160,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-My-ThinkPad-X200" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-TCP-IP-Swiss-Army-Knife-netcat-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        只为体验小红点--我的“ThinkPad X200”
+        TCP/IP 瑞士军刀 - netcat (篇一)
         </h1>
     
 
@@ -180,16 +178,16 @@
                 
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/My-ThinkPad-X200.html" class="article-date">
-       <time datetime="2016-05-28T08:50:50.000Z" itemprop="datePublished">2016-05-28</time>
+    <a href="/TCP-IP-Swiss-Army-Knife-netcat-1.html" class="article-date">
+       <time datetime="2020-12-10T07:53:50.000Z" itemprop="datePublished">2020-12-10</time>
     </a>
   </div>
 
 
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
-  <a href="/My-ThinkPad-X200.html" class="article-date">
-     <time datetime="2020-12-05T02:23:29.990Z" itemprop="dateModified">2020-12-05</time>
+  <a href="/TCP-IP-Swiss-Army-Knife-netcat-1.html" class="article-date">
+     <time datetime="2020-12-10T12:25:01.392Z" itemprop="dateModified">2020-12-10</time>
   </a>
 </div>
 
@@ -199,7 +197,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Hardware/" rel="tag">Hardware</a>, <a class="tag-link-link" href="/tags/ThinkPad/" rel="tag">ThinkPad</a>, <a class="tag-link-link" href="/tags/Toy/" rel="tag">Toy</a>, <a class="tag-link-link" href="/tags/TrackPoint/" rel="tag">TrackPoint</a>
+        <a class="tag-link-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a>, <a class="tag-link-link" href="/tags/netcat/" rel="tag">netcat</a>
     </div>
 
                 
@@ -216,67 +214,115 @@
 
             
 
-            <p><img src="https://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg"></p>
-<p><a href="https://blog.chaosjohn.com/My-ThinkPad-X200.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
-<h2 id="1-手贱入坑X200"><a href="#1-手贱入坑X200" class="headerlink" title="1. 手贱入坑X200"></a>1. 手贱入坑X200</h2><ul>
-<li>之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint）</li>
-<li>作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔者一直是TrackPad的重度使用者，电脑包里只有MacBook而从来不携带鼠标，也从来没有使用鼠标的习惯。（PS：笔者是一只非常稀少的不打游戏的雄性程序猿）</li>
-<li>看多了“TrackPad Vs. TrackPoint“之争，自然心里痒痒的。咋办哩？那就买一台体验体验！可是ThinkPad还挺贵的，买一台大几千呢，笔者可是勤俭持家的好男人，老婆本可不能随便动。。。于是默默地掏出爪机刷起了闲鱼(🙈捂脸逃)</li>
-<li>选机上，笔者看中了ThinkPad X200，经典的小黑，<a target="_blank" rel="noopener" href="https://baike.baidu.com/link?url=n3PREfC3wS6VAZKa48VUOa1xtbTG1kaSIgMT4APJN-hmi9CyeGkcfN7E0XfUiSAQlOWXir4nap7KWQmTifFlPq">百度百科链接</a> <ul>
-<li>Intel(R) Core(TM)2 Duo CPU – 至少不是赛扬奔腾之类的处理器</li>
-<li>Intel GMA X4500显卡 – 都说了笔者不打游戏了，要独显干嘛，浪费钱？</li>
-<li>DDR3 – 还好不是DDR2，不然升级低版本的内存得死贵死贵的，还记得之前有买过一根DDR333的1G内存都花了两百左右</li>
-<li>只有TrackPoint，没有触摸板 – 要是有触摸板的话，我怕自己会下意识的用它，那算哪门子的体验小红点呀</li>
+            <p><a href="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来打算写 <em>端口转发(篇三) - netcat</em></p>
+<p>但是中途发现 <code>netcat</code> 水很深，原因听我细细说来</p>
+<p><code>netcat</code> 被成为 <code>TCP/IP</code> 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 <code>Linux 发行版</code> 中都默认安装。</p>
+<p>原版的 <code>netcat</code> 第一版在 <em>1995年10月28日</em> 被发布，且最后一个版本 <code>1.10</code> 发布于 <em>1996年3月</em>，被称之为 <code>tranditional netcat</code>。</p>
+<p>随后，为了兼容 <code>POSIX</code>，推出了不同实现的版本，最有名的为 <code>OpenBSD netcat</code> 和 <code>GNU netcat</code>：</p>
+<ul>
+<li><code>OpenBSD</code> 版本的支持 <code>IPv6</code> 和 <code>TLS</code></li>
+<li><code>GNU</code> 版本的支持 <code>-e</code> 参数，可以在建立连接后执行命令</li>
 </ul>
-</li>
-<li>闲鱼上的X200大多在600块钱左右，如果配备SSD，价格差不多都飙到八九百，一千多的也有很多。笔者的价格底线是500，唉，怎么那么穷！</li>
-<li>X200在笔者的“欲购清单”上待了大半年，时不时地就来闲鱼看看有没有合适的(佩服自己的耐心)。终于在三周前，联系到了一位卖家，与他商议不要内存不要硬盘（笔者有闲置的内存条和硬盘），于是以290的价格成交（包邮）。哇咔咔！</li>
-<li>一周星期的焦急等待后，盼来了X200。拆机，包的还挺严实，打开，按下电源键，还有电，关机。打开后盖，有两个内存插槽，随便插上一根4G的内存，再次开机，居然提示内存错误。原来两个内存插槽还分0号和1号，必须从0号开始使用起。晕死，换了个内存插槽，果然没问题了。再换成两根2G的，也没问题。玩过这么多电脑，还是第一次见到这种状况。随便找个了装了Linux Live的u盘，能正常进入系统，蓝牙Wifi工作都正常。</li>
+<p>很有意思的是：</p>
+<ul>
+<li>大部分的 <code>Linux 发行版</code>，以及 <code>macOS</code> / <code>FreeBSD</code>，预装的都是 <code>OpenBSD netcat</code>，如果要使用 <code>GNU</code> 版的，得自行从包管理器安装。</li>
+<li><code>Windows</code> 上只有 <code>GNU netcat</code></li>
 </ul>
-<h2 id="2-X200初体验"><a href="#2-X200初体验" class="headerlink" title="2. X200初体验"></a>2. X200初体验</h2><ul>
-<li>先说说缺点<ul>
-<li>有两个按键太灵敏，X和K，轻轻碰上去都会打出x和k的字母。X键太灵敏能忍，但是作为VIM党，K键太灵敏就不能忍！扣下键帽，用缝衣针把里面的脏东西挑出来，吹风机吹吹，按回去，居然好了！于是，此缺点从此消失。</li>
-<li>底部靠近电源的一个防滑橡胶脚垫掉了，电脑放在桌子上会不稳，经常会有“卡拉卡拉”和桌面轻碰的声音。于是上某宝花了几块钱买了个<a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.DLJQk6&id=521180341500&_u=songss92267">相同型号的脚垫</a>。该缺点也从此消失。</li>
-<li>电池是6芯的，设计容量1723mAh，剩余容量1470mAh，仅为原来的85%，续航只能撑2个小时不到。这个缺点等以后真正有续航需求的时候再考虑解决吧，买个9芯的电池也就一两百块钱。</li>
-<li>找不到其他缺点了😀</li>
-</ul>
-</li>
-<li>以下开始进入“拍马屁模式”<ul>
-<li>成色非常好（见封面图），键盘完全没有油光，用酒精把整机擦拭了一遍后，保守估计95新吧，噢耶赚到了，闲鱼上很多卖的很贵的，看成色都很旧很脏。</li>
-<li>重量很轻，1.394KG，笔者的MacBook Air重量也达到了1.35KG，只差44g（脑海里莫名地想起初中物理课本，一个鸡蛋50g）</li>
-<li>笔者买的这台X200是P8600的CPU，性能比最早的i3都要强。。。笔者最早的一台MacBook是经典款的<a target="_blank" rel="noopener" href="https://detail.zol.com.cn/notebook/index218245.shtml">“小白”MC207</a>，P7550的CPU，用到现在为止都依然“坚挺”！</li>
-<li>键盘手感很好，比Mac的原装键盘要好，键程适中，弹性不错，手感偏软。</li>
-<li>散热真赞！发热真小！电脑开一整天，C面(有键盘的那一面)没有丝毫热感，D面(电脑底部)感觉和人的体温差不多，出风口几乎没有很大的风吹出来，导致整机非常静音，丝毫没有其他电脑风扇为了散热狂转造成的噪音。</li>
-<li>Wifi居然支持2.4GHz和5GHz双频段！！！天哪，08年的电脑啊！！！</li>
-</ul>
+<p><code>水很深</code> 的原因就在于，如果只用 <code>netcat</code> 进行端口转发，必须用到 <code>GNU</code> 版本的 <code>-e</code> 参数，所以就临时更改一下本文题材，讲解一下 <code>netcat</code> 的使用以及案例，且主要针对 <code>OpenBSD netcat</code>。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li>我们先调用 <code>nc -h</code> 来看一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$ nc -h</span><br><span class="line">OpenBSD netcat (Debian patchlevel 1)</span><br><span class="line">usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]</span><br><span class="line">	  [-m minttl] [-O length] [-P proxy_username] [-p source_port]</span><br><span class="line">	  [-q seconds] [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit]</span><br><span class="line">	  [-w timeout] [-X proxy_protocol] [-x proxy_address[:port]]</span><br><span class="line">	  [destination] [port]</span><br><span class="line">	Command Summary:</span><br><span class="line">		-4		Use IPv4</span><br><span class="line">		-6		Use IPv6</span><br><span class="line">		-b		Allow broadcast</span><br><span class="line">		-C		Send CRLF as line-ending</span><br><span class="line">		-D		Enable the debug socket option</span><br><span class="line">		-d		Detach from stdin</span><br><span class="line">		-F		Pass socket fd</span><br><span class="line">		-h		This help text</span><br><span class="line">		-I length	TCP receive buffer length</span><br><span class="line">		-i interval	Delay interval for lines sent, ports scanned</span><br><span class="line">		-k		Keep inbound sockets open for multiple connects</span><br><span class="line">		-l		Listen mode, for inbound connects</span><br><span class="line">		-M ttl		Outgoing TTL &#x2F; Hop Limit</span><br><span class="line">		-m minttl	Minimum incoming TTL &#x2F; Hop Limit</span><br><span class="line">		-N		Shutdown the network socket after EOF on stdin</span><br><span class="line">		-n		Suppress name&#x2F;port resolutions</span><br><span class="line">		-O length	TCP send buffer length</span><br><span class="line">		-P proxyuser	Username for proxy authentication</span><br><span class="line">		-p port		Specify local port for remote connects</span><br><span class="line">		-q secs		quit after EOF on stdin and delay of secs</span><br><span class="line">		-r		Randomize remote ports</span><br><span class="line">		-S		Enable the TCP MD5 signature option</span><br><span class="line">		-s sourceaddr	Local source address</span><br><span class="line">		-T keyword	TOS value</span><br><span class="line">		-t		Answer TELNET negotiation</span><br><span class="line">		-U		Use UNIX domain socket</span><br><span class="line">		-u		UDP mode</span><br><span class="line">		-V rtable	Specify alternate routing table</span><br><span class="line">		-v		Verbose</span><br><span class="line">		-W recvlimit	Terminate after receiving a number of packets</span><br><span class="line">		-w timeout	Timeout for connects and final net reads</span><br><span class="line">		-X proto	Proxy protocol: &quot;4&quot;, &quot;5&quot; (SOCKS) or &quot;connect&quot;</span><br><span class="line">		-x addr[:port]	Specify proxy address and port</span><br><span class="line">		-Z		DCCP mode</span><br><span class="line">		-z		Zero-I&#x2F;O mode [used for scanning]</span><br><span class="line">	Port numbers can be individual or ranges: lo-hi [inclusive]</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h2 id="3-体验小红点"><a href="#3-体验小红点" class="headerlink" title="3. 体验小红点"></a>3. 体验小红点</h2><ul>
-<li><p>其实说是说小红点，但不仅仅是在按键“B”上方的红色的橡胶点，还包括了空格下方的三个按键，从左往右分别对应鼠标的左键、中键和右键。如下图所示。<img src="https://image.blog.chaosjohn.com/My-ThinkPad-X200/x200-trackpoint.jpg"></p>
-</li>
-<li><p>按住小红点，手指往哪边用力，光标就会往哪边移动。一开始真的很难把握移动的角度和速度，总是很难非常快速地把光标移动到目标位置，用力小了，移动地太慢，用力大了，一下子就移动过头了。还好没有买带触摸板的型号，强迫自己使用小红点半天不到，就差不多能顺畅使用它了。</p>
-</li>
-<li><p>左键和右键的功能就不说了，如果在浏览网页或文档时，按住中键后再给小红点用力，就能滚屏啦。“哗哗哗”非常顺畅，个人感觉比鼠标滚轮要好用得多，简直能媲美MacBook触控板的双指滚屏，很是喜欢！</p>
-</li>
-<li><p>因为尚未在X200上安装过Windows，所以关于小红点在Windows下的表现笔者不进行描述，一般要去ThinkPad官网下载相关驱动以启动。</p>
-</li>
-<li><p>因为快递刚收到的时候，笔者为了测整机质量，所以就用了一块Linux LiveUSB进行启动，操作系统为最新的Ubuntu 16.04，内置了TrackPoint的驱动，小红点的所有功能都能正常使用。所以读者如果安装Ubuntu系列的操作系统的话，是不用费心再安装相关驱动的，开箱即用。</p>
-</li>
-<li><p>笔者收到快递当天就在某东买了块120GB的SSD，于是就在这块硬盘上安装了Arch Linux。</p>
-</li>
-<li><p>Arch Linux的安装不再赘述，直接参照Arch Wiki的新手教程即可，以后有机会我会写篇比较浅显易懂的文章。</p>
-</li>
-<li><p>那么问题来了，小红点在Arch Linux下只能用作移动光标，而不能用来滚动屏幕。真是愁死了，废了好大劲安装了Arch Linux，结果却不能完全发挥小红点的威力。</p>
-</li>
-<li><p>在Google上搜索了一番，终于找到了解决方案，在命令行下输入以下开启垂直滚动</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	xinput set-prop <span class="string">&quot;TPPS/2 IBM TrackPoint&quot;</span> <span class="string">&quot;Evdev Wheel Emulation&quot;</span> 1 </span><br><span class="line">	xinput set-prop <span class="string">&quot;TPPS/2 IBM TrackPoint&quot;</span> <span class="string">&quot;Evdev Wheel Emulation Button&quot;</span> 2 </span><br><span class="line">	xinput set-prop <span class="string">&quot;TPPS/2 IBM TrackPoint&quot;</span> <span class="string">&quot;Evdev Wheel Emulation Timeout&quot;</span> 200</span><br><span class="line">	``` </span><br><span class="line"></span><br><span class="line">* 如果还想开启水平滚动的话，执行</span><br><span class="line"></span><br><span class="line">	```bash </span><br><span class="line">	xinput set-prop <span class="string">&quot;TPPS/2 IBM TrackPoint&quot;</span> <span class="string">&quot;Evdev Wheel Emulation Axes&quot;</span> 6 7 4 5</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以上这些xinput命令不是永久性的，每次图形界面(xserver)重启，都得重新执行才能生效。但可以放在<code>.xsessionrc</code>内，当xserver启动时会自动执行。</p>
-</li>
-<li><p>当然，如果不喜欢命令行的话，也有图形界面程序来解决啦。有两个选择，<a target="_blank" rel="noopener" href="https://live.gnome.org/GPointingDeviceSettings">GPointing Device Settings</a>和<a target="_blank" rel="noopener" href="https://tpctl.sourceforge.net/configure-trackpoint.html">configure-trackpoint</a>。笔者在Arch Linux上安装了前者，如下图所示 <img src="https://www.thinkwiki.org/w/images/e/ee/Screenshot-GPointing_Device_Settings-TrackPoint.png"></p>
+<p>我们挑几个常用的参数解释一下：</p>
+<ul>
+<li><code>-4</code>  允许 <code>IPv4</code>（默认允许）</li>
+<li><code>-6</code>  允许 <code>IPv6</code> </li>
+<li><code>-k</code>  keep-alive，上一个socket结束后仍可以重新建立socket再次被连接</li>
+<li><code>-p</code>  本地端口</li>
+<li><code>-l</code>  监听模式，在 <code>OpenBSD</code> 版下可省略 <code>-p</code>，即 “<code>-l 8080</code>“ 等同于 <code>GNU</code> 版的 “<code>-l -p 8080</code>“</li>
+<li><code>-q</code>  在接收到 <code>EOF</code> 后等待预设的秒数，然后断开连接</li>
+<li><code>-U</code>  使用 <code>Unix Socket</code></li>
+<li><code>-u</code>  使用 <code>UDP</code> 模式</li>
+<li><code>-v</code>  输出详细信息（<code>GNU</code> 版有 <code>-vv</code> 模式，可输出更详细的信息）</li>
+<li><code>-w</code>  预设连接超时时间</li>
+<li><code>-z</code>  表示不发送数据</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>大部分的案例，笔者都录制了终端的 <code>GIF</code> 动图：</p>
+<ul>
+<li><code>tmux</code> 会话左侧为本地 <code>macOS</code>，IP为 <code>192.168.1.100</code></li>
+<li><code>tmux</code> 会话右侧为远端 <code>Linux</code>，IP为 <code>192.168.1.39</code></li>
+</ul>
+<h3 id="一次性聊天室"><a href="#一次性聊天室" class="headerlink" title="一次性聊天室"></a>一次性聊天室</h3><ul>
+<li>远端执行 <code>nc -l 1234 -4 -6</code></li>
+<li>开启 <code>-4</code> 和 <code>-6</code> 参数，既监听 <code>IPv4</code> 又监听 <code>IPv6</code>（可省略 <code>-4</code>）</li>
+<li>连接成功后，两边均可键入字符，然后按下回车键发送给对方</li>
+<li>本地使用 <code>CTRL-D</code> 关闭连接，因默认为 <code>TCP</code> 模式，远端也会默认退出</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-ipv6.gif" alt="一次性聊天室"></p>
+<h3 id="伪常驻-聊天室"><a href="#伪常驻-聊天室" class="headerlink" title="伪常驻 聊天室"></a><code>伪常驻</code> 聊天室</h3><ul>
+<li>远端执行 <code>while true; do nc -l 1234; done</code>，使得连接一旦结束，远端会再次发起监听</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-loop.gif" alt="伪常驻聊天室"></p>
+<h3 id="UDP-聊天室"><a href="#UDP-聊天室" class="headerlink" title="UDP 聊天室"></a><code>UDP</code> 聊天室</h3><ul>
+<li>远端执行 <code>nc -l 1234 -u</code>，本地也需要加 <code>-u</code> 参数才能连接</li>
+<li>与 <code>TCP连接</code> 有开始有结束不同，<code>UDP</code> 模式并没有 <code>关闭连接</code> 之说，所以 <code>CTRL-D</code> 无效，只能在两端分别用 <code>CTRL-C</code> 结束进程</li>
+<li>默认情况下，远端处理完一次连接后，并不会再次监听新的请求，所以加上 <code>-k</code> 参数，可以维活处理多次连接</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-udp.gif" alt="UDP 聊天室"></p>
+<h3 id="发起-HTTP-请求（交互式）"><a href="#发起-HTTP-请求（交互式）" class="headerlink" title="发起 HTTP 请求（交互式）"></a>发起 HTTP 请求（交互式）</h3><ul>
+<li>远端执行 <code>python3 -m simple.http 9876</code>，在 <code>9876</code> 端口开启一个文件 Web 服务器</li>
+<li>本地执行 <code>nc 192.168.1.39 9876</code>，连接上远端的 Web 服务器</li>
+<li>交互式的输入 <code>GET /</code> 或者 <code>GET / HTTP/1.0</code> 后，连按两下 <code>回车键</code>，即可发送 HTTP 请求，并收到远端的请求响应</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-1.gif" alt="发起 HTTP 请求（交互式）"></p>
+<h3 id="发起-HTTP-请求（命令式）"><a href="#发起-HTTP-请求（命令式）" class="headerlink" title="发起 HTTP 请求（命令式）"></a>发起 HTTP 请求（命令式）</h3><ul>
+<li>本地执行 <code>echo -n &quot;GET / HTTP/1.0\r\n\r\n&quot; | nc 192.168.1.39 9876</code>（注：<code>GET / HTTP/1.0\r\n\r\n</code> 可缩写为 <code>GET /\r\n\r\n</code>）</li>
+<li>上则案例中的 “连按两下 <code>回车键</code>“，就是模拟的 “连续两个 <code>\r\n</code>“</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-2.gif" alt="发起 HTTP 请求（命令式）"></p>
+<h3 id="文件传输（简单）"><a href="#文件传输（简单）" class="headerlink" title="文件传输（简单）"></a>文件传输（简单）</h3><ul>
+<li>远端先执行 <code>nc -l 1234 &gt; received_file</code>，开启监听，如果建立连接且有字节流入，就会输出到文件 <code>received_file</code></li>
+<li>本地再执行 <code>nc 192.168.1.39 1234 &lt; iTerm2.zip</code>，将文件 <code>iTerm2.zip</code> 传输过去</li>
+<li>用 <code>file</code> 和 <code>ls -al</code> 命令查看一下两边文件是否一致</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer.gif" alt="文件传输（简单）"></p>
+<h3 id="文件传输（使用-tar-归档传输多文件）"><a href="#文件传输（使用-tar-归档传输多文件）" class="headerlink" title="文件传输（使用 tar 归档传输多文件）"></a>文件传输（使用 tar 归档传输多文件）</h3><ul>
+<li>远端先执行 <code>tar cvf - text1.txt text2.txt | nc -l 1234 -q 1</code>，先使用 <code>tar</code> 归档多个文件，并使用管道流向 <code>netcat</code> 并开启监听</li>
+<li>本地再执行 <code>nc 192.168.1.39 1234 | tar xvf -</code>，建立连接后读入字节流，由管道流向 <code>tar</code> 后解压出原多文件</li>
+<li><code>-q 1</code> 表示传输完毕后，等待1s后退出</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif" alt="文件传输（使用 tar 归档传输多文件）"></p>
+<h3 id="socket通信"><a href="#socket通信" class="headerlink" title="socket通信"></a>socket通信</h3><ul>
+<li>本地先执行 <code>nc -lU /tmp/socket</code>，使用 <code>-U</code> 参数使用并创建套接字文件</li>
+<li>本地新终端 <code>echo &quot;hhh&quot; | nc -U /tmp/socket</code>，将字符串 “hhh” 写入套接字文件，则在原终端会从套接字文件中读出 “hhh” 字符串</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-socket.gif" alt="socket通信"></p>
+<h3 id="网络测速（配合-dd-使用）"><a href="#网络测速（配合-dd-使用）" class="headerlink" title="网络测速（配合 dd 使用）"></a>网络测速（配合 dd 使用）</h3><ul>
+<li>远端先执行 <code>nc -vl 1234 &gt; /dev/null</code>，表示读入的字节流直接写入 <code>/dev/null</code> 文件，这么做的目的是排除真正文件读写的磁盘速度上限干扰</li>
+<li>本地再执行 <code>dd if=/dev/zero bs=1024 count=102400 | nc -vn 192.168.1.39 1234</code>，从 <code>/dev/zero</code> 中不断生成字节流，每个区块1024个字节，以供102400个区块，总计 <strong>100MB</strong>，最后 <code>dd</code> 报告得出，网络速率为 <strong>7630165 KB/s</strong>，即 <strong>7.6 MB/s</strong>（测试速度慢是因为远端 Linux 是树莓派，通过 <code>2.4GHz Wi-Fi</code> 接入局域网）</li>
+</ul>
+<p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-speedtest-with-dd.gif" alt="网络测速（配合 dd 使用）"></p>
+<h3 id="服务端口诊断"><a href="#服务端口诊断" class="headerlink" title="服务端口诊断"></a>服务端口诊断</h3><p>案例背景：公司的 <code>Elastic Search</code> 服务器集群部署在阿里云，其 <code>9200/9300</code> 端口的防火墙直接采用阿里云的安全组配置，内网IP和公司所在的公网IP才可以访问。</p>
+<p>本地开发环境如果发现 Elastic Search 连接报错，我们会采用 <code>telnet es.example.com 9200</code> 来作第一步诊断：</p>
+<ul>
+<li>如果 <code>telnet</code> 能连接成功，则表示本地开发环境出了问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Trying 120.27.216.xxx...</span><br><span class="line">Connected to es.example.com.</span><br><span class="line">Escape character is &#39;^]&#39;.</span><br></pre></td></tr></table></figure></li>
+<li>如果 <code>telnet</code> 无法连接，则表示可能因为公司IP变化后无法命中阿里云安全组白名单所致<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Trying 120.27.216.xxx...</span><br><span class="line">telnet: Unable to connect to remote host: Connection refused</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h2 id="4-结语"><a href="#4-结语" class="headerlink" title="4. 结语"></a>4. 结语</h2><p>体验下来，MacBook和ThinkPad都很赞，现在这台290收来的X200已经成为了笔者的半个主力机，晚上下班回去，如果不写博客的话，大多数时间是抱着ThinkPad。如果读者也想体验体验的话，上闲鱼收个X200是个很不错的选择，当然，X61也可以考虑哦，虽然性能比X200差，但是最近民间有“厂子”有在开发号称“X62”的主板，<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/33191167">具体详见</a> 。<br>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
+<p>其实可以不用 <code>telnet</code>，而且 <code>telnet</code> 在 <code>macOS</code> 环境中并没有预装，我们可以改用 <code>nc -vz es.example.com 9200</code> 来替代</p>
+<ul>
+<li>端口能访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection to es0.example.com (120.27.216.xxx) 9200 port [tcp&#x2F;wap-wsp] succeeded!</span><br></pre></td></tr></table></figure></li>
+<li>端口无法访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc: connect to es0.example.com (120.27.216.xxx) port 9200 (tcp) failed: Connection refused</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>本文演示了一些 <code>OpenBSD netcat</code> 的案例，其实用管道配合其他工具，还能出很多很多的案例，但是吸收了上面的几个案例之后，通过举一反三，相信读者也能深谙 <code>netcat</code> 的强大。</p>
+<p>后面笔者会以 <code>GNU netcat</code> 为重点写个 <em>篇二</em>，因其存在 <code>-e</code> 参数，所以其部分内容单独拎出来也可以作为 <code>端口转发(篇三) - GNU netcat</code></p>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
 
         </div>
         <footer class="article-footer">
@@ -284,7 +330,7 @@
 
 
 
-    <a data-url="https://blog.chaosjohn.com/My-ThinkPad-X200.html" data-id="ckhvqsqm70008k1xr61atb49s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html" data-id="ckiijoxcd000uyocjf50n9l3p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -354,20 +400,20 @@
             "@type": "Person",
             "name": "Chaos John"
         },
-        "headline": "只为体验小红点--我的“ThinkPad X200”",
-        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/My-ThinkPad-X200/my-thinkpad-x200.jpg",
-        "keywords": "Toy Hardware ThinkPad TrackPoint",
+        "headline": "TCP/IP 瑞士军刀 - netcat (篇一)",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg",
+        "keywords": "TCP/IP netcat",
         "genre": "",
-        "datePublished": "2016-05-28",
-        "dateCreated": "2016-05-28",
-        "dateModified": "2020-12-05",
-        "url": "https://blog.chaosjohn.com/My-ThinkPad-X200.html",
-        "description": "
-欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-1. 手贱入坑X200
-之前逛知乎逛论坛，经常看到有两拨人打口水仗，非得就“MacBook的触控板和Thinkpad的小红点哪一个好用”争个脸红耳赤。（前者为TrackPad，后者为TrackPoint）
-作为一个已经用了四五年MacBook的果粉，笔者之前一直觉得TrackPad是史上最好用的电脑输入设备。以至于笔",
-        "wordCount": 142
+        "datePublished": "2020-12-10",
+        "dateCreated": "2020-12-10",
+        "dateModified": "2020-12-10",
+        "url": "https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+前言本来打算写 端口转发(篇三) - netcat
+但是中途发现 netcat 水很深，原因听我细细说来
+netcat 被成为 TCP/IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。
+原版的 netcat 第一版在 199",
+        "wordCount": 770
     }
 </script>
 
@@ -416,20 +462,10 @@
         
 <nav id="article-nav">
     
-        <a href="/Tools-for-Developers-on-Android-Tablet.html" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            安卓平板上的开发者实用工具
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/HomeBrew-The-Best-Package-Manager-On-OSX.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/ProxySwitch-for-Command-Line.html" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">HomeBrew -- OSX下的最强软件包管理器</p>
+        <p class="article-nav-title">命令行下快捷开关代理</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -639,7 +675,7 @@
     var disqus_shortname = 'hexo-chaosjohn';
     
     
-    var disqus_url = 'https://blog.chaosjohn.com/My-ThinkPad-X200.html';
+    var disqus_url = 'https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html';
     
     (function() {
     var dsq = document.createElement('script');
