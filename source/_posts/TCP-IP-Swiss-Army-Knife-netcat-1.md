@@ -137,7 +137,7 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
 ### 文件传输（使用 tar 归档传输多文件）
 - 远端先执行 `tar cvf - text1.txt text2.txt | nc -l 1234 -q 1`，先使用 `tar` 归档多个文件，并使用管道流向 `netcat` 并开启监听
 - 本地再执行 `nc 192.168.1.39 1234 | tar xvf -`，建立连接后读入字节流，由管道流向 `tar` 后解压出原多文件
-- `-q 1` 表示传输完毕后，等待1s后退出
+- `-q 1` 表示传输完毕后，等待1s后退出，如果是 `-q 0` 则可用 `-N` 来代替
 
 ![文件传输（使用 tar 归档传输多文件）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif)
 
