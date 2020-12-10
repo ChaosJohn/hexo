@@ -6,17 +6,28 @@
     
 
     
-    <title>标签: composer | 湿科技</title>
+    <title>命令行下快捷开关代理 | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="湿科技">
-<meta property="og:url" content="https://blog.chaosjohn.com/tags/composer/index.html">
+    <meta name="keywords" content="shell,proxy,zsh" />
+    
+    <meta name="description" content="前言笔者经常会遇到在命令行下不得不走代理的情况：  Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人） 从 Github 执行各种操作（clone &#x2F; pull &#x2F; push &#x2F; fetch）  旧方案笔者在本地的 1080 端口搭建了 socks5 代理开启代理： 1export all_proxy&#x3D;socks5:&#x2F;&#x2F;localhost:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命令行下快捷开关代理">
+<meta property="og:url" content="https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html">
 <meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="前言笔者经常会遇到在命令行下不得不走代理的情况：  Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人） 从 Github 执行各种操作（clone &#x2F; pull &#x2F; push &#x2F; fetch）  旧方案笔者在本地的 1080 端口搭建了 socks5 代理开启代理： 1export all_proxy&#x3D;socks5:&#x2F;&#x2F;localhost:">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/ProxySwitch-for-Command-Line/banner.jpg">
+<meta property="article:published_time" content="2020-12-09T09:36:41.000Z">
+<meta property="article:modified_time" content="2020-12-09T12:51:18.332Z">
 <meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="proxy">
+<meta property="article:tag" content="zsh">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/ProxySwitch-for-Command-Line/banner.jpg">
     
 
     
@@ -145,77 +156,208 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>composer</em>
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-ProxySwitch-for-Command-Line" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Fix-InvalidArgumentException-for-Composer.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer/logo-composer-transparent.png)" alt="解决 Composer 报错 InvalidArgumentException" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-12-03T09:37:32.000Z" itemprop="datePublished">2020-12-03</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Fix-InvalidArgumentException-for-Composer.html">解决 Composer 报错 InvalidArgumentException</a>
+        命令行下快捷开关代理
         </h1>
     
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-composer 在 2020-11-24 发布了全新的 2.0 版本。参考官方博客
-鉴于博客里描述新版在很多方面都做出了优化，特别是性能方面，提速了很多，于是笔者迫不及待地更新了。
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/ProxySwitch-for-Command-Line.html" class="article-date">
+       <time datetime="2020-12-09T09:36:41.000Z" itemprop="datePublished">2020-12-09</time>
+    </a>
+  </div>
 
-但是在写上一篇文章 php 调试指南（Xdebug版）的篇头处，执行 composer require mikecao/flight 
-        </p>
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/ProxySwitch-for-Command-Line.html" class="article-date">
+     <time datetime="2020-12-09T12:51:18.332Z" itemprop="dateModified">2020-12-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/proxy/" rel="tag">proxy</a>, <a class="tag-link-link" href="/tags/shell/" rel="tag">shell</a>, <a class="tag-link-link" href="/tags/zsh/" rel="tag">zsh</a>
     </div>
-</article>
-    
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者经常会遇到在命令行下不得不走代理的情况：</p>
+<ul>
+<li><code>Homebrew</code> &amp; <code>Cask</code>（特别是后者，不走代理的话速度简直感人）</li>
+<li>从 <code>Github</code> 执行各种操作（<code>clone</code> / <code>pull</code> / <code>push</code> / <code>fetch</code>）</li>
+</ul>
+<h2 id="旧方案"><a href="#旧方案" class="headerlink" title="旧方案"></a>旧方案</h2><p>笔者在本地的 <code>1080</code> 端口搭建了 <code>socks5</code> 代理<br>开启代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export all_proxy&#x3D;socks5:&#x2F;&#x2F;localhost:1080 &amp;&amp; export ALL_PROXY&#x3D;$all_proxy</span><br></pre></td></tr></table></figure>
+
+<p>有时候要用到局域网的另外一台电脑上搭建的代理，还得将 <code>localhost</code> 改为那台电脑的IP。</p>
+<p>虽然 <code>zsh</code> 可以通过键入前几个字母比如 <code>export all_</code> 然后通过 <code>方向上健</code> 快速定位到之间的历史，然后向左移动光标，删去 <code>localhost</code>，重新输入新的 <code>IP</code>，但是笔者还是嫌麻烦，所以动了造轮子的心思。</p>
+<h2 id="新方案"><a href="#新方案" class="headerlink" title="新方案"></a>新方案</h2><p>因为笔者采用的是 <code>zsh</code>，所以在 <code>$HOME/.zshrc</code> 内添加以下函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function socks5on() &#123;</span><br><span class="line">  _PORT&#x3D;&quot;1080&quot;</span><br><span class="line">  _HOST&#x3D;&quot;127.0.0.1&quot;</span><br><span class="line"></span><br><span class="line">  if [ $# &#x3D; 0 ]; then</span><br><span class="line">  elif [ $# &#x3D; 1 ]; then</span><br><span class="line">    _PORT&#x3D;$1</span><br><span class="line">  elif [ $# &#x3D; 2 ]; then</span><br><span class="line">    _HOST&#x3D;$1</span><br><span class="line">    _PORT&#x3D;$2</span><br><span class="line">  fi</span><br><span class="line">  export all_proxy&#x3D;socks5:&#x2F;&#x2F;$&#123;_HOST&#125;:$&#123;_PORT&#125;</span><br><span class="line">  export ALL_PROXY&#x3D;$all_proxy</span><br><span class="line">  echo $ALL_PROXY</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function socks5off() &#123;</span><br><span class="line">  unset all_proxy</span><br><span class="line">  unset ALL_PROXY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数 <code>socks5on</code> 的用法：</p>
+<ul>
+<li><code>$ socks5on</code> 设置代理为 <code>socks5://127.0.0.1:1080</code></li>
+<li><code>$ socks5on 1081</code> 设置代理为 <code>socks5://127.0.0.1:1081</code></li>
+<li><code>$ socks5on 192.168.0.253 1080</code> 设置代理为 <code>socks5://192.168.0.253:1080</code></li>
+</ul>
+<p>函数 <code>socks5off</code> 的用法：</p>
+<ul>
+<li><code>$ socks5off</code> 取消代理设置</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p><code>socks5on</code> 函数里，笔者变量取名 <code>_HOST</code> 而不是 <code>HOST</code>，是因为 <code>$HOST</code> 默认存放系统主机名称。</p>
+</li>
+<li><p><code>all_proxy</code> 和 <code>ALL_PROXY</code> 同时都设置，是因为，有的程序读取 <code>$all_proxy</code>，有的程序读取 <code>$ALL_PROXY</code>。</p>
+</li>
+</ol>
+</blockquote>
+<p>读者可以拿去自行更改食用哈。 </p>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
+
         </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html" data-id="ckih7xcla000oyocjhz65gl3y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "命令行下快捷开关代理",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/ProxySwitch-for-Command-Line/banner.jpg",
+        "keywords": "shell proxy zsh",
+        "genre": "",
+        "datePublished": "2020-12-09",
+        "dateCreated": "2020-12-09",
+        "dateModified": "2020-12-09",
+        "url": "https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html",
+        "description": "前言笔者经常会遇到在命令行下不得不走代理的情况：
+
+Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人）
+从 Github 执行各种操作（clone / pull / push / fetch）
+
+旧方案笔者在本地的 1080 端口搭建了 socks5 代理开启代理：
+1export all_proxy&#x3D;socks5:&#x2F;&#x2F;localhost:",
+        "wordCount": 187
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -245,6 +387,19 @@ composer 在 2020-11-24 发布了全新的 2.0 版本。参考官方博客
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/SpringBoot-exit-gracefully.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">SpringBoot 优雅退出</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -449,11 +604,13 @@ composer 在 2020-11-24 发布了全新的 2.0 版本。参考官方博客
     var disqus_shortname = 'hexo-chaosjohn';
     
     
+    var disqus_url = 'https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
