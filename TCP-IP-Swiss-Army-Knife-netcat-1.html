@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg">
 <meta property="article:published_time" content="2020-12-10T07:53:50.000Z">
-<meta property="article:modified_time" content="2020-12-10T12:25:01.392Z">
+<meta property="article:modified_time" content="2020-12-10T12:35:08.791Z">
 <meta property="article:author" content="Chaos John">
 <meta property="article:tag" content="TCP&#x2F;IP">
 <meta property="article:tag" content="netcat">
@@ -187,7 +187,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/TCP-IP-Swiss-Army-Knife-netcat-1.html" class="article-date">
-     <time datetime="2020-12-10T12:25:01.392Z" itemprop="dateModified">2020-12-10</time>
+     <time datetime="2020-12-10T12:35:08.791Z" itemprop="dateModified">2020-12-10</time>
   </a>
 </div>
 
@@ -291,7 +291,7 @@
 <h3 id="文件传输（使用-tar-归档传输多文件）"><a href="#文件传输（使用-tar-归档传输多文件）" class="headerlink" title="文件传输（使用 tar 归档传输多文件）"></a>文件传输（使用 tar 归档传输多文件）</h3><ul>
 <li>远端先执行 <code>tar cvf - text1.txt text2.txt | nc -l 1234 -q 1</code>，先使用 <code>tar</code> 归档多个文件，并使用管道流向 <code>netcat</code> 并开启监听</li>
 <li>本地再执行 <code>nc 192.168.1.39 1234 | tar xvf -</code>，建立连接后读入字节流，由管道流向 <code>tar</code> 后解压出原多文件</li>
-<li><code>-q 1</code> 表示传输完毕后，等待1s后退出</li>
+<li><code>-q 1</code> 表示传输完毕后，等待1s后退出，如果是 <code>-q 0</code> 则可用 <code>-N</code> 来代替</li>
 </ul>
 <p><img src="https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif" alt="文件传输（使用 tar 归档传输多文件）"></p>
 <h3 id="socket通信"><a href="#socket通信" class="headerlink" title="socket通信"></a>socket通信</h3><ul>
@@ -413,7 +413,7 @@
 但是中途发现 netcat 水很深，原因听我细细说来
 netcat 被成为 TCP/IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。
 原版的 netcat 第一版在 199",
-        "wordCount": 770
+        "wordCount": 775
     }
 </script>
 
