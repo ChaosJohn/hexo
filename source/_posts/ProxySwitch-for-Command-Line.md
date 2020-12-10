@@ -5,6 +5,8 @@ tags: [shell, proxy, zsh]
 thumbnail: https://image.blog.chaosjohn.com/ProxySwitch-for-Command-Line/banner.jpg
 ---
 
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html)
+
 ## 前言
 笔者经常会遇到在命令行下不得不走代理的情况：
 - `Homebrew` & `Cask`（特别是后者，不走代理的话速度简直感人）
