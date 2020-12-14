@@ -6,17 +6,26 @@
     
 
     
-    <title>标签: VMware | 湿科技</title>
+    <title>删除/清理 MySQL 的 binlog | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="湿科技">
-<meta property="og:url" content="https://blog.chaosjohn.com/tags/VMware/index.html">
+    <meta name="keywords" content="MySQL" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景今年年中的时候，我司和腾讯达成了一项深度合作，涉及到的数据量还挺大的。果不其然，谈下合作后负责实施的还是我这个“什么都干司令”。 具体流程：  从我司已有产品中，筛出一部分数据 数据清理 处理成通用格式（因为老板说后续不仅仅只跟腾讯合作） 输出给腾讯（实时处理成腾讯方需要的格式）并且记录输出时间在本地  因为数据清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="删除&#x2F;清理 MySQL 的 binlog">
+<meta property="og:url" content="https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html">
 <meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景今年年中的时候，我司和腾讯达成了一项深度合作，涉及到的数据量还挺大的。果不其然，谈下合作后负责实施的还是我这个“什么都干司令”。 具体流程：  从我司已有产品中，筛出一部分数据 数据清理 处理成通用格式（因为老板说后续不仅仅只跟腾讯合作） 输出给腾讯（实时处理成腾讯方需要的格式）并且记录输出时间在本地  因为数据清">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png">
+<meta property="article:published_time" content="2020-12-14T08:43:16.000Z">
+<meta property="article:modified_time" content="2020-12-14T11:37:49.404Z">
 <meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png">
     
 
     
@@ -145,79 +154,214 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>VMware</em>
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Delete-binlog-in-MySQL" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/IPv6-not-working-from-bridged-wireless.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://image.blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless/vmware.jpg)" alt="IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-28T10:19:22.000Z" itemprop="datePublished">2020-11-28</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/IPv6-not-working-from-bridged-wireless.html">IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)</a>
+        删除/清理 MySQL 的 binlog
         </h1>
     
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-背景今年年中的时候，在油管上看到 悟空大大 关于 Minisforum GK41 的视频，心里痒痒，于是也入手了一个。主要具体参数为：
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/Delete-binlog-in-MySQL.html" class="article-date">
+       <time datetime="2020-12-14T08:43:16.000Z" itemprop="datePublished">2020-12-14</time>
+    </a>
+  </div>
 
-CPU: Intel® Celeron® Processor J4125
-内存: LPDDR4 8GB (On Board)
-网络: 双千兆螃蟹卡 + 802.11ac双频Wifi
 
-        </p>
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/Delete-binlog-in-MySQL.html" class="article-date">
+     <time datetime="2020-12-14T11:37:49.404Z" itemprop="dateModified">2020-12-14</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/MySQL/" rel="tag">MySQL</a>
     </div>
-</article>
-    
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a href="https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今年年中的时候，我司和腾讯达成了一项深度合作，涉及到的数据量还挺大的。果不其然，谈下合作后负责实施的还是我这个“什么都干司令”。</p>
+<p>具体流程：</p>
+<ol>
+<li>从我司已有产品中，筛出一部分数据</li>
+<li>数据清理</li>
+<li>处理成通用格式（因为老板说后续不仅仅只跟腾讯合作）</li>
+<li>输出给腾讯（实时处理成腾讯方需要的格式）并且记录输出时间在本地</li>
+</ol>
+<p>因为数据清理+处理比较费时间和空间，所以本地临时搞了一台高性能台式机作为服务器（是的，本“什么都干司令”还负责组装电脑），配置：</p>
+<ul>
+<li>CPU: AMD Ryzen 5 3600</li>
+<li>MEM: 32GB </li>
+<li>SSD: 1TB</li>
+</ul>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>还处在数据清理和处理的流程中，突然发现程序脚本异常退出了。</p>
+<p>通过排查发现，1TB的磁盘，居然满了，定位到 <code>/var/lib/mysql</code> 路径下，发现了大量的 <code>binlog.xxxxxxx</code> 文件，通过 <code>ncdu</code> 分析出它们占据了大几百GB的磁盘空间。</p>
+<p>（当时处理问题之前没有截图，所以只能截几张写本文时的图了，而写本文时，合作已经处于最后的输出流程了，所以数据库 <code>写操作</code> 只与 <code>记录输出时间</code> 相关，数据量小了很多）</p>
+<p><img src="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files.png" alt="/var/lib/mysql 下大量的 binlog 文件"></p>
+<p><img src="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/ncdu.png" alt="ncdu 分析 binlog 文件占据磁盘空间"></p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p><code>binlog</code> 是记录所有数据库表结构变更（例如CREATE、ALTER TABLE…）以及表数据修改（INSERT、UPDATE、DELETE…）的二进制日志。</p>
+<p><code>binlog</code> 不会记录SELECT和SHOW这类操作，因为这类操作对数据本身并没有修改，但你可以通过查询通用日志来查看MySQL执行过的所有语句。</p>
+<p>二进制日志包括两类文件：二进制日志索引文件（文件名后缀为 <code>.index</code>）用于记录所有的二进制文件，二进制日志文件（文件名后缀为 <code>.00000*</code>）记录数据库所有的DDL和DML(除了数据查询语句)语句事件。</p>
+<p>所以简单点描述，数据库 <code>写操作</code> 越多越频繁，<code>binlog</code> 记录的越多，甚至出现笔者遇到的 <code>爆炸增长</code>。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>既然 <code>binlog</code> 是日志，只要确保（或者“假装确保”）过去的操作都正确，咱也没有 <code>从 binlog 恢复数据</code> 的需求，那就删了呗。</p>
+<h3 id="手动删除"><a href="#手动删除" class="headerlink" title="手动删除"></a>手动删除</h3><p>直接在 <code>/var/lib/mysql</code> 路径下，将 <code>binlog.0*</code> 删除掉（注意不要删除 <code>binlog.index</code>）</p>
+<p>该方法不推荐，因为手动删除并不会更新 <code>binlog.index</code>，而 <code>binlog.index</code> 的作用是加快查找 <code>binlog</code> 文件的速度。</p>
+<h3 id="删除指定编号之前的-binlog"><a href="#删除指定编号之前的-binlog" class="headerlink" title="删除指定编号之前的 binlog"></a>删除指定编号之前的 binlog</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; PURGE MASTER LOGS TO &#39;binlog.000860&#39;;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-purge-to-specified-index.png" alt="指定编号之前的 binlog 已被删除"></p>
+<h3 id="删除指定日期之前的-binlog"><a href="#删除指定日期之前的-binlog" class="headerlink" title="删除指定日期之前的 binlog"></a>删除指定日期之前的 binlog</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; PURGE MASTER LOGS BEFORE &#39;2020-11-11 11:11:11&#39;;</span><br><span class="line">Query OK, 0 rows affected (0.19 sec)</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-purge-before-datetime.png" alt="指定日期之前的 binlog 已被删除"></p>
+<h3 id="清空所有-binlog"><a href="#清空所有-binlog" class="headerlink" title="清空所有 binlog"></a>清空所有 binlog</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; RESET MASTER;</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-reset.png" alt="清空后 binlog 编号从 000001 开始"></p>
+<h3 id="配置自动清理"><a href="#配置自动清理" class="headerlink" title="配置自动清理"></a>配置自动清理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global expire_logs_days&#x3D;7;</span><br></pre></td></tr></table></figure>
+<p>则只保留7天内的 <code>binlog</code> 文件。</p>
+<p>或者修改 <code>MySQL</code> 配置文件，设置 <code>expire_logs_days=7</code> 然后重启服务，即可永久生效。</p>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
+
         </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html" data-id="ckiob7wgd000co56pgx1raj9s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "删除/清理 MySQL 的 binlog",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png",
+        "keywords": "MySQL",
+        "genre": "",
+        "datePublished": "2020-12-14",
+        "dateCreated": "2020-12-14",
+        "dateModified": "2020-12-14",
+        "url": "https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+背景今年年中的时候，我司和腾讯达成了一项深度合作，涉及到的数据量还挺大的。果不其然，谈下合作后负责实施的还是我这个“什么都干司令”。
+具体流程：
+
+从我司已有产品中，筛出一部分数据
+数据清理
+处理成通用格式（因为老板说后续不仅仅只跟腾讯合作）
+输出给腾讯（实时处理成腾讯方需要的格式）并且记录输出时间在本地
+
+因为数据清",
+        "wordCount": 181
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -247,6 +391,19 @@ CPU: Intel® Celeron® Processor J4125
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Swap-column-values-in-MySQL.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">MySQL 交换两列值</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -451,11 +608,13 @@ CPU: Intel® Celeron® Processor J4125
     var disqus_shortname = 'hexo-chaosjohn';
     
     
+    var disqus_url = 'https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
