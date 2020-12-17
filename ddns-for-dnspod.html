@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>IPv4/IPv6 双栈 ddns (DNSPod版) | 湿科技</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ddns" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言笔者很早以前就有一个梦想，即：我所有的联网设备，都要能随时随地访问到。比如在公司访问我家里的电脑和 NAS，以及在家里访问公司的工作电脑。 于是笔者开始了漫长的折腾之路：  最开始，家里和公司都是电信宽带，我就不厌其烦地骚扰电信客服，申请公网IP。当路由器分配到了公网IP后，配合 DMZ 和 端口映射，就能将路由器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv4&#x2F;IPv6 双栈 ddns (DNSPod版)">
+<meta property="og:url" content="https://blog.chaosjohn.com/ddns-for-dnspod.html">
+<meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言笔者很早以前就有一个梦想，即：我所有的联网设备，都要能随时随地访问到。比如在公司访问我家里的电脑和 NAS，以及在家里访问公司的工作电脑。 于是笔者开始了漫长的折腾之路：  最开始，家里和公司都是电信宽带，我就不厌其烦地骚扰电信客服，申请公网IP。当路由器分配到了公网IP后，配合 DMZ 和 端口映射，就能将路由器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/ddns-for-dnspod/banner.png">
+<meta property="article:published_time" content="2020-12-16T11:25:06.000Z">
+<meta property="article:modified_time" content="2020-12-16T16:10:33.714Z">
+<meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="ddns">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/ddns-for-dnspod/banner.png">
+    
+
+    
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-ddns-for-dnspod" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        IPv4/IPv6 双栈 ddns (DNSPod版)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/ddns-for-dnspod.html" class="article-date">
+       <time datetime="2020-12-16T11:25:06.000Z" itemprop="datePublished">2020-12-16</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/ddns-for-dnspod.html" class="article-date">
+     <time datetime="2020-12-16T16:10:33.714Z" itemprop="dateModified">2020-12-17</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ddns/" rel="tag">ddns</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a href="https://blog.chaosjohn.com/ddns-for-dnspod.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者很早以前就有一个梦想，即：我所有的联网设备，都要能随时随地访问到。比如在公司访问我家里的电脑和 NAS，以及在家里访问公司的工作电脑。</p>
+<p>于是笔者开始了漫长的折腾之路：</p>
+<ol>
+<li>最开始，家里和公司都是电信宽带，我就不厌其烦地骚扰电信客服，申请公网IP。当路由器分配到了公网IP后，配合 <code>DMZ</code> 和 <code>端口映射</code>，就能将路由器下设备的某些端口暴露在公网上。缺点：如果设备和需要暴露到公网的服务比较多，不拿个记事本把 <code>什么服务暴露在什么端口</code> 记录下来，用到的时候总是会记混淆。</li>
+<li>后来搬家后宽带从电信换成了移动，获取公网IP就成了奢望（我还真上过工信部投诉，结果移动致电过来表示可以给我安排停服退款，我怂了，继续用吧）。然后就买了一个<a target="_blank" rel="noopener" href="https://hsk.oray.com/device">花生棒</a>，即花生壳的内网穿透版，因免费版只给两条映射，所以笔者只能贡献给常用机的 SSH(22端口) 和 VNC(5900端口)。缺点：奈何能用的端口只有两个，以及每月只有2G的流量，笔者撑了一段时间还是放弃了它。</li>
+<li>后来逐渐接触到各种内网穿透方案，先是 <code>ngork</code>，后来是 <code>frp</code>，将服务端部署在了自己的云主机上后，端口数量限制再也不是问题了，想配多少就配多少。缺点：国内云主机的带宽实在太贵，以阿里云为例，1M带宽23元每月，2M带宽46元，3M带宽71元，4M带宽96元，5M带宽125元，带宽越大单价越贵；国外云主机带宽虽然足，但是延迟太高了，真的很难取舍。</li>
+<li>再后来，又接触到了 <a target="_blank" rel="noopener" href="https://www.ntop.org/products/n2n/">n2n</a>，个人的云主机上搭建一个节点服务器 <code>supernode</code>，不同设备都连接 <code>supernode</code>，协商后直接进行点对点（P2P）通信，即真正的设备间数据传输是直连的而不经过 <code>supernode</code>。优点：全端口可用，速度不受限。缺点：因为是 <code>P2P</code> 方案，所以需要设备都安装客户端，但它把 <code>Windows</code> / <code>Linux</code> / <code>macOS</code> / <code>Android</code> 都支持遍了，就是没有 <code>iOS</code> 的客户端。</li>
+<li>17年下半年的时候，笔者突然发现了神器 <code>ZeroTier</code>。它就是一个增强版的 <code>n2n</code>，不同的是，它默认使用官方的节点服务器（当然个人也可以自建），更为重要的是，几乎所有的系统平台，它都支持，就连各类NAS也能安装使用。笔者直到今天，还在深度使用它。举个例子证明笔者有多爱它：官网是 <code>zerotier.com</code>，笔者于 <strong>2018-01-12</strong> 在腾讯云注册了域名 <code>zerotier.cn</code>，专门用来解析 <code>ZeroTier</code> 分配给设备的 <code>内网IP</code>，并续费至今。（如果用 <code>whois</code> 查一下该域名，还能发现笔者的真名和邮箱哦哈哈哈哈哈）缺点：在设备点对点之间的线路优化好之前，丢包比较严重，甚至连不上。但只要线路逐渐优化好之后，速度几乎能跑满带宽。</li>
+<li>19年下旬的时候，笔者突然发现，家庭宽带和手机蜂窝网络，居然都原生支持 <code>IPv6</code> 了，即无论是路由器下的设备，还是插了SIM卡的移动设备，都能分配到 <code>IPv6地址</code> 了。这意味着，通过某设备的 <code>IPv6</code> 地址，可以直接访问到该设备的所有端口（80/443端口是否被禁得看各地运营商政策）。</li>
+</ol>
+<h2 id="IPv6-的问题"><a href="#IPv6-的问题" class="headerlink" title="IPv6 的问题"></a><strong>IPv6</strong> 的问题</h2><p>用 <code>IPv6</code> 实现所有设备的连通，这点非常棒，就只差一个问题需要解决：适用于 <code>IPv6</code> 的 <code>ddns</code> 方案。</p>
+<p>什么是 <code>ddns</code> 呢？它的全称为 <code>dynamic dns</code>，即 <code>动态域名解析</code>。</p>
+<p>使用场景：家庭宽带下，<code>IP地址</code> 会被运营商定期更换，在自身 <code>IP地址</code> 发生变化后，将新的IP地址提交给 <code>dns解析服务商</code>，让约定的域名解析更新为新的IP地址。</p>
+<p>上面 <code>折腾之路[1]</code>，通过电信宽带分配的公网IP访问服务，也是需要用 <code>ddns</code> 来更新 <code>IP地址</code> 到自己的域名上，不过一般路由器都内置了 <code>ddns</code> 功能，傻瓜式配置起来也很简单。</p>
+<p>但是：</p>
+<ul>
+<li>这些成熟且内置的 <code>ddns</code> 方案，都只适用于 <code>IPv4</code></li>
+<li>对于 <code>IPv4</code>，局域网内只需有一台设备（可以是路由器本身，也可以是下属设备）配置 <code>ddns</code> 就可以了，因为整个局域网都共用一个公网IP；而对于 <code>IPv6</code>，每个设备都有自己的公网IP，即需要公网被访问的每台设备都要单独配置 <code>ddns</code></li>
+</ul>
+<h2 id="解决-IPv6-的-ddns"><a href="#解决-IPv6-的-ddns" class="headerlink" title="解决 IPv6 的 ddns"></a>解决 <strong>IPv6</strong> 的 <strong>ddns</strong></h2><p>因笔者的域名几乎都是在 <code>腾讯云</code> 上购买的，并且使用 <code>DNSPod</code> 进行解析，故以下所有的方案都是聚焦于 <code>DNSPod</code>。</p>
+<h3 id="第一版方案"><a href="#第一版方案" class="headerlink" title="第一版方案"></a>第一版方案</h3><p>去 DNSPod 开源社区寻找 <code>IPv6-ddns</code> 的解决方案。不得不说，很多工具都写的很棒，代码写的很漂亮，但是都不适用笔者，主要原因为，笔者的设备太多了，所搭载的系统也太杂了，导致那些工具即使为了提高兼容性，采用 <code>纯Python</code> 和 <code>纯Shell</code> 编写，也无法满足所有设备，比如 <code>ESXi</code>，这家伙虽然底层是 <code>Linux</code>，但是魔改了很多，无论是 <code>Shell</code> 还是 <code>Python</code> 环境，都是阉割过的，实测大部分工具都无法正常运行；另一方面，如果遇到多网卡（含虚拟网卡）的场景，那些工具很难获取到准确的且公网可达的本地 <code>IPv6地址</code>。</p>
+<h3 id="第二版方案"><a href="#第二版方案" class="headerlink" title="第二版方案"></a>第二版方案</h3><p>为了解决 <em>第一版方案</em> 的两个痛点：</p>
+<ol>
+<li>如何获取到准确的 <code>IPv6</code> 地址</li>
+<li>如何能在 <em>几乎</em> 所有系统上都适用（除开Windows，因为笔者几乎不用）</li>
+</ol>
+<p>针对 <code>痛点1</code>：既然通过读取网卡信息无法做到准确地获取公网可达的 <code>IPv6地址</code>，那就更换思路，网上不是有很多查询自身 <code>IPv6地址</code> 吗，比如 <code>api6.ipify.org</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl api6.ipify.org</span><br><span class="line">240e:47b:1660:4939:881f:1234:5678:9abc</span><br></pre></td></tr></table></figure>
+
+<p>因为几乎所有的系统都预装了 <code>curl</code> 或者 <code>wget</code>（比如 <code>ESXi</code> 无 <code>curl</code> 但内置了阉割版的 <code>wget</code>），所以 <code>痛点1</code> 完美解决。</p>
+<p>同时也给解决 <code>痛点2</code> 提供了思路：如果我在自己的云主机上部署一个服务，设备定期将自己的 <code>IPv6地址</code> 和与其绑定的域名通过 <code>curl</code> / <code>wget</code> 提交给该服务，让该服务在云主机上代理进行 <code>ddns</code>，将新解析提交给 DNSPod，不就解决了吗？</p>
+<p>于是笔者：</p>
+<ol>
+<li>参考 <code>DNSPod API</code> 用 <code>NodeJS</code> 写了一个 <code>ddns代理</code> 的服务部署在云主机上（用 <code>NodeJS</code> 进行编写的原因仅仅是当时的工作内容和 <code>NodeJS</code> 相关，顺手而已）</li>
+<li>各设备上用 <code>cron</code> 或 <code>while + sleep</code> 定时（笔者设定的是1分钟）先从 <code>api6.ipify.org</code> 获取本机 <code>IPv6地址</code> 再向该 <code>ddns代理服务</code> 提交。</li>
+</ol>
+<p>Perfect！</p>
+<h3 id="第三版方案"><a href="#第三版方案" class="headerlink" title="第三版方案"></a>第三版方案</h3><p><code>第二版</code> 方案用的挺舒心的，但是运行了一段时间发现，出问题了，我好多设备都每分钟请求一次，还挺频繁的，导致 <code>api6.ipify.org</code> 限流，拒绝返回。</p>
+<p>换用其他的 <code>IPv6地址查询服务</code>，也都一样，隔一段时间就可能被限流。</p>
+<p>所以笔者萌生了自己写一个 <code>IPv6地址查询服务</code>，只为自己提供服务，限不限流我自己说了算！</p>
+<p>这回为了造轮子能造的快点，放弃了 <code>NodeJS</code> 改用了 <code>PHP</code>，直接上代码：</p>
+<p><code>PHP</code> 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#x2F;home&#x2F;chaos&#x2F;IPChecker&#x2F;index.php</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">echo $_SERVER[&#39;REMOTE_ADDR&#39;];</span><br></pre></td></tr></table></figure>
+
+<p><code>Nginx</code> 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;ip-check.conf</span><br><span class="line">server &#123;</span><br><span class="line">  server_name ip.example.com ipv6.example.com;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen [::]:80;</span><br><span class="line"></span><br><span class="line">  root &#x2F;home&#x2F;chaos&#x2F;IPChecker;</span><br><span class="line">  location &#x2F; &#123;</span><br><span class="line">    try_files $uri $uri&#x2F; &#x2F;index.php;</span><br><span class="line">    fastcgi_pass unix:&#x2F;var&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock;</span><br><span class="line">    fastcgi_index index.php;</span><br><span class="line">    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">    include fastcgi_params;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是不是很简单，<code>PHP</code> 代码就只有一行代码 <code>echo $_SERVER[&#39;REMOTE_ADDR&#39;];</code>，即直接输出请求的来源地址，而且同时支持 <code>IPv4/IPv6</code>：</p>
+<ul>
+<li><code>curl ip.example.com</code> 返回 <code>IPv4</code> 公网地址</li>
+<li><code>curl ipv6.example.com</code> 返回 <code>IPv6</code> 公网地址</li>
+</ul>
+<p>（注：该服务只能部署在有 <code>IPv6</code> 地址的云主机上，因为 <code>IPv6</code> 只能访问 <code>IPv6</code>）</p>
+<h3 id="第四版方案"><a href="#第四版方案" class="headerlink" title="第四版方案"></a>第四版方案</h3><p>完成一次 <code>ddns</code>，要先从 <code>ipv6.chaosjohn.com</code> 获取 <code>IPv6地址</code>，再向 <code>ddns代理服务</code> 提交，得两步操作，太麻烦了。</p>
+<p>所以笔者决定把两项服务合二为一，依旧废话不多说，上代码：</p>
+<p>项目根目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ ls -alh &#x2F;home&#x2F;chaos&#x2F;ddns-dnspod</span><br><span class="line">total 88K</span><br><span class="line">drwxrwxr-x  4 chaos chaos 4.0K Nov  3 06:57 .</span><br><span class="line">drwxr-xr-x 23 chaos chaos 4.0K Dec 16 15:30 ..</span><br><span class="line">-rw-rw-r--  1 chaos chaos   75 Nov  2 09:24 composer.json</span><br><span class="line">-rw-rw-r--  1 chaos chaos 2.7K Nov  2 09:24 composer.lock</span><br><span class="line">-rw-rw-r--  1 chaos chaos   71 Nov  3 01:46 config.ini</span><br><span class="line">-rw-rw-r--  1 chaos chaos   53 Nov  3 05:54 config-sample.ini</span><br><span class="line">drwxrwxr-x  8 chaos chaos 4.0K Nov  3 06:57 .git</span><br><span class="line">-rw-rw-r--  1 chaos chaos  524 Nov  3 05:57 .gitignore</span><br><span class="line">-rw-rw-r--  1 chaos chaos 2.7K Nov  3 02:59 index.php</span><br><span class="line">-rw-rw-r--  1 chaos chaos  35K Nov  3 06:02 LICENSE</span><br><span class="line">-rw-r--r--  1 chaos chaos  358 Nov  2 14:04 nginx.conf</span><br><span class="line">-rw-r--r--  1 chaos chaos  362 Nov  3 05:53 nginx-sample.conf</span><br><span class="line">-rw-rw-r--  1 chaos chaos  941 Nov  3 06:57 README.md</span><br><span class="line">drwxrwxr-x  4 chaos chaos 4.0K Nov  2 09:24 vendor</span><br></pre></td></tr></table></figure>
+
+<p>配置文件（其中 <code>token</code> 是 <code>DNSPod</code> 密钥管理里的 <code>ID,token</code>，形如 <code>30345,ac0000000918368b1cfa16f4fc6e28cd</code>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#x2F;home&#x2F;chaos&#x2F;ddns-dnspod&#x2F;config.ini</span><br><span class="line">[config]</span><br><span class="line">token &#x3D; &#39;YOUR-DNSPOD-TOKEN&#39;</span><br><span class="line">key &#x3D; &#39;YOUR-KEY&#39;</span><br></pre></td></tr></table></figure>
+
+<p><code>PHP</code> 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#x2F;home&#x2F;chaos&#x2F;ddns-dnspod&#x2F;index.php</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">require __DIR__ . &#39;&#x2F;vendor&#x2F;autoload.php&#39;;</span><br><span class="line"></span><br><span class="line">use Curl\Curl;</span><br><span class="line">$curl &#x3D; new Curl();</span><br><span class="line"></span><br><span class="line">$ini_array &#x3D; parse_ini_file(&#39;config.ini&#39;, true);</span><br><span class="line"></span><br><span class="line">$token &#x3D; $ini_array[&#39;config&#39;][&#39;token&#39;]; &#x2F;&#x2F; dnspod token</span><br><span class="line">$required_key &#x3D; $ini_array[&#39;config&#39;][&#39;key&#39;];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;echo $_SERVER[&#39;HTTP_X_REAL_IP&#39;];</span><br><span class="line">$address &#x3D; $_SERVER[&#39;REMOTE_ADDR&#39;];</span><br><span class="line">$isIPv6 &#x3D; strpos($address, &#39;:&#39;) &gt; -1;</span><br><span class="line">$type &#x3D; $isIPv6 ? &#39;AAAA&#39; : &#39;A&#39;;</span><br><span class="line">$domain &#x3D; $_GET[&#39;domain&#39;];</span><br><span class="line">$sub &#x3D; $_GET[&#39;sub&#39;];</span><br><span class="line">$key &#x3D; $_GET[&#39;key&#39;];</span><br><span class="line"></span><br><span class="line">if (!$domain || !$sub || 0 !&#x3D; strcmp($key, $required_key)) exit;</span><br><span class="line"></span><br><span class="line">$output &#x3D; [</span><br><span class="line">  &#39;domain&#39; &#x3D;&gt; $domain,</span><br><span class="line">  &#39;sub&#39; &#x3D;&gt; $sub,</span><br><span class="line">  &#39;type&#39; &#x3D;&gt; $type,</span><br><span class="line">  &#39;address&#39; &#x3D;&gt; $address</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$form &#x3D; &quot;login_token&#x3D;$&#123;token&#125;&amp;format&#x3D;json&amp;domain&#x3D;$&#123;domain&#125;&amp;sub_domain&#x3D;$&#123;sub&#125;&amp;record_type&#x3D;$&#123;type&#125;&amp;record_line_id&#x3D;0&quot;;</span><br><span class="line">$response &#x3D; $curl-&gt;post(&#39;https:&#x2F;&#x2F;dnsapi.cn&#x2F;Record.List&#39;, $form);</span><br><span class="line">if ($curl-&gt;error) &#123;</span><br><span class="line">  $output[&#39;msg&#39;] &#x3D; &#39;Record.List Error&#39; . $curl-&gt;errorCode . &#39;: &#39; . $curl-&gt;errorMessage . &quot;\n&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  $records &#x3D; $response-&gt;records;  </span><br><span class="line">  if (null &#x3D;&#x3D; $records) $records &#x3D; [];</span><br><span class="line">  $records &#x3D; array_filter($records, function($record) use($type) &#123; </span><br><span class="line">    return 0 &#x3D;&#x3D; strcmp($record-&gt;type, $type); </span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  if (count($records) &gt; 0) &#123; &#x2F;&#x2F; if record exists</span><br><span class="line">    $record &#x3D; $records[0];</span><br><span class="line">    if (0 &#x3D;&#x3D; strcmp($record-&gt;value, $address)) &#123; &#x2F;&#x2F; skip if same</span><br><span class="line">      $output[&#39;msg&#39;] &#x3D; &#39;Same record. Skipped&#39;;</span><br><span class="line">      echo json_encode($output);</span><br><span class="line">      exit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; update record</span><br><span class="line">    $record_id &#x3D; $record-&gt;id;</span><br><span class="line">    $form &#x3D; &quot;login_token&#x3D;$&#123;token&#125;&amp;format&#x3D;json&amp;domain&#x3D;$&#123;domain&#125;&amp;record_id&#x3D;$&#123;record_id&#125;&amp;sub_domain&#x3D;$&#123;sub&#125;&amp;value&#x3D;$&#123;address&#125;&amp;record_type&#x3D;$&#123;type&#125;&amp;record_line_id&#x3D;0&quot;;</span><br><span class="line">    $response &#x3D; $curl-&gt;post(&#39;https:&#x2F;&#x2F;dnsapi.cn&#x2F;Record.Modify&#39;, $form);</span><br><span class="line">    if ($curl-&gt;error) &#123;</span><br><span class="line">      $output[&#39;msg&#39;] &#x3D; &#39;Record.Modify Error&#39; . $curl-&gt;errorCode . &#39;: &#39; . $curl-&gt;errorMessage . &quot;\n&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (null !&#x3D; $response-&gt;status &amp;&amp; null !&#x3D; $response-&gt;status-&gt;code &amp;&amp; &#39;1&#39; &#x3D;&#x3D; $response-&gt;status-&gt;code) &#123;</span><br><span class="line">        $output[&#39;msg&#39;] &#x3D; &#39;Modification succeeded&#39;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        $output &#x3D; $response;</span><br><span class="line">        $output-&gt;action &#x3D; &#39;Record.Modify&#39;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123; &#x2F;&#x2F; record not exists &#x3D;&gt; create </span><br><span class="line">    $form &#x3D; &quot;login_token&#x3D;$&#123;token&#125;&amp;format&#x3D;json&amp;domain&#x3D;$&#123;domain&#125;&amp;sub_domain&#x3D;$&#123;sub&#125;&amp;record_type&#x3D;$&#123;type&#125;&amp;record_line_id&#x3D;0&amp;value&#x3D;$&#123;address&#125;&quot;;</span><br><span class="line">    $response &#x3D; $curl-&gt;post(&#39;https:&#x2F;&#x2F;dnsapi.cn&#x2F;Record.Create&#39;, $form);</span><br><span class="line">    if ($curl-&gt;error) &#123;</span><br><span class="line">      $output[&#39;msg&#39;] &#x3D; &#39;Record.Create Error&#39; . $curl-&gt;errorCode . &#39;: &#39; . $curl-&gt;errorMessage . &quot;\n&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      if (null !&#x3D; $response-&gt;status &amp;&amp; null !&#x3D; $response-&gt;status-&gt;code &amp;&amp; &#39;1&#39; &#x3D;&#x3D; $response-&gt;status-&gt;code) &#123;</span><br><span class="line">        $output[&#39;msg&#39;] &#x3D; &#39;Creation succeeded&#39;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        $output &#x3D; $response;</span><br><span class="line">        $output-&gt;action &#x3D; &#39;Record.Create&#39;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">echo json_encode($output, JSON_UNESCAPED_UNICODE);</span><br></pre></td></tr></table></figure>
+
+<p><code>Nginx</code> 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;ddns-dnspod.conf</span><br><span class="line">server &#123;</span><br><span class="line">  server_name ddns.example.com ddns6.example.com;</span><br><span class="line">  listen 80;</span><br><span class="line">  listen [::]:80;</span><br><span class="line"></span><br><span class="line">  root &#x2F;home&#x2F;chaos&#x2F;ddns-dnspod;</span><br><span class="line">  location &#x2F; &#123;</span><br><span class="line">    try_files $uri $uri&#x2F; &#x2F;index.php;</span><br><span class="line">    fastcgi_pass unix:&#x2F;var&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock;</span><br><span class="line">    fastcgi_index index.php;</span><br><span class="line">    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">    include fastcgi_params;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体使用：</p>
+<ul>
+<li>有 <code>cron</code> 的话，在 <code>crontab</code> 里添加一行：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * logfile&#x3D;&#39;&#x2F;tmp&#x2F;ddns6.log&#39;; echo &quot;\n$(date)&quot; &gt;&gt; $logfile &amp;&amp; curl &#39;http:&#x2F;&#x2F;ddns6.example.com?key&#x3D;YOUR-KEY&amp;domain&#x3D;DOMAIN&amp;sub&#x3D;SUBDOMAIN&#39; &gt;&gt; $logfile</span><br></pre></td></tr></table></figure></li>
+<li>无 <code>cron</code> 的话，使用 <code>while + sleep</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while true; do logfile&#x3D;&#39;&#x2F;tmp&#x2F;ddns6.log&#39;; echo &quot;\n$(date)&quot; &gt;&gt; $logfile &amp;&amp; curl &#39;http:&#x2F;&#x2F;ddns6.example.com?key&#x3D;YOUR-KEY&amp;domain&#x3D;DOMAIN&amp;sub&#x3D;SUBDOMAIN&#39; &gt;&gt; $logfile; sleep 1; done</span><br></pre></td></tr></table></figure></li>
+<li>如果没有 <code>curl</code>，只有 <code>wget</code> 的话，将 <code>curl [url]</code> 替换为 <code>wget -q -O - [url]</code></li>
+</ul>
+<p>代码笔者已经上传到 <code>Github</code>，如何部署请移步 <a target="_blank" rel="noopener" href="https://github.com/ChaosJohn/ddns-dnspod">ChaosJohn/ddns-dnspod</a> 参考哈（喜欢的话给个 Star 呗）</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><code>所有联网设备都可随时随地访问</code> 这个梦想最终通过 <code>IPv6</code> 完美达成了。</p>
+<p>期间经历了多个方案，终于在 <code>折腾之路</code> 上告一段落了。</p>
+<p>如果后期有更优解，笔者还会回来的！</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/ddns-for-dnspod.html" data-id="ckirbvq890003q96p4tmr4p3a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "IPv4/IPv6 双栈 ddns (DNSPod版)",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/ddns-for-dnspod/banner.png",
+        "keywords": "ddns",
+        "genre": "",
+        "datePublished": "2020-12-16",
+        "dateCreated": "2020-12-16",
+        "dateModified": "2020-12-17",
+        "url": "https://blog.chaosjohn.com/ddns-for-dnspod.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+前言笔者很早以前就有一个梦想，即：我所有的联网设备，都要能随时随地访问到。比如在公司访问我家里的电脑和 NAS，以及在家里访问公司的工作电脑。
+于是笔者开始了漫长的折腾之路：
+
+最开始，家里和公司都是电信宽带，我就不厌其烦地骚扰电信客服，申请公网IP。当路由器分配到了公网IP后，配合 DMZ 和 端口映射，就能将路由器",
+        "wordCount": 1294
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Check-VT-D-or-IOMMU-under-Linux.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Linux 下检查 VT-d / IOMMU 是否开启</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/ddns-for-dnspod.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/ddns-for-dnspod/banner.png)" alt="IPv4/IPv6 双栈 ddns (DNSPod版)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/ddns-for-dnspod.html" class="title">IPv4/IPv6 双栈 ddns (DNSPod版)</a></p>
+                            <p class="item-date"><time datetime="2020-12-16T11:25:06.000Z" itemprop="datePublished">2020-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Check-VT-D-or-IOMMU-under-Linux.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Check-VT-D-or-IOMMU-under-Linux/banner.png)" alt="Linux 下检查 VT-d / IOMMU 是否开启" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Check-VT-D-or-IOMMU-under-Linux.html" class="title">Linux 下检查 VT-d / IOMMU 是否开启</a></p>
+                            <p class="item-date"><time datetime="2020-12-15T12:43:47.000Z" itemprop="datePublished">2020-12-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Delete-binlog-in-MySQL.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png)" alt="删除/清理 MySQL 的 binlog" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Delete-binlog-in-MySQL.html" class="title">删除/清理 MySQL 的 binlog</a></p>
+                            <p class="item-date"><time datetime="2020-12-14T08:43:16.000Z" itemprop="datePublished">2020-12-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Swap-column-values-in-MySQL.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Swap-column-values-in-MySQL/banner.png)" alt="MySQL 交换两列值" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Swap-column-values-in-MySQL.html" class="title">MySQL 交换两列值</a></p>
+                            <p class="item-date"><time datetime="2020-12-13T12:16:41.000Z" itemprop="datePublished">2020-12-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Fix-PAC-mode-of-V2RayX-not-working.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/banner.png)" alt="修复 V2RayX 的 PAC 模式失效" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Fix-PAC-mode-of-V2RayX-not-working.html" class="title">修复 V2RayX 的 PAC 模式失效</a></p>
+                            <p class="item-date"><time datetime="2020-12-12T16:41:13.000Z" itemprop="datePublished">2020-12-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APFS/" rel="tag">APFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crack/" rel="tag">Crack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Developer/" rel="tag">Developer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hardware/" rel="tag">Hardware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homebrew/" rel="tag">Homebrew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPv6/" rel="tag">IPv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X-macOS/" rel="tag">OS X & macOS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAC/" rel="tag">PAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Skills/" rel="tag">Skills</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Software/" rel="tag">Software</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThinkPad/" rel="tag">ThinkPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Toy/" rel="tag">Toy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TrackPoint/" rel="tag">TrackPoint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Utility/" rel="tag">Utility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VMware/" rel="tag">VMware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtualization/" rel="tag">Virtualization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddns/" rel="tag">ddns</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/" rel="tag">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fix/" rel="tag">fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iCloud/" rel="tag">iCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcat/" rel="tag">netcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-manager/" rel="tag">package manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/" rel="tag">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/" rel="tag">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xdebug/" rel="tag">xdebug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/APFS/" style="font-size: 10px;">APFS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crack/" style="font-size: 10px;">Crack</a> <a href="/tags/Dev/" style="font-size: 10px;">Dev</a> <a href="/tags/Developer/" style="font-size: 10px;">Developer</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X-macOS/" style="font-size: 20px;">OS X & macOS</a> <a href="/tags/PAC/" style="font-size: 10px;">PAC</a> <a href="/tags/Skills/" style="font-size: 10px;">Skills</a> <a href="/tags/Software/" style="font-size: 18px;">Software</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/ThinkPad/" style="font-size: 10px;">ThinkPad</a> <a href="/tags/Toy/" style="font-size: 10px;">Toy</a> <a href="/tags/TrackPoint/" style="font-size: 10px;">TrackPoint</a> <a href="/tags/Utility/" style="font-size: 10px;">Utility</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/Virtualization/" style="font-size: 10px;">Virtualization</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/ddns/" style="font-size: 10px;">ddns</a> <a href="/tags/debug/" style="font-size: 12px;">debug</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/fix/" style="font-size: 10px;">fix</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/iCloud/" style="font-size: 10px;">iCloud</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/netcat/" style="font-size: 12px;">netcat</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/package-manager/" style="font-size: 10px;">package manager</a> <a href="/tags/php/" style="font-size: 16px;">php</a> <a href="/tags/port-forwarding/" style="font-size: 12px;">port-forwarding</a> <a href="/tags/proxy/" style="font-size: 12px;">proxy</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 14px;">shell</a> <a href="/tags/tool/" style="font-size: 12px;">tool</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/xdebug/" style="font-size: 12px;">xdebug</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Chaos John</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-chaosjohn';
+    
+    
+    var disqus_url = 'https://blog.chaosjohn.com/ddns-for-dnspod.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
