@@ -261,3 +261,8 @@ while true; do logfile='/tmp/ddns6.log'; echo "\n$(date)" >> $logfile && curl 'h
 期间经历了多个方案，终于在 `折腾之路` 上告一段落了。
 
 如果后期有更优解，笔者还会回来的！
+
+---
+
+最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
+![](https://image.blog.chaosjohn.com/donate-me.png)
