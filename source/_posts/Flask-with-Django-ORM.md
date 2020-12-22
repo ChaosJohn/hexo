@@ -2,7 +2,7 @@
 title: 在 Flask 中集成 Django 的 ORM 模块
 date: 2020-12-18 18:16:47
 tags: [Python, Flask, Django, ORM]
-thumbnail: https://image.blog.chaosjohn.com/Flask-with-Django-ORM/banner.png
+thumbnail: https://image.blog.chaosjohn.com/Flask-with-Django-ORM/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Flask-with-Django-ORM.html)
