@@ -6,29 +6,29 @@
     
 
     
-    <title>在 Linux 和 Mac 上更改 hostname | 湿科技</title>
+    <title>SpringBoot @ConfigurationProperties | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="OS X &amp; macOS,shell,Linux,hostname" />
+    <meta name="keywords" content="jvm,java,SpringBoot,kotlin" />
     
-    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 oh-my-zsh，并且对 RPROMPT 进行了自定义 笔者设置的是: 日期 + 时间 + 主机名(hostname) 因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 hostname 对于笔者就格外重要，可以方便笔者一目了然">
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景SpringBoot + kotlin 在 SpringBoot 项目中，我们经常在配置文件application.properties 或 application.yml 中存放配置参数。 网上很少有 kotlin 版本的使用教程&#x2F;案例，所以就有了本文 简单场景: @Value如果只是偶尔在业务中获取一下配置值，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在 Linux 和 Mac 上更改 hostname">
-<meta property="og:url" content="https://blog.chaosjohn.com/Modify-hostname.html">
+<meta property="og:title" content="SpringBoot @ConfigurationProperties">
+<meta property="og:url" content="https://blog.chaosjohn.com/SpringBoot-ConfigurationProperties.html">
 <meta property="og:site_name" content="湿科技">
-<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 oh-my-zsh，并且对 RPROMPT 进行了自定义 笔者设置的是: 日期 + 时间 + 主机名(hostname) 因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 hostname 对于笔者就格外重要，可以方便笔者一目了然">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 背景SpringBoot + kotlin 在 SpringBoot 项目中，我们经常在配置文件application.properties 或 application.yml 中存放配置参数。 网上很少有 kotlin 版本的使用教程&#x2F;案例，所以就有了本文 简单场景: @Value如果只是偶尔在业务中获取一下配置值，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://image.blog.chaosjohn.com/Modify-hostname/banner.png">
-<meta property="article:published_time" content="2020-12-21T13:26:22.000Z">
-<meta property="article:modified_time" content="2020-12-22T07:21:21.031Z">
+<meta property="og:image" content="https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/banner.jpg">
+<meta property="article:published_time" content="2020-12-31T06:34:46.000Z">
+<meta property="article:modified_time" content="2020-12-31T10:24:46.076Z">
 <meta property="article:author" content="Chaos John">
-<meta property="article:tag" content="OS X &amp; macOS">
-<meta property="article:tag" content="shell">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="hostname">
+<meta property="article:tag" content="jvm">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="kotlin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://image.blog.chaosjohn.com/Modify-hostname/banner.png">
+<meta name="twitter:image" content="https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/banner.jpg">
     
 
     
@@ -162,14 +162,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Modify-hostname" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SpringBoot-ConfigurationProperties" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        在 Linux 和 Mac 上更改 hostname
+        SpringBoot @ConfigurationProperties
         </h1>
     
 
@@ -180,16 +180,16 @@
                 
   <div class="article-date">
     <i class="fa fa-calendar"></i>
-    <a href="/Modify-hostname.html" class="article-date">
-       <time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time>
+    <a href="/SpringBoot-ConfigurationProperties.html" class="article-date">
+       <time datetime="2020-12-31T06:34:46.000Z" itemprop="datePublished">2020-12-31</time>
     </a>
   </div>
 
 
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
-  <a href="/Modify-hostname.html" class="article-date">
-     <time datetime="2020-12-22T07:21:21.031Z" itemprop="dateModified">2020-12-22</time>
+  <a href="/SpringBoot-ConfigurationProperties.html" class="article-date">
+     <time datetime="2020-12-31T10:24:46.076Z" itemprop="dateModified">2020-12-31</time>
   </a>
 </div>
 
@@ -199,7 +199,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="tag-link-link" href="/tags/OS-X-macOS/" rel="tag">OS X & macOS</a>, <a class="tag-link-link" href="/tags/hostname/" rel="tag">hostname</a>, <a class="tag-link-link" href="/tags/shell/" rel="tag">shell</a>
+        <a class="tag-link-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a>, <a class="tag-link-link" href="/tags/java/" rel="tag">java</a>, <a class="tag-link-link" href="/tags/jvm/" rel="tag">jvm</a>, <a class="tag-link-link" href="/tags/kotlin/" rel="tag">kotlin</a>
     </div>
 
                 
@@ -216,37 +216,58 @@
 
             
 
-            <p><a href="https://blog.chaosjohn.com/Modify-hostname.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 <code>oh-my-zsh</code>，并且对 <code>RPROMPT</code> 进行了自定义<br><img src="https://image.blog.chaosjohn.com/Modify-hostname/oh-my-zsh-prompt.png" alt="oh-my-zsh 自定义 PROMPT"></p>
-<p>笔者设置的是: 日期 + 时间 + 主机名(hostname)</p>
-<p>因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 <code>hostname</code> 对于笔者就格外重要，可以方便笔者一目了然的知道当前终端连接的是哪台机子。</p>
-<p>当然，前提是，每台机子都要预先设定 <code>hostname</code></p>
-<h2 id="设定方法"><a href="#设定方法" class="headerlink" title="设定方法"></a>设定方法</h2><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><p>*<strong>nix</strong> 系统（Linux &amp; macOS &amp; FreeBSD &amp; …）通用的设定 <code>hostname</code> 的方法为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hostname &lt;NEW HOSTNAME&gt;</span><br></pre></td></tr></table></figure>
+            <p><a href="https://blog.chaosjohn.com/source/_posts/SpringBoot-ConfigurationProperties.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><code>SpringBoot</code> + <code>kotlin</code></p>
+<p>在 <code>SpringBoot</code> 项目中，我们经常在配置文件<code>application.properties</code> 或 <code>application.yml</code> 中存放配置参数。</p>
+<p>网上很少有 <code>kotlin</code> 版本的使用教程/案例，所以就有了本文</p>
+<h2 id="简单场景-Value"><a href="#简单场景-Value" class="headerlink" title="简单场景: @Value"></a>简单场景: <code>@Value</code></h2><p>如果只是偶尔在业务中获取一下配置值，可以使用 <code>@Value</code> 注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Value(value &#x3D; &quot;\$&#123;server.port&#125;&quot;)</span><br><span class="line">lateinit var port: String</span><br></pre></td></tr></table></figure>
 
-<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>如果安装了 <code>systemd</code> 的话，可以借助 <code>hostnamectl</code></p>
-<p>我们来看一下它的帮助：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ hostnamectl -h</span><br><span class="line">hostnamectl [OPTIONS...] COMMAND ...</span><br><span class="line"></span><br><span class="line">Query or change system hostname.</span><br><span class="line"></span><br><span class="line">  -h --help              Show this help</span><br><span class="line">     --version           Show package version</span><br><span class="line">     --no-ask-password   Do not prompt for password</span><br><span class="line">  -H --host&#x3D;[USER@]HOST  Operate on remote host</span><br><span class="line">  -M --machine&#x3D;CONTAINER Operate on local container</span><br><span class="line">     --transient         Only set transient hostname</span><br><span class="line">     --static            Only set static hostname</span><br><span class="line">     --pretty            Only set pretty hostname</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  status                 Show current hostname settings</span><br><span class="line">  set-hostname NAME      Set system hostname</span><br><span class="line">  set-icon-name NAME     Set icon name for host</span><br><span class="line">  set-chassis NAME       Set chassis type for host</span><br><span class="line">  set-deployment NAME    Set deployment environment for host</span><br><span class="line">  set-location NAME      Set location for host</span><br></pre></td></tr></table></figure>
+<p>需要用的地方，调用 <code>port</code> 变量直接就能访问配置文件中的 <code>server.port</code> 值</p>
+<h2 id="使用-ConfigurationProperties"><a href="#使用-ConfigurationProperties" class="headerlink" title="使用 @ConfigurationProperties"></a>使用 <code>@ConfigurationProperties</code></h2><h3 id="环境准备-开启-annotationProcessor"><a href="#环境准备-开启-annotationProcessor" class="headerlink" title="环境准备: 开启 annotationProcessor"></a>环境准备: 开启 <code>annotationProcessor</code></h3><p>如果不开启的话，<code>IDEA</code> 则会提示报错 <code>Spring Boot Configuration Annotation Processor not configured</code> <img src="https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/Configuration-Annotation-Processor-not-configured-error.png" alt="annotation processor 报错"></p>
+<p>所以，在 <code>build.gradle.kts</code> 文件的 <code>dependencies</code> 块里添加以下行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    annotationProcessor(&quot;org.springframework.boot:spring-boot-configuration-processor&quot;)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>所以我们设定 <code>hostname</code>，可以用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hostnamectl set-hostname &lt;NEW HOSTNAME&gt;</span><br></pre></td></tr></table></figure>
+<p>在 <code>Preferences</code> -&gt; <code>Build, Execution, Deployment</code> -&gt; <code>Compiler</code> -&gt; <code>Annotation Processors</code> 中将 <code>Enable annotation processing</code> 勾选上</p>
+<h3 id="示例-application-yml"><a href="#示例-application-yml" class="headerlink" title="示例 application.yml"></a>示例 <code>application.yml</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 9090</span><br><span class="line">greeting: Hello</span><br><span class="line">greetings:</span><br><span class="line">  EN: Hello</span><br><span class="line">  ES: Hola</span><br><span class="line">  DE: Hallo</span><br><span class="line">  CN: 你好</span><br><span class="line">user:</span><br><span class="line">  name: Chaos</span><br><span class="line">  gender: male</span><br><span class="line">  age: 21</span><br><span class="line">product:</span><br><span class="line">  name: picture</span><br><span class="line">  seller: chaos</span><br><span class="line">  price: 12.3</span><br><span class="line">  weight: 2</span><br><span class="line">order:</span><br><span class="line">  id: 1234d5</span><br><span class="line">  paid: true</span><br></pre></td></tr></table></figure>
 
-<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p><code>macOS</code> 的话，还可以借助于 <code>scutil</code></p>
-<p>看一下帮助：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">$ scutil --help</span><br><span class="line">usage: scutil</span><br><span class="line">	interactive access to the dynamic store.</span><br><span class="line"></span><br><span class="line">   or: scutil --prefs [preference-file]</span><br><span class="line">	interactive access to the [raw] stored preferences.</span><br><span class="line"></span><br><span class="line">   or: scutil [-W] -r nodename</span><br><span class="line">   or: scutil [-W] -r address</span><br><span class="line">   or: scutil [-W] -r local-address remote-address</span><br><span class="line">	check reachability of node, address, or address pair (-W to &quot;watch&quot;).</span><br><span class="line"></span><br><span class="line">   or: scutil -w dynamic-store-key [ -t timeout ]</span><br><span class="line">	-w	wait for presense of dynamic store key</span><br><span class="line">	-t	time to wait for key</span><br><span class="line"></span><br><span class="line">   or: scutil --get pref</span><br><span class="line">   or: scutil --set pref [newval]</span><br><span class="line">   or: scutil --get filename path key</span><br><span class="line">	pref	display (or set) the specified preference.  Valid preferences</span><br><span class="line">		include:</span><br><span class="line">			ComputerName, LocalHostName, HostName</span><br><span class="line">	newval	New preference value to be set.  If not specified,</span><br><span class="line">		the new value will be read from standard input.</span><br><span class="line"></span><br><span class="line">   or: scutil --dns</span><br><span class="line">	show DNS configuration.</span><br><span class="line"></span><br><span class="line">   or: scutil --proxy</span><br><span class="line">	show &quot;proxy&quot; configuration.</span><br><span class="line"></span><br><span class="line">   or: scutil --nwi</span><br><span class="line">	show network information</span><br><span class="line"></span><br><span class="line">   or: scutil --nc</span><br><span class="line">	show VPN network configuration information. Use --nc help for full command list</span><br><span class="line"></span><br><span class="line">   or: scutil --allow-new-interfaces [off|on]</span><br><span class="line">	manage new interface creation with screen locked.</span><br><span class="line"></span><br><span class="line">   or: scutil --error err#</span><br><span class="line">	display a descriptive message for the given error code</span><br></pre></td></tr></table></figure>
+<h3 id="ConfigurationProperties-配置-prefix"><a href="#ConfigurationProperties-配置-prefix" class="headerlink" title="@ConfigurationProperties 配置 prefix"></a><code>@ConfigurationProperties</code> 配置 <code>prefix</code></h3><p>如果不指定 <code>prefix</code>，<code>IDEA</code> 会提示警告 <code>Prefix must be specified</code> <img src="https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/prefix-must-be-specified-warning.png" alt="prefix 警告"></p>
+<p>对于 <code>greeting</code>，它的 <code>prefix</code> 为 <code>空</code>，但是如果指定为 <code>空字符串</code> 的话 <code>IDEA</code> 又会提示报错 <code>Prefix must be non-empty</code> <img src="https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/prefix-must-be-non-empty.png" alt="prefix 非空报错"></p>
+<p>所以建议使用 <code>多级配置</code>，类似于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user:</span><br><span class="line">  name: Chaos</span><br><span class="line">  gender: male</span><br><span class="line">  age: 21</span><br></pre></td></tr></table></figure>
+<p>对于 <code>name/gender/age</code>，其 <code>prefix</code> 为 <code>user</code></p>
+<h3 id="激活-ConfigurationProperties"><a href="#激活-ConfigurationProperties" class="headerlink" title="激活 @ConfigurationProperties"></a>激活 <code>@ConfigurationProperties</code></h3><p>以 <code>UserProperties</code>类 举例，假设它的包名为 <code>com.chaosjohn.tutorial.configuration_property</code>，如何让 Spring 知道该类的存在呢？</p>
+<p>有以下几种方法：</p>
+<ol>
+<li>增加注解 <code>@ConfigurationPropertiesScan</code></li>
+<li>增加注解 <code>@EnableConfigurationProperties(value = [UserProperties::class])</code></li>
+<li>在类上增加注解 <code>@Component</code></li>
+<li>在 <code>@Configuration</code> 注解的类内手动创建 <code>@Bean</code></li>
+</ol>
+<h3 id="采用-class-作为-Properties-类"><a href="#采用-class-作为-Properties-类" class="headerlink" title="采用 class 作为 Properties 类"></a>采用 <code>class</code> 作为 Properties 类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;product&quot;)</span><br><span class="line">class ProductProperties &#123;</span><br><span class="line">    lateinit var name: String</span><br><span class="line">    var seller: String &#x3D; &quot;&quot;</span><br><span class="line">    var price by Delegates.notNull&lt;Double&gt;()</span><br><span class="line">    var weight: Int &#x3D; 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>我们可以看到，<code>scutil</code> 可以设置 <code>ComputerName</code> / <code>LocalHostName</code> / <code>HostName</code>。那三者有什么区别呢？</p>
+<p>参数可以给定默认值进行初始化，但生成 <code>Bean</code> 时，会自动从配置文件读入参数值，除此以外：</p>
 <ul>
-<li><code>ComputerName</code>：电脑名称，如果用过 <code>Time Machine</code> 的话，可以在其备份文件夹内看到以 <code>ComputerName.backupbundle</code> 命名的文件，其存的就是对应电脑的历史备份 <img src="https://image.blog.chaosjohn.com/Modify-hostname/time-machine-backup-as-computer-name.png" alt="Time Machine 备份"></li>
-<li><code>LocalHostName</code>：局域网(<code>Bonjour</code>)内对外宣告的主机名，例如 <code>machine007.local</code>，则局域网内其他机子，可以通过 <code>machine007.local</code> 直接解析出局域网IP，进而直接访问到本机</li>
-<li><code>HostName</code>：通常是 <code>LocalHostName</code> 去除尾部的 <code>.local</code>，也就是我们要设定的 <code>hostname</code></li>
+<li>对于非基本类型，可以用 <code>lateinit</code> 来延迟初始化</li>
+<li>对于基本类型（Primitive Type，比如 <code>Int</code> / <code>Double</code> / <code>Boolean</code>），可以选用 <code>by Delegates.notNull&lt;&gt;()</code></li>
 </ul>
-<p><img src="https://image.blog.chaosjohn.com/Modify-hostname/system-preferences-sharing.png" alt="“系统设置-&gt;共享”"></p>
-<p>所以我们设定 <code>hostname</code>，可以用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># scutil --set HostName &lt;NEW HOSTNAME&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="采用-data-class-作为-Properties-类"><a href="#采用-data-class-作为-Properties-类" class="headerlink" title="采用 data class 作为 Properties 类"></a>采用 <code>data class</code> 作为 Properties 类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@ConstructorBinding</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;user&quot;)</span><br><span class="line">data class UserProperties(</span><br><span class="line">    var name: String,</span><br><span class="line">    var gender: String,</span><br><span class="line">    var age: Int</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：</p>
+<p><code>@ConstructorBinding</code> 必不可少</p>
+<p><code>data class</code> 无法手动生成 <code>Bean</code></p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>通过构造函数传入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">class Controller(val userProperties: UserProperties) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过注解 <code>@Autowired</code> 注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">class Controller &#123;</span><br><span class="line">  </span><br><span class="line">  @Autowired</span><br><span class="line">  lateinit var userProperties: UserProperties</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="https://image.blog.chaosjohn.com/donate-me.png"></p>
+</li>
+</ul>
+<h3 id="关于-JSR303-验证"><a href="#关于-JSR303-验证" class="headerlink" title="关于 JSR303 验证"></a>关于 JSR303 验证</h3><p>亲测无法用于 <code>data class</code></p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/ChaosJohn/SpringBootConfigurationProperty.git">Github: ChaosJohn/SpringBootConfigurationProperty</a></p>
 
         </div>
         <footer class="article-footer">
@@ -254,7 +275,7 @@
 
 
 
-    <a data-url="https://blog.chaosjohn.com/Modify-hostname.html" data-id="ckizmnzd900014o6paxvof1ml" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://blog.chaosjohn.com/SpringBoot-ConfigurationProperties.html" data-id="ckjch452n0003htcj704m2n3o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -324,19 +345,20 @@
             "@type": "Person",
             "name": "Chaos John"
         },
-        "headline": "在 Linux 和 Mac 上更改 hostname",
-        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/Modify-hostname/banner.png",
-        "keywords": "OS X & macOS shell Linux hostname",
+        "headline": "SpringBoot @ConfigurationProperties",
+        "image": "https://blog.chaosjohn.comhttps://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/banner.jpg",
+        "keywords": "jvm java SpringBoot kotlin",
         "genre": "",
-        "datePublished": "2020-12-21",
-        "dateCreated": "2020-12-21",
-        "dateModified": "2020-12-22",
-        "url": "https://blog.chaosjohn.com/Modify-hostname.html",
+        "datePublished": "2020-12-31",
+        "dateCreated": "2020-12-31",
+        "dateModified": "2020-12-31",
+        "url": "https://blog.chaosjohn.com/SpringBoot-ConfigurationProperties.html",
         "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 oh-my-zsh，并且对 RPROMPT 进行了自定义
-笔者设置的是: 日期 + 时间 + 主机名(hostname)
-因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 hostname 对于笔者就格外重要，可以方便笔者一目了然",
-        "wordCount": 642
+背景SpringBoot + kotlin
+在 SpringBoot 项目中，我们经常在配置文件application.properties 或 application.yml 中存放配置参数。
+网上很少有 kotlin 版本的使用教程/案例，所以就有了本文
+简单场景: @Value如果只是偶尔在业务中获取一下配置值，",
+        "wordCount": 495
     }
 </script>
 
@@ -385,20 +407,10 @@
         
 <nav id="article-nav">
     
-        <a href="/Explanation-of-absense-for-a-week.html" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            缺席一周的解释
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/Flask-with-Django-ORM.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Explanation-of-absense-for-a-week.html" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">在 Flask 中集成 Django 的 ORM 模块</p>
+        <p class="article-nav-title">缺席一周的解释</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -608,7 +620,7 @@
     var disqus_shortname = 'hexo-chaosjohn';
     
     
-    var disqus_url = 'https://blog.chaosjohn.com/Modify-hostname.html';
+    var disqus_url = 'https://blog.chaosjohn.com/SpringBoot-ConfigurationProperties.html';
     
     (function() {
     var dsq = document.createElement('script');
