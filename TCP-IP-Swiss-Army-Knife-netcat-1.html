@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>TCP/IP 瑞士军刀 - netcat (篇一) | 湿科技</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="TCP/IP,netcat" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言本来打算写 端口转发(篇三) - netcat 但是中途发现 netcat 水很深，原因听我细细说来 netcat 被成为 TCP&#x2F;IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。 原版的 netcat 第一版在 199">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP&#x2F;IP 瑞士军刀 - netcat (篇一)">
+<meta property="og:url" content="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html">
+<meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 前言本来打算写 端口转发(篇三) - netcat 但是中途发现 netcat 水很深，原因听我细细说来 netcat 被成为 TCP&#x2F;IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。 原版的 netcat 第一版在 199">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg">
+<meta property="article:published_time" content="2020-12-10T07:53:50.000Z">
+<meta property="article:modified_time" content="2023-10-18T16:06:39.403Z">
+<meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta property="article:tag" content="netcat">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-TCP-IP-Swiss-Army-Knife-netcat-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        TCP/IP 瑞士军刀 - netcat (篇一)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/TCP-IP-Swiss-Army-Knife-netcat-1.html" class="article-date">
+       <time datetime="2020-12-10T07:53:50.000Z" itemprop="datePublished">2020-12-10</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/TCP-IP-Swiss-Army-Knife-netcat-1.html" class="article-date">
+     <time datetime="2023-10-18T16:06:39.403Z" itemprop="dateModified">2023-10-19</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a>, <a class="tag-link-link" href="/tags/netcat/" rel="tag">netcat</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a href="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来打算写 <em>端口转发(篇三) - netcat</em></p>
+<p>但是中途发现 <code>netcat</code> 水很深，原因听我细细说来</p>
+<p><code>netcat</code> 被成为 <code>TCP/IP</code> 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 <code>Linux 发行版</code> 中都默认安装。</p>
+<p>原版的 <code>netcat</code> 第一版在 <em>1995年10月28日</em> 被发布，且最后一个版本 <code>1.10</code> 发布于 <em>1996年3月</em>，被称之为 <code>tranditional netcat</code>。</p>
+<p>随后，为了兼容 <code>POSIX</code>，推出了不同实现的版本，最有名的为 <code>OpenBSD netcat</code> 和 <code>GNU netcat</code>：</p>
+<ul>
+<li><code>OpenBSD</code> 版本的支持 <code>IPv6</code> 和 <code>TLS</code></li>
+<li><code>GNU</code> 版本的支持 <code>-e</code> 参数，可以在建立连接后执行命令</li>
+</ul>
+<p>很有意思的是：</p>
+<ul>
+<li>大部分的 <code>Linux 发行版</code>，以及 <code>macOS</code> / <code>FreeBSD</code>，预装的都是 <code>OpenBSD netcat</code>，如果要使用 <code>GNU</code> 版的，得自行从包管理器安装。</li>
+<li><code>Windows</code> 上只有 <code>GNU netcat</code></li>
+</ul>
+<p><code>水很深</code> 的原因就在于，如果只用 <code>netcat</code> 进行端口转发，必须用到 <code>GNU</code> 版本的 <code>-e</code> 参数，所以就临时更改一下本文题材，讲解一下 <code>netcat</code> 的使用以及案例，且主要针对 <code>OpenBSD netcat</code>。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li>我们先调用 <code>nc -h</code> 来看一下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$ nc -h</span><br><span class="line">OpenBSD netcat (Debian patchlevel 1)</span><br><span class="line">usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]</span><br><span class="line">	  [-m minttl] [-O length] [-P proxy_username] [-p source_port]</span><br><span class="line">	  [-q seconds] [-s sourceaddr] [-T keyword] [-V rtable] [-W recvlimit]</span><br><span class="line">	  [-w timeout] [-X proxy_protocol] [-x proxy_address[:port]]</span><br><span class="line">	  [destination] [port]</span><br><span class="line">	Command Summary:</span><br><span class="line">		-4		Use IPv4</span><br><span class="line">		-6		Use IPv6</span><br><span class="line">		-b		Allow broadcast</span><br><span class="line">		-C		Send CRLF as line-ending</span><br><span class="line">		-D		Enable the debug socket option</span><br><span class="line">		-d		Detach from stdin</span><br><span class="line">		-F		Pass socket fd</span><br><span class="line">		-h		This help text</span><br><span class="line">		-I length	TCP receive buffer length</span><br><span class="line">		-i interval	Delay interval for lines sent, ports scanned</span><br><span class="line">		-k		Keep inbound sockets open for multiple connects</span><br><span class="line">		-l		Listen mode, for inbound connects</span><br><span class="line">		-M ttl		Outgoing TTL &#x2F; Hop Limit</span><br><span class="line">		-m minttl	Minimum incoming TTL &#x2F; Hop Limit</span><br><span class="line">		-N		Shutdown the network socket after EOF on stdin</span><br><span class="line">		-n		Suppress name&#x2F;port resolutions</span><br><span class="line">		-O length	TCP send buffer length</span><br><span class="line">		-P proxyuser	Username for proxy authentication</span><br><span class="line">		-p port		Specify local port for remote connects</span><br><span class="line">		-q secs		quit after EOF on stdin and delay of secs</span><br><span class="line">		-r		Randomize remote ports</span><br><span class="line">		-S		Enable the TCP MD5 signature option</span><br><span class="line">		-s sourceaddr	Local source address</span><br><span class="line">		-T keyword	TOS value</span><br><span class="line">		-t		Answer TELNET negotiation</span><br><span class="line">		-U		Use UNIX domain socket</span><br><span class="line">		-u		UDP mode</span><br><span class="line">		-V rtable	Specify alternate routing table</span><br><span class="line">		-v		Verbose</span><br><span class="line">		-W recvlimit	Terminate after receiving a number of packets</span><br><span class="line">		-w timeout	Timeout for connects and final net reads</span><br><span class="line">		-X proto	Proxy protocol: &quot;4&quot;, &quot;5&quot; (SOCKS) or &quot;connect&quot;</span><br><span class="line">		-x addr[:port]	Specify proxy address and port</span><br><span class="line">		-Z		DCCP mode</span><br><span class="line">		-z		Zero-I&#x2F;O mode [used for scanning]</span><br><span class="line">	Port numbers can be individual or ranges: lo-hi [inclusive]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>我们挑几个常用的参数解释一下：</p>
+<ul>
+<li><code>-4</code>  允许 <code>IPv4</code>（默认允许）</li>
+<li><code>-6</code>  允许 <code>IPv6</code> </li>
+<li><code>-k</code>  keep-alive，上一个socket结束后仍可以重新建立socket再次被连接</li>
+<li><code>-p</code>  本地端口</li>
+<li><code>-l</code>  监听模式，在 <code>OpenBSD</code> 版下可省略 <code>-p</code>，即 “<code>-l 8080</code>“ 等同于 <code>GNU</code> 版的 “<code>-l -p 8080</code>“</li>
+<li><code>-q</code>  在接收到 <code>EOF</code> 后等待预设的秒数，然后断开连接</li>
+<li><code>-U</code>  使用 <code>Unix Socket</code></li>
+<li><code>-u</code>  使用 <code>UDP</code> 模式</li>
+<li><code>-v</code>  输出详细信息（<code>GNU</code> 版有 <code>-vv</code> 模式，可输出更详细的信息）</li>
+<li><code>-w</code>  预设连接超时时间</li>
+<li><code>-z</code>  表示不发送数据</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>大部分的案例，笔者都录制了终端的 <code>GIF</code> 动图：</p>
+<ul>
+<li><code>tmux</code> 会话左侧为本地 <code>macOS</code>，IP为 <code>192.168.1.100</code></li>
+<li><code>tmux</code> 会话右侧为远端 <code>Linux</code>，IP为 <code>192.168.1.39</code></li>
+</ul>
+<h3 id="一次性聊天室"><a href="#一次性聊天室" class="headerlink" title="一次性聊天室"></a>一次性聊天室</h3><ul>
+<li>远端执行 <code>nc -l 1234 -4 -6</code></li>
+<li>开启 <code>-4</code> 和 <code>-6</code> 参数，既监听 <code>IPv4</code> 又监听 <code>IPv6</code>（可省略 <code>-4</code>）</li>
+<li>连接成功后，两边均可键入字符，然后按下回车键发送给对方</li>
+<li>本地使用 <code>CTRL-D</code> 关闭连接，因默认为 <code>TCP</code> 模式，远端也会默认退出</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-ipv6.gif" alt="一次性聊天室"></p>
+<h3 id="伪常驻-聊天室"><a href="#伪常驻-聊天室" class="headerlink" title="伪常驻 聊天室"></a><code>伪常驻</code> 聊天室</h3><ul>
+<li>远端执行 <code>while true; do nc -l 1234; done</code>，使得连接一旦结束，远端会再次发起监听</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-loop.gif" alt="伪常驻聊天室"></p>
+<h3 id="UDP-聊天室"><a href="#UDP-聊天室" class="headerlink" title="UDP 聊天室"></a><code>UDP</code> 聊天室</h3><ul>
+<li>远端执行 <code>nc -l 1234 -u</code>，本地也需要加 <code>-u</code> 参数才能连接</li>
+<li>与 <code>TCP连接</code> 有开始有结束不同，<code>UDP</code> 模式并没有 <code>关闭连接</code> 之说，所以 <code>CTRL-D</code> 无效，只能在两端分别用 <code>CTRL-C</code> 结束进程</li>
+<li>默认情况下，远端处理完一次连接后，并不会再次监听新的请求，所以加上 <code>-k</code> 参数，可以维活处理多次连接</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-udp.gif" alt="UDP 聊天室"></p>
+<h3 id="发起-HTTP-请求（交互式）"><a href="#发起-HTTP-请求（交互式）" class="headerlink" title="发起 HTTP 请求（交互式）"></a>发起 HTTP 请求（交互式）</h3><ul>
+<li>远端执行 <code>python3 -m simple.http 9876</code>，在 <code>9876</code> 端口开启一个文件 Web 服务器</li>
+<li>本地执行 <code>nc 192.168.1.39 9876</code>，连接上远端的 Web 服务器</li>
+<li>交互式的输入 <code>GET /</code> 或者 <code>GET / HTTP/1.0</code> 后，连按两下 <code>回车键</code>，即可发送 HTTP 请求，并收到远端的请求响应</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-1.gif" alt="发起 HTTP 请求（交互式）"></p>
+<h3 id="发起-HTTP-请求（命令式）"><a href="#发起-HTTP-请求（命令式）" class="headerlink" title="发起 HTTP 请求（命令式）"></a>发起 HTTP 请求（命令式）</h3><ul>
+<li>本地执行 <code>echo -n &quot;GET / HTTP/1.0\r\n\r\n&quot; | nc 192.168.1.39 9876</code>（注：<code>GET / HTTP/1.0\r\n\r\n</code> 可缩写为 <code>GET /\r\n\r\n</code>）</li>
+<li>上则案例中的 “连按两下 <code>回车键</code>“，就是模拟的 “连续两个 <code>\r\n</code>“</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-2.gif" alt="发起 HTTP 请求（命令式）"></p>
+<h3 id="文件传输（简单）"><a href="#文件传输（简单）" class="headerlink" title="文件传输（简单）"></a>文件传输（简单）</h3><ul>
+<li>远端先执行 <code>nc -l 1234 &gt; received_file</code>，开启监听，如果建立连接且有字节流入，就会输出到文件 <code>received_file</code></li>
+<li>本地再执行 <code>nc 192.168.1.39 1234 &lt; iTerm2.zip</code>，将文件 <code>iTerm2.zip</code> 传输过去</li>
+<li>用 <code>file</code> 和 <code>ls -al</code> 命令查看一下两边文件是否一致</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer.gif" alt="文件传输（简单）"></p>
+<h3 id="文件传输（使用-tar-归档传输多文件）"><a href="#文件传输（使用-tar-归档传输多文件）" class="headerlink" title="文件传输（使用 tar 归档传输多文件）"></a>文件传输（使用 tar 归档传输多文件）</h3><ul>
+<li>远端先执行 <code>tar cvf - text1.txt text2.txt | nc -l 1234 -q 1</code>，先使用 <code>tar</code> 归档多个文件，并使用管道流向 <code>netcat</code> 并开启监听</li>
+<li>本地再执行 <code>nc 192.168.1.39 1234 | tar xvf -</code>，建立连接后读入字节流，由管道流向 <code>tar</code> 后解压出原多文件</li>
+<li><code>-q 1</code> 表示传输完毕后，等待1s后退出，如果是 <code>-q 0</code> 则可用 <code>-N</code> 来代替</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif" alt="文件传输（使用 tar 归档传输多文件）"></p>
+<h3 id="socket通信"><a href="#socket通信" class="headerlink" title="socket通信"></a>socket通信</h3><ul>
+<li>本地先执行 <code>nc -lU /tmp/socket</code>，使用 <code>-U</code> 参数使用并创建套接字文件</li>
+<li>本地新终端 <code>echo &quot;hhh&quot; | nc -U /tmp/socket</code>，将字符串 “hhh” 写入套接字文件，则在原终端会从套接字文件中读出 “hhh” 字符串</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-socket.gif" alt="socket通信"></p>
+<h3 id="网络测速（配合-dd-使用）"><a href="#网络测速（配合-dd-使用）" class="headerlink" title="网络测速（配合 dd 使用）"></a>网络测速（配合 dd 使用）</h3><ul>
+<li>远端先执行 <code>nc -vl 1234 &gt; /dev/null</code>，表示读入的字节流直接写入 <code>/dev/null</code> 文件，这么做的目的是排除真正文件读写的磁盘速度上限干扰</li>
+<li>本地再执行 <code>dd if=/dev/zero bs=1024 count=102400 | nc -vn 192.168.1.39 1234</code>，从 <code>/dev/zero</code> 中不断生成字节流，每个区块1024个字节，以供102400个区块，总计 <strong>100MB</strong>，最后 <code>dd</code> 报告得出，网络速率为 <strong>7630165 KB/s</strong>，即 <strong>7.6 MB/s</strong>（测试速度慢是因为远端 Linux 是树莓派，通过 <code>2.4GHz Wi-Fi</code> 接入局域网）</li>
+</ul>
+<p><img src="TCP-IP-Swiss-Army-Knife-netcat-1/netcat-speedtest-with-dd.gif" alt="网络测速（配合 dd 使用）"></p>
+<h3 id="服务端口诊断"><a href="#服务端口诊断" class="headerlink" title="服务端口诊断"></a>服务端口诊断</h3><p>案例背景：公司的 <code>Elastic Search</code> 服务器集群部署在阿里云，其 <code>9200/9300</code> 端口的防火墙直接采用阿里云的安全组配置，内网IP和公司所在的公网IP才可以访问。</p>
+<p>本地开发环境如果发现 Elastic Search 连接报错，我们会采用 <code>telnet es.example.com 9200</code> 来作第一步诊断：</p>
+<ul>
+<li>如果 <code>telnet</code> 能连接成功，则表示本地开发环境出了问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Trying 120.27.216.xxx...</span><br><span class="line">Connected to es.example.com.</span><br><span class="line">Escape character is &#39;^]&#39;.</span><br></pre></td></tr></table></figure></li>
+<li>如果 <code>telnet</code> 无法连接，则表示可能因为公司IP变化后无法命中阿里云安全组白名单所致<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Trying 120.27.216.xxx...</span><br><span class="line">telnet: Unable to connect to remote host: Connection refused</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>其实可以不用 <code>telnet</code>，而且 <code>telnet</code> 在 <code>macOS</code> 环境中并没有预装，我们可以改用 <code>nc -vz es.example.com 9200</code> 来替代</p>
+<ul>
+<li>端口能访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection to es0.example.com (120.27.216.xxx) 9200 port [tcp&#x2F;wap-wsp] succeeded!</span><br></pre></td></tr></table></figure></li>
+<li>端口无法访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc: connect to es0.example.com (120.27.216.xxx) port 9200 (tcp) failed: Connection refused</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>本文演示了一些 <code>OpenBSD netcat</code> 的案例，其实用管道配合其他工具，还能出很多很多的案例，但是吸收了上面的几个案例之后，通过举一反三，相信读者也能深谙 <code>netcat</code> 的强大。</p>
+<p>后面笔者会以 <code>GNU netcat</code> 为重点写个 <em>篇二</em>，因其存在 <code>-e</code> 参数，所以其部分内容单独拎出来也可以作为 <code>端口转发(篇三) - GNU netcat</code></p>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="donate-me.png"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html" data-id="clnwyg8ri001k6lwmd63eeuuw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "TCP/IP 瑞士军刀 - netcat (篇一)",
+        "image": "https://blog.chaosjohn.comTCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg",
+        "keywords": "TCP/IP netcat",
+        "genre": "",
+        "datePublished": "2020-12-10",
+        "dateCreated": "2020-12-10",
+        "dateModified": "2023-10-19",
+        "url": "https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+前言本来打算写 端口转发(篇三) - netcat
+但是中途发现 netcat 水很深，原因听我细细说来
+netcat 被成为 TCP/IP 的瑞士军刀，得益于它虽体积小（几十KB）却在网络下无比强大，在各种场景下都有它发挥的余地，以至于在各大 Linux 发行版 中都默认安装。
+原版的 netcat 第一版在 199",
+        "wordCount": 775
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/TCP-IP-Swiss-Army-Knife-netcat-2.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            TCP/IP 瑞士军刀 - netcat (篇二)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/ProxySwitch-for-Command-Line.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">命令行下快捷开关代理</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/SpringBoot-ConfigurationProperties.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(SpringBoot-ConfigurationProperties/banner.jpg)" alt="SpringBoot @ConfigurationProperties" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/SpringBoot-ConfigurationProperties.html" class="title">SpringBoot @ConfigurationProperties</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T06:34:46.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Explanation-of-absense-for-a-week.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Explanation-of-absense-for-a-week/banner.jpg)" alt="缺席一周的解释" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Explanation-of-absense-for-a-week.html" class="title">缺席一周的解释</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T01:59:01.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Modify-hostname.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Modify-hostname/banner.png)" alt="在 Linux 和 Mac 上更改 hostname" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Modify-hostname.html" class="title">在 Linux 和 Mac 上更改 hostname</a></p>
+                            <p class="item-date"><time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Flask-with-Django-ORM.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Flask-with-Django-ORM/banner.jpg)" alt="在 Flask 中集成 Django 的 ORM 模块" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Flask-with-Django-ORM.html" class="title">在 Flask 中集成 Django 的 ORM 模块</a></p>
+                            <p class="item-date"><time datetime="2020-12-18T10:16:47.000Z" itemprop="datePublished">2020-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/my-tmux-config.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(my-tmux-config/banner.png)" alt="Tmux “传家” 配置" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/my-tmux-config.html" class="title">Tmux “传家” 配置</a></p>
+                            <p class="item-date"><time datetime="2020-12-17T11:04:13.000Z" itemprop="datePublished">2020-12-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APFS/" rel="tag">APFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crack/" rel="tag">Crack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Developer/" rel="tag">Developer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hardware/" rel="tag">Hardware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homebrew/" rel="tag">Homebrew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPv6/" rel="tag">IPv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORM/" rel="tag">ORM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X-macOS/" rel="tag">OS X & macOS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAC/" rel="tag">PAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Skills/" rel="tag">Skills</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Software/" rel="tag">Software</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThinkPad/" rel="tag">ThinkPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Toy/" rel="tag">Toy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TrackPoint/" rel="tag">TrackPoint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Utility/" rel="tag">Utility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VMware/" rel="tag">VMware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtualization/" rel="tag">Virtualization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddns/" rel="tag">ddns</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/" rel="tag">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fix/" rel="tag">fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostname/" rel="tag">hostname</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iCloud/" rel="tag">iCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">kotlin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcat/" rel="tag">netcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-manager/" rel="tag">package manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/" rel="tag">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/" rel="tag">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xdebug/" rel="tag">xdebug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/APFS/" style="font-size: 10px;">APFS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crack/" style="font-size: 10px;">Crack</a> <a href="/tags/Dev/" style="font-size: 10px;">Dev</a> <a href="/tags/Developer/" style="font-size: 10px;">Developer</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/OS-X-macOS/" style="font-size: 20px;">OS X & macOS</a> <a href="/tags/PAC/" style="font-size: 10px;">PAC</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Skills/" style="font-size: 10px;">Skills</a> <a href="/tags/Software/" style="font-size: 18px;">Software</a> <a href="/tags/SpringBoot/" style="font-size: 12px;">SpringBoot</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/ThinkPad/" style="font-size: 10px;">ThinkPad</a> <a href="/tags/Toy/" style="font-size: 10px;">Toy</a> <a href="/tags/TrackPoint/" style="font-size: 10px;">TrackPoint</a> <a href="/tags/Utility/" style="font-size: 10px;">Utility</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/Virtualization/" style="font-size: 10px;">Virtualization</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/ddns/" style="font-size: 10px;">ddns</a> <a href="/tags/debug/" style="font-size: 12px;">debug</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/fix/" style="font-size: 10px;">fix</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/hostname/" style="font-size: 10px;">hostname</a> <a href="/tags/iCloud/" style="font-size: 10px;">iCloud</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 12px;">jvm</a> <a href="/tags/kotlin/" style="font-size: 12px;">kotlin</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/netcat/" style="font-size: 12px;">netcat</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/package-manager/" style="font-size: 10px;">package manager</a> <a href="/tags/php/" style="font-size: 16px;">php</a> <a href="/tags/port-forwarding/" style="font-size: 12px;">port-forwarding</a> <a href="/tags/proxy/" style="font-size: 12px;">proxy</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 18px;">shell</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/tool/" style="font-size: 12px;">tool</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/xdebug/" style="font-size: 12px;">xdebug</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2023 Chaos John</p>
+                
+                <!-- <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p> -->
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备19012840号-1</a> 
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-chaosjohn';
+    
+    
+    var disqus_url = 'https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

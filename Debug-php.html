@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>php 调试指南（Xdebug版） | 湿科技</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="debug,php,xdebug" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 （吃透本文，没有人将比你更懂 **Php Xdebug 调试**）（来自于几天后的打脸，请移步 php 调试指南（Xdebug版）（续）） 创建一个精简项目（命令行）创建项目，并且用 composer 安装一个笔者比较喜欢的 微框架，作为示例 123$ mkdir debug$ cd debug$ composer r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php 调试指南（Xdebug版）">
+<meta property="og:url" content="https://blog.chaosjohn.com/Debug-php.html">
+<meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 （吃透本文，没有人将比你更懂 **Php Xdebug 调试**）（来自于几天后的打脸，请移步 php 调试指南（Xdebug版）（续）） 创建一个精简项目（命令行）创建项目，并且用 composer 安装一个笔者比较喜欢的 微框架，作为示例 123$ mkdir debug$ cd debug$ composer r">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.chaosjohn.com/Debug-php/banner.png">
+<meta property="article:published_time" content="2020-12-01T15:33:41.000Z">
+<meta property="article:modified_time" content="2023-10-18T16:06:39.386Z">
+<meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="debug">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="xdebug">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.chaosjohn.com/Debug-php/banner.png">
+    
+
+    
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Debug-php" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        php 调试指南（Xdebug版）
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/Debug-php.html" class="article-date">
+       <time datetime="2020-12-01T15:33:41.000Z" itemprop="datePublished">2020-12-01</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/Debug-php.html" class="article-date">
+     <time datetime="2023-10-18T16:06:39.386Z" itemprop="dateModified">2023-10-19</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/debug/" rel="tag">debug</a>, <a class="tag-link-link" href="/tags/php/" rel="tag">php</a>, <a class="tag-link-link" href="/tags/xdebug/" rel="tag">xdebug</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a href="https://blog.chaosjohn.com/Debug-php.html">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<p>（吃透本文，没有人将比你更懂 **<code>Php Xdebug 调试</code>**）<br>（来自于几天后的打脸，请移步 <a href="https://blog.chaosjohn.com/Debug-php-continued.html">php 调试指南（Xdebug版）（续）</a>）</p>
+<h2 id="创建一个精简项目（命令行）"><a href="#创建一个精简项目（命令行）" class="headerlink" title="创建一个精简项目（命令行）"></a>创建一个精简项目（命令行）</h2><p>创建项目，并且用 <a target="_blank" rel="noopener" href="https://docs.phpcomposer.com/">composer</a> 安装一个笔者比较喜欢的 <strong>微框架</strong>，作为示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir debug</span><br><span class="line">$ cd debug</span><br><span class="line">$ composer require mikecao&#x2F;flight</span><br></pre></td></tr></table></figure>
+
+<p>编写主程序 <strong>index.php</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; index.php &lt;&lt;EOF</span><br><span class="line">&lt;?php</span><br><span class="line">require &#39;vendor&#x2F;autoload.php&#39;;</span><br><span class="line"></span><br><span class="line">Flight::route(&#39;&#x2F;&#39;, function()&#123;</span><br><span class="line">    echo &#39;hello world!&#39;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Flight::start();</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>用 php 内置服务器运行项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ php -S localhost:8080</span><br><span class="line">[Tue Dec  1 23:31:12 2020] PHP 7.4.13 Development Server (http:&#x2F;&#x2F;localhost:8080) started</span><br><span class="line">[Tue Dec  1 23:31:35 2020] [::1]:57780 Accepted</span><br><span class="line">[Tue Dec  1 23:31:35 2020] [::1]:57780 [200]: GET &#x2F;</span><br><span class="line">[Tue Dec  1 23:31:35 2020] [::1]:57780 Closing</span><br></pre></td></tr></table></figure>
+<p><img src="Debug-php/create-and-run-project.png" alt="创建并且运行项目"><br>上面输出的后三行，是在本机另一终端访问 <code>http://localhost:8080</code> 时打印的日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L localhost:8080</span><br><span class="line">hello world!</span><br></pre></td></tr></table></figure>
+<p>（使用 php 内置服务器运行项目，只是为了检测项目是否能完好运行；该内置服务器只能用于开发环境，不能用于生产环境）</p>
+<h2 id="转移开发至-PhpStorm-中"><a href="#转移开发至-PhpStorm-中" class="headerlink" title="转移开发至 PhpStorm 中"></a>转移开发至 <code>PhpStorm</code> 中</h2><p><strong>JetBrains</strong> 公司出品的 <code>PhpStorm</code> 与其安装在此不做赘述。</p>
+<p>在 <code>PhpStorm</code> 中打开项目<br><img src="Debug-php/open-in-phpstorm.png" alt="PhpStorm 欢迎窗口选择“打开”"></p>
+<p>打开 <strong>偏好设置</strong>（mac下快捷键为 <code>Command+</code>, Win/Linux下快捷键为 <code>Ctrl+Alt+s</code>），左边侧边栏定位到 <code>Languages &amp; Frameworks</code> =&gt; <code>PHP</code><br><img src="Debug-php/navigate-to-preferences.png" alt="打开 PhpStorm 偏好设置"></p>
+<p>在这里添加此前于 PHPBrew 中安装的 PHP 版本。参考前文 <a href="https://blog.chaosjohn.com/Using-phpbrew">PHPBrew 使用指南</a>（注意：请务必安装 <code>xdebug</code> 扩展：<code>$phpbrew ext install xdebug</code>，否则无法进行调试）<br><img src="Debug-php/add-php-from-phpbrew-with-xdebug.png" alt="添加 php 解释器"></p>
+<p>将刚刚添加上的 PHP 版本应用到当前项目<br><img src="Debug-php/apply-php-for-current-project.png" alt="选择 php 解释器"></p>
+<h2 id="用-Nginx-运行项目"><a href="#用-Nginx-运行项目" class="headerlink" title="用 Nginx 运行项目"></a>用 <code>Nginx</code> 运行项目</h2><h3 id="安装与管理"><a href="#安装与管理" class="headerlink" title="安装与管理"></a>安装与管理</h3><ul>
+<li>无视系统环境 - 编译安装，不做赘述</li>
+<li>macOS<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install nginx</span><br><span class="line">$ brew services start&#x2F;stop&#x2F;restart nginx # 启动&#x2F;停止&#x2F;重启 nginx</span><br></pre></td></tr></table></figure></li>
+<li>Debian / Ubuntu<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install nginx-full</span><br><span class="line">$ sudo systemctl start&#x2F;stop&#x2F;restart nginx # 启动&#x2F;停止&#x2F;重启 nginx</span><br></pre></td></tr></table></figure></li>
+<li>RHEL / CentOS<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br><span class="line">$ sudo apt install nginx</span><br><span class="line">$ sudo systemctl start&#x2F;stop&#x2F;restart nginx # 启动&#x2F;停止&#x2F;重启 nginx</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="配置（本文以-macOS-下-Homebrew-版-Nginx-为例）"><a href="#配置（本文以-macOS-下-Homebrew-版-Nginx-为例）" class="headerlink" title="配置（本文以 macOS 下 Homebrew 版 Nginx 为例）"></a>配置（本文以 <strong>macOS</strong> 下 <strong>Homebrew</strong> 版 <strong>Nginx</strong> 为例）</h3><p>启动 <code>php-fpm</code>（用 PHPBrew 安装 PHP 时需要包含 <code>+fpm</code> variant）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ phpbrew fpm start</span><br><span class="line">Starting php-fpm...</span><br></pre></td></tr></table></figure>
+
+<p>在项目根目录下创建 <code>nginx.conf</code> 作为 <strong>Nginx</strong> 的配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    server_name localhost;</span><br><span class="line">    listen 8000;</span><br><span class="line"></span><br><span class="line">    root &#x2F;Users&#x2F;chaos&#x2F;Work&#x2F;php&#x2F;demos&#x2F;debug;</span><br><span class="line"></span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        try_files $uri $uri&#x2F; &#x2F;index.php;</span><br><span class="line">        fastcgi_pass unix:&#x2F;Users&#x2F;chaos&#x2F;.phpbrew&#x2F;php&#x2F;7.4.13&#x2F;var&#x2F;run&#x2F;php-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将该配置文件 <strong>软链接</strong> 到 Nginx 配置目录下 <code>/usr/local/etc/nginx/servers/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -sf &#x2F;Users&#x2F;chaos&#x2F;Work&#x2F;php&#x2F;demos&#x2F;debug&#x2F;nginx.conf &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;php-debug.conf</span><br></pre></td></tr></table></figure>
+
+<p>检查 <code>nginx.conf</code> 是否有错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ nginx -t</span><br><span class="line">nginx: the configuration file &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf test is successful</span><br></pre></td></tr></table></figure>
+
+<p>启动 <code>Nginx</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew services start nginx</span><br><span class="line">&#x3D;&#x3D;&gt; Successfully started &#96;nginx&#96; (label: homebrew.mxcl.nginx)</span><br></pre></td></tr></table></figure>
+
+<p><img src="Debug-php/nginx-conf.png" alt="Nginx 配置"></p>
+<p>终端下 curl 访问 Nginx部署的服务，验证项目成功跑了起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L localhost:8000</span><br><span class="line">hello world!</span><br></pre></td></tr></table></figure>
+
+<h2 id="Xdebug-调试"><a href="#Xdebug-调试" class="headerlink" title="Xdebug 调试"></a><code>Xdebug</code> 调试</h2><h3 id="大部分关于-Xdebug-的配置，在前面部分已经配置完毕，我们来验证一下是否配置成功"><a href="#大部分关于-Xdebug-的配置，在前面部分已经配置完毕，我们来验证一下是否配置成功" class="headerlink" title="大部分关于 Xdebug 的配置，在前面部分已经配置完毕，我们来验证一下是否配置成功"></a>大部分关于 <code>Xdebug</code> 的配置，在前面部分已经配置完毕，我们来验证一下是否配置成功</h3><p><strong>PhpStorm</strong> 顶部菜单栏点击 <code>Run</code>，在下拉菜单中选中 <code>Web Server Debug Validation</code>，弹出窗口中点击底部的 <code>Validate</code> 按钮。</p>
+<ul>
+<li>如果显示成功，则调试环境已经搭建完毕</li>
+<li>如果显示出错，会给出排错信息<br><img src="Debug-php/web-server-debug-validation-error.png" alt="出错，显示排错信息"></li>
+</ul>
+<p><del>发现三处警告，按照排错信息排查，发现问题出在了 <code>Xdebug 3.0.0</code> 版本<a target="_blank" rel="noopener" href="https://xdebug.org/docs/upgrade_guide">变动了非常多的地方</a>，导致目前 <code>PhpStorm</code> 最新的稳定版 <code>2020.2.4</code> 对此兼容性欠缺。不过 <code>2020.3</code> 有望解决。</del> （该文写完发布的第二天（即 <strong>2020-12-02</strong>），<code>PhpStorm 2020.3</code> 已释出，新增对 <code>PHP 8</code> 和 <code>Xdebug 3</code> 的支持，参见文末。亏了亏了，写早了。）</p>
+<p>所以笔者将 <code>Xdebug</code> 降级到了 <code>2.X</code> 版本：<code>phpbrew ext install xdebug 2.9.8</code>，再次点击 <code>Validate</code> 按钮，怎么还是一样的报错？</p>
+<p>这里我们查看 <code>php-fpm</code> 的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ phpbrew fpm info</span><br><span class="line">...</span><br><span class="line">xdebug support &#x3D;&gt; enabled</span><br><span class="line">Version &#x3D;&gt; 3.0.0</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>所以需要重启一下 <code>php-fpm</code>，让其加载新的 <code>Xdebug</code> 模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ phpbrew fpm restart</span><br><span class="line">Stopping php-fpm...</span><br><span class="line">Starting php-fpm...</span><br><span class="line">$ phpbrew fpm info</span><br><span class="line">...</span><br><span class="line">xdebug support &#x3D;&gt; enabled</span><br><span class="line">Version &#x3D;&gt; 2.9.8</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>再次点击 <code>Validate</code> 按钮<br><img src="Debug-php/web-server-debug-validation-error2.png" alt="2.9.8 依旧报错"></p>
+<p>依旧报错，不过这里就清晰很多了，照着提示，<code>phpbrew config</code> 直接调用编辑器打开 <code>php.ini</code> 文件，在尾部添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line">xdebug.remote_enable&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>待 <code>phpbrew fpm restart</code> 后再次点击 <code>Validate</code> 按钮，成功！<br><img src="Debug-php/web-server-debug-validation-success.png" alt="Validate 成功"></p>
+<p>这就可以愉快的调试部署在 Nginx 里的项目啦，这里我们点击工具栏的 <code>监听按钮</code>，开始监听连接请求<br><img src="Debug-php/listening-button.png" alt="监听请求"></p>
+<h3 id="浏览器作为请求客户端进行调试"><a href="#浏览器作为请求客户端进行调试" class="headerlink" title="浏览器作为请求客户端进行调试"></a>浏览器作为请求客户端进行调试</h3><p>为浏览器安装插件</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/">Xdebug Helper for Firefox</a> / <a target="_blank" rel="noopener" href="https://github.com/BrianGilbert/xdebug-helper-for-firefox">源码</a></li>
+<li><a target="_blank" rel="noopener" href="https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc">Xdebug Helper for Chrome</a> / <a target="_blank" rel="noopener" href="https://github.com/mac-cain13/xdebug-helper-for-chrome">源码</a></li>
+</ul>
+<p>这里笔者以 <strong>Chrome</strong> 浏览器为例，安装完后，右键 <code>Xdebug Helper</code> 图标点击 <code>Options</code> 打开选项页，选择 <code>IDE key</code> 为 <code>PhpStorm</code><br><img src="Debug-php/chrome-xdebug-helper-options.png" alt="Chrome 下 Xdebug Helper 配置"></p>
+<p>新开浏览器窗口，地址栏输入<code>localhost:8000</code>访问服务，页面会显示 **hello world!**。单击 <code>Xdebug Helper</code> 图标，点击 <code>Debug</code>，开启调试模式，至此，图标将会变成绿色（或者使用 <code>Alt+Shift+X</code> 快捷键快速开关 <code>Debug</code> 模式）<br><img src="Debug-php/chrome-xdebug-helper-activation-fix.png" alt="切换 Xdebug Helper 到 Debug 模式"></p>
+<p>准备开始调试：</p>
+<ol>
+<li>确保 <code>PhpStorm</code> 的 <code>监听</code> 按钮已激活</li>
+<li>在 <code>PhpStorm</code> 中给需要调试的代码行打上断点</li>
+<li>确保浏览器的 <code>Xdebug Helper</code>处于 <code>Debug</code> 模式，图标变为绿色</li>
+</ol>
+<p><img src="Debug-php/ready-for-debug-short.png" alt="调试准备"></p>
+<p>刷新浏览器页面，<code>PhpStorm</code> 监听到请求传入，同时浏览器请求处于 <code>Pending</code> 状态，挂起等待请求响应<br><img src="Debug-php/debug-start.png" alt="开始调试"></p>
+<p>在弹窗中选择完正确的 php 文件后，<code>PhpStorm</code> 就进入了调试模式，成功地停在了断点处，在这里可以查看当前的各项 <strong>变量</strong> 以及单步运行<br><img src="Debug-php/debug-point.png" alt="PhpStorm断点调试"></p>
+<p>点击调试窗口左侧的 <code>Resume Program</code> 按钮，程序从断点处恢复运行，至此，浏览器侧的请求收到了等待已久的响应，在窗口渲染出 <em>hello world!</em> 字样</p>
+<h3 id="命令行-或其他-请求客户端-发起调试"><a href="#命令行-或其他-请求客户端-发起调试" class="headerlink" title="命令行 或其他 请求客户端 发起调试"></a><code>命令行</code> 或其他 <code>请求客户端</code> 发起调试</h3><p>在实际的纯接口开发场景中，除了类似 <code>localhost:8000</code> 的简单请求，还有诸多带有复杂参数的请求，以及各种 <code>http method</code> 的请求（<code>GET</code> / <code>POST</code> / <code>PUT</code> / <code>HEAD</code> / <code>DELETE</code> / <code>OPTIONS</code>），仅仅通过浏览器地址栏进行发起调试并不能胜任。</p>
+<p>开发人品平时发起请求测试，一般都选用 <code>命令行工具</code>（例如 <code>curl</code> / <code>httpie</code>）或类似 <code>Postman</code> 这样的专业请求调试客户端。</p>
+<p>通过查阅<a target="_blank" rel="noopener" href="https://xdebug.org/docs/step_debug">Xdebug 官方文档</a>，得知，浏览器的插件开启 <code>Debug</code> 模式，仅仅是给当前session增加了一个 <code>Cookie</code>: <code>XDEBUG_SESSION=PHPSTORM</code></p>
+<p>那就简单了，以 <code>curl</code> 举例的三种方式：</p>
+<ul>
+<li><code>$ curl -H &quot;Cookie: XDEBUG_SESSION=PHPSTORM&quot; localhost:8000</code></li>
+<li><code>$ curl --cookie XDEBUG_SESSION=PHPSTORM localhost:8000</code></li>
+<li><code>$ curl -b XDEBUG_SESSION=PHPSTORM localhost:8000</code></li>
+</ul>
+<p><code>Postman</code> 也类似，不再赘述</p>
+<p>至此，在 <code>PhpStorm</code> 调试部署在 <code>Nginx</code> 中的项目，杀青！</p>
+<h2 id="提出疑问"><a href="#提出疑问" class="headerlink" title="提出疑问"></a>提出疑问</h2><p>还记得前面有一张关于配置 <code>php解释器</code> 图么（重新搬运放在本段下方），里面明明配置了 <code>Xdebug</code> 的参数，而 <code>Web Server Debug Validation</code> 还是提示要去 <code>php.ini</code> 中添加 <code>xdebug.remote_enable=1</code><br><img src="Debug-php/add-php-from-phpbrew-with-xdebug.png" alt="配置 php 解释器"></p>
+<p><code>JetBrains</code> 肯定不会那么无聊，放置一个无用的配置项在这里。那这个配置项究竟对哪块地方生效呢？</p>
+<p><code>PhpStorm</code> 工具栏点击 <code>Add Configuration</code>，点击 <code>+</code> 号，选择 <code>PHP Build-in Web Server</code>，端口改为 <strong>8088</strong> (或其他未被占用端口)<br><img src="Debug-php/phpstorm-create-build-in-server-configuration.png" alt="PhpStorm 添加配置"> <img src="Debug-php/phpstorm-create-build-in-server-configuration-finish.png" alt="PhpStorm 完善配置"></p>
+<p>选择刚刚新建的 <strong>运行配置</strong> <code>php build-in server</code>，点击右侧 <em>绿色三角按钮</em>，运行项目（同时确保 <code>监听按钮</code> 也已激活）<br><img src="Debug-php/phpstorm-run-build-in-configuration.png" alt="PhpStorm 运行配置"></p>
+<p>再次在命令行下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -H &quot;Cookie: XDEBUG_SESSION&#x3D;PHPSTORM&quot; localhost:8000</span><br></pre></td></tr></table></figure>
+
+<p>Bingo!!! <code>PhpStorm</code> 成功进入了调试状态并且停在了断点处！</p>
+<h2 id="发散-1-在-PhpStorm-调试-远程服务"><a href="#发散-1-在-PhpStorm-调试-远程服务" class="headerlink" title="发散 1: 在 PhpStorm 调试 远程服务"></a>发散 1: 在 <code>PhpStorm</code> 调试 <code>远程服务</code></h2><p>上文描述的都是调试本地环境，即服务部署在本地 <code>Nginx</code>，通过本地的 <code>php-fpm</code> 调用 <code>php 解释器</code> 进行请求分发处理，“加载”的是本地的 <code>Xdebug</code>（调试端口为默认的 <strong>9000</strong>），而同时 <code>PhpStorm</code> 也监听本地的 <code>Xdebug</code> 的 <strong>9000</strong> 端口进行拦截调试。</p>
+<p>可往往更多的情况是，服务并不部署在本地，而在 <strong>远端服务器</strong>，这个时候得如何调试呢？</p>
+<p>接下来在 <strong>另一台主机(<code>192.168.1.101</code>)</strong> 上调试 <strong>本机(<code>192.168.1.100</code>)</strong> 的服务，来模拟现实开发中的 <code>远程调试</code>。</p>
+<p><strong>本机(<code>192.168.1.100</code>)</strong> 上在 <code>php.ini</code> 尾部添加 <code>xdebug.remote_connect_back=1</code></p>
+<p><strong>另一台主机(<code>192.168.1.101</code>)</strong> 的 <code>PhpStorm</code> 点击工具栏上的 <code>监听按钮</code> 开启监听，并且在代码窗口设置断点</p>
+<p>在 <strong>该主机(<code>192.168.1.101</code>)</strong> 的终端上执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -H &quot;Cookie: XDEBUG_SESSION&#x3D;PHPSTORM&quot; 192.168.1.100:8000</span><br></pre></td></tr></table></figure>
+
+<p>即可看到 <code>PhpStorm</code> 进入了调试模式并且顺利停在了断点处。</p>
+<h2 id="发散-2：在-VSCode-中调试-本地服务"><a href="#发散-2：在-VSCode-中调试-本地服务" class="headerlink" title="发散 2：在 VSCode 中调试 本地服务"></a>发散 2：在 <code>VSCode</code> 中调试 <code>本地服务</code></h2><p>打开 <code>VSCode</code>，安装 <code>PHP Debug</code> 扩展</p>
+<p>打开项目工程，点击左边栏的 <code>Run</code>，点击 <code>Create a launch.json file</code>，选择 <code>PHP</code> 环境<br><img src="Debug-php/vscode-create-run-configuration.png" alt="创建 VSCode 运行配置"></p>
+<p>VSCode 将会自动创建两个配置：</p>
+<ul>
+<li><code>Listen for XDebug</code>：这个配置就是类似 <code>PhpStorm</code> 中的 <code>监听按钮</code></li>
+<li><code>Launch currently open script</code>：执行按照 <code>php-cli</code> 模式运行/调试 <strong>当前窗口的php脚本</strong></li>
+</ul>
+<p><img src="Debug-php/vscode-php-debug-configurations.png" alt="VSCode 创建的默认运行配置"></p>
+<p>选择 <code>Listen for XDebug</code> 并点击左侧的 <em>绿色图标</em> 开始运行监听，并且打上断点，命令行下执行 <code>curl --cookie XDEBUG_SESSION=VSCODE localhost:8000</code>，则能看到<strong>VSCode</strong> 成功进入了调试状态并且停在了断点处。<br><img src="Debug-php/vscode-php-debug.png" alt="VSCode 调试模式"></p>
+<h2 id="发散-3：在-VSCode-调试-远程服务"><a href="#发散-3：在-VSCode-调试-远程服务" class="headerlink" title="发散 3：在 VSCode 调试 远程服务"></a>发散 3：在 <code>VSCode</code> 调试 <code>远程服务</code></h2><p>与 <code>发散 1</code> 类似，在 <strong>另一台主机(<code>192.168.1.101</code>)</strong> 上：</p>
+<ul>
+<li>确保 <code>php.ini</code> 已添加 <code>xdebug.remote_connect_back=1</code></li>
+<li>选择 <code>Listen for XDebug</code> 并点击左侧的 <em>绿色图标</em> 开始运行监听，并且打上断点</li>
+<li>命令行下执行 <code>curl --cookie XDEBUG_SESSION=VSCODE 192.168.1.100:8000</code> 则能看到<strong>VSCode</strong> 成功进入了调试状态并且停在了断点处。</li>
+</ul>
+<p>所以，在 <code>VSCode</code> 调试部署在 <code>Nginx</code> 中的服务（本地与远程），也顺利杀青！</p>
+<h2 id="一些-思考-或-疑惑"><a href="#一些-思考-或-疑惑" class="headerlink" title="一些 思考 或 疑惑"></a>一些 <strong>思考</strong> 或 <strong>疑惑</strong></h2><ol>
+<li><code>Xdebug</code> 的 <code>IDE key</code>（即使在 <code>php.ini</code> 中配置了 <code>xdebug.idekey=xxx</code>）在 <code>远程调试</code> 时并不起作用，调试请求时在 <strong>Cookie</strong> 中附加的 <code>XDEBUG_SESSION</code> 设置任意非空字符串都生效。是 <code>Xdebug</code> 的 <strong>bug</strong> 么？</li>
+<li>无论采用 <code>PhpStorm</code> 还是 <code>VSCode</code> 进行远程调试中，明明远程服务器的 <code>Xdebug</code> 调试端口（默认为9000）对外不可达（仅 <code>localhost</code> 可访问），但是 <strong>打上断点</strong> <strong>开启监听</strong> 又能调试了呢？</li>
+<li>多人协同调试，参考 <strong>JetBrains</strong> 文档 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/phpstorm/multiuser-debugging-via-xdebug-proxies.html">Multiuser debugging via Xdebug proxies</a> 使用 <code>DBGp代理</code></li>
+</ol>
+<h2 id="2020-12-05-补充更新"><a href="#2020-12-05-补充更新" class="headerlink" title="2020-12-05 补充更新"></a>2020-12-05 补充更新</h2><h3 id="PhpStorm-2020-3-已发布"><a href="#PhpStorm-2020-3-已发布" class="headerlink" title="PhpStorm 2020.3 已发布"></a><strong>PhpStorm 2020.3</strong> 已发布</h3><p><a target="_blank" rel="noopener" href="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+2020.3+Release+Notes">发布日志</a><br><img src="Debug-php/phpstorm-2020.3-release-notes.png" alt="PhpStorm 2020.3 发布日志"><br><img src="Debug-php/phpstorm-2020.3-web-server-debug-validation.png" alt="PhpStorm 2020.3 新增对 &quot;PHP 8&quot; 和 &quot;Xdebug 3&quot; 的支持"></p>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="donate-me.png"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/Debug-php.html" data-id="clnwyg8r100066lwmfnlac5vx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "php 调试指南（Xdebug版）",
+        "image": "https://blog.chaosjohn.comDebug-php/banner.png",
+        "keywords": "debug php xdebug",
+        "genre": "",
+        "datePublished": "2020-12-01",
+        "dateCreated": "2020-12-01",
+        "dateModified": "2023-10-19",
+        "url": "https://blog.chaosjohn.com/Debug-php.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+（吃透本文，没有人将比你更懂 **Php Xdebug 调试**）（来自于几天后的打脸，请移步 php 调试指南（Xdebug版）（续））
+创建一个精简项目（命令行）创建项目，并且用 composer 安装一个笔者比较喜欢的 微框架，作为示例
+123$ mkdir debug$ cd debug$ composer r",
+        "wordCount": 1071
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Fix-InvalidArgumentException-for-Composer.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            解决 Composer 报错 InvalidArgumentException
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Using-phpbrew.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">PHPBrew 使用指南</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/SpringBoot-ConfigurationProperties.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(SpringBoot-ConfigurationProperties/banner.jpg)" alt="SpringBoot @ConfigurationProperties" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/SpringBoot-ConfigurationProperties.html" class="title">SpringBoot @ConfigurationProperties</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T06:34:46.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Explanation-of-absense-for-a-week.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Explanation-of-absense-for-a-week/banner.jpg)" alt="缺席一周的解释" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Explanation-of-absense-for-a-week.html" class="title">缺席一周的解释</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T01:59:01.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Modify-hostname.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Modify-hostname/banner.png)" alt="在 Linux 和 Mac 上更改 hostname" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Modify-hostname.html" class="title">在 Linux 和 Mac 上更改 hostname</a></p>
+                            <p class="item-date"><time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Flask-with-Django-ORM.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(Flask-with-Django-ORM/banner.jpg)" alt="在 Flask 中集成 Django 的 ORM 模块" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Flask-with-Django-ORM.html" class="title">在 Flask 中集成 Django 的 ORM 模块</a></p>
+                            <p class="item-date"><time datetime="2020-12-18T10:16:47.000Z" itemprop="datePublished">2020-12-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/my-tmux-config.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(my-tmux-config/banner.png)" alt="Tmux “传家” 配置" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/my-tmux-config.html" class="title">Tmux “传家” 配置</a></p>
+                            <p class="item-date"><time datetime="2020-12-17T11:04:13.000Z" itemprop="datePublished">2020-12-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APFS/" rel="tag">APFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crack/" rel="tag">Crack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Developer/" rel="tag">Developer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hardware/" rel="tag">Hardware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homebrew/" rel="tag">Homebrew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPv6/" rel="tag">IPv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORM/" rel="tag">ORM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X-macOS/" rel="tag">OS X & macOS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAC/" rel="tag">PAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Skills/" rel="tag">Skills</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Software/" rel="tag">Software</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThinkPad/" rel="tag">ThinkPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Toy/" rel="tag">Toy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TrackPoint/" rel="tag">TrackPoint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Utility/" rel="tag">Utility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VMware/" rel="tag">VMware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtualization/" rel="tag">Virtualization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddns/" rel="tag">ddns</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/" rel="tag">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fix/" rel="tag">fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostname/" rel="tag">hostname</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iCloud/" rel="tag">iCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">kotlin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcat/" rel="tag">netcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-manager/" rel="tag">package manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/" rel="tag">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/" rel="tag">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xdebug/" rel="tag">xdebug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/APFS/" style="font-size: 10px;">APFS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crack/" style="font-size: 10px;">Crack</a> <a href="/tags/Dev/" style="font-size: 10px;">Dev</a> <a href="/tags/Developer/" style="font-size: 10px;">Developer</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/OS-X-macOS/" style="font-size: 20px;">OS X & macOS</a> <a href="/tags/PAC/" style="font-size: 10px;">PAC</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Skills/" style="font-size: 10px;">Skills</a> <a href="/tags/Software/" style="font-size: 18px;">Software</a> <a href="/tags/SpringBoot/" style="font-size: 12px;">SpringBoot</a> <a href="/tags/TCP-IP/" style="font-size: 12px;">TCP/IP</a> <a href="/tags/ThinkPad/" style="font-size: 10px;">ThinkPad</a> <a href="/tags/Toy/" style="font-size: 10px;">Toy</a> <a href="/tags/TrackPoint/" style="font-size: 10px;">TrackPoint</a> <a href="/tags/Utility/" style="font-size: 10px;">Utility</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/Virtualization/" style="font-size: 10px;">Virtualization</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/ddns/" style="font-size: 10px;">ddns</a> <a href="/tags/debug/" style="font-size: 12px;">debug</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/fix/" style="font-size: 10px;">fix</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/tags/hostname/" style="font-size: 10px;">hostname</a> <a href="/tags/iCloud/" style="font-size: 10px;">iCloud</a> <a href="/tags/java/" style="font-size: 12px;">java</a> <a href="/tags/jvm/" style="font-size: 12px;">jvm</a> <a href="/tags/kotlin/" style="font-size: 12px;">kotlin</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/netcat/" style="font-size: 12px;">netcat</a> <a href="/tags/network/" style="font-size: 14px;">network</a> <a href="/tags/package-manager/" style="font-size: 10px;">package manager</a> <a href="/tags/php/" style="font-size: 16px;">php</a> <a href="/tags/port-forwarding/" style="font-size: 12px;">port-forwarding</a> <a href="/tags/proxy/" style="font-size: 12px;">proxy</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 18px;">shell</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/tool/" style="font-size: 12px;">tool</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/xdebug/" style="font-size: 12px;">xdebug</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2023 Chaos John</p>
+                
+                <!-- <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p> -->
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备19012840号-1</a> 
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-chaosjohn';
+    
+    
+    var disqus_url = 'https://blog.chaosjohn.com/Debug-php.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
