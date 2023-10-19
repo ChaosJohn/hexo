@@ -2,7 +2,7 @@
 title: 端口转发(篇二) - xinetd
 date: 2020-12-07 15:50:23
 tags: [tool, port-forwarding, network]
-thumbnail: https://image.blog.chaosjohn.com/Port-Forwarding-2/banner.png
+thumbnail: Port-Forwarding-2/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Port-Forwarding-2.html)
@@ -11,7 +11,7 @@ thumbnail: https://image.blog.chaosjohn.com/Port-Forwarding-2/banner.png
 - [端口转发(篇一) - rinetd](https://blog.chaosjohn.com/Port-Forwarding-1.html)
 
 ## 前言
-笔者之前也过一篇文 - [IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)](https://image.blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless)
+笔者之前也过一篇文 - [IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)](IPv6-not-working-from-bridged-wireless)
 
 文中背景：笔者买了一台 `GK41`，运行的是随机安装的 `Windows 10`，同时借助 `VMware Workstation` 运行了一台虚拟客户机 `Manjaro Linux`。`GK41` 通过 `RJ45` 网口接入网络，虚拟机采用 `桥接` 该网口的有线网卡，给客户机 `Manjaro Linux` 提供网络接入。至此，主机和客户机都处于同一个局域网内，且都能分配到IPv4/IPv6，此时
 - `GK41`：192.168.0.41
@@ -32,7 +32,7 @@ thumbnail: https://image.blog.chaosjohn.com/Port-Forwarding-2/banner.png
 因为 `rinetd` 不支持 `IPv6`，它只监听 `IPv4地址` 和转发到 `IPv4地址`，详见 `rinetd` 在其 `Github` 上的某 `Issue` - [does the program support ipv6?](https://github.com/boutell/rinetd/issues/2)。
 
 老爷子回复道：可能不会支持 IPv6 了，因为这玩意自从上世纪九十年代开始，我就没怎么动过了，添加 IPv6 支持估计会很难。
-![rinetd 作者称不会添加 IPv6 支持](https://image.blog.chaosjohn.com/Port-Forwarding-2/rinetd-will-not-support-ipv6.png)
+![rinetd 作者称不会添加 IPv6 支持](Port-Forwarding-2/rinetd-will-not-support-ipv6.png)
 
 ## 解决问题
 在寻找 `rinetd` 替代品的过程中，笔者发现了 `xinetd`
@@ -101,4 +101,4 @@ EOF
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

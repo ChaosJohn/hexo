@@ -2,7 +2,7 @@
 title: 删除/清理 MySQL 的 binlog
 date: 2020-12-14 16:43:16
 tags: [MySQL]
-thumbnail: https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png
+thumbnail: Delete-binlog-in-MySQL/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Delete-binlog-in-MySQL.html)
@@ -30,9 +30,9 @@ thumbnail: https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png
 
 （当时处理问题之前没有截图，所以只能截几张写本文时的图了，而写本文时，合作已经处于最后的输出流程了，所以数据库 `写操作` 只与 `记录输出时间` 相关，数据量小了很多）
 
-![/var/lib/mysql 下大量的 binlog 文件](https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files.png)
+![/var/lib/mysql 下大量的 binlog 文件](Delete-binlog-in-MySQL/binlog-files.png)
 
-![ncdu 分析 binlog 文件占据磁盘空间](https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/ncdu.png)
+![ncdu 分析 binlog 文件占据磁盘空间](Delete-binlog-in-MySQL/ncdu.png)
 
 ## 原因
 `binlog` 是记录所有数据库表结构变更（例如CREATE、ALTER TABLE…）以及表数据修改（INSERT、UPDATE、DELETE…）的二进制日志。
@@ -56,21 +56,21 @@ thumbnail: https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/banner.png
 mysql> PURGE MASTER LOGS TO 'binlog.000860';
 Query OK, 0 rows affected (0.01 sec)
 ```
-![指定编号之前的 binlog 已被删除](https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-purge-to-specified-index.png)
+![指定编号之前的 binlog 已被删除](Delete-binlog-in-MySQL/binlog-files-after-purge-to-specified-index.png)
 
 ### 删除指定日期之前的 binlog
 ```
 mysql> PURGE MASTER LOGS BEFORE '2020-11-11 11:11:11';
 Query OK, 0 rows affected (0.19 sec)
 ```
-![指定日期之前的 binlog 已被删除](https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-purge-before-datetime.png)
+![指定日期之前的 binlog 已被删除](Delete-binlog-in-MySQL/binlog-files-after-purge-before-datetime.png)
 
 ### 清空所有 binlog
 ```
 mysql> RESET MASTER;
 Query OK, 0 rows affected (0.09 sec)
 ```
-![清空后 binlog 编号从 000001 开始](https://image.blog.chaosjohn.com/Delete-binlog-in-MySQL/binlog-files-after-reset.png)
+![清空后 binlog 编号从 000001 开始](Delete-binlog-in-MySQL/binlog-files-after-reset.png)
 
 ### 配置自动清理
 ```
@@ -83,4 +83,4 @@ mysql> set global expire_logs_days=7;
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

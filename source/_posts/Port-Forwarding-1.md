@@ -2,7 +2,7 @@
 title: 端口转发(篇一) - rinetd
 date: 2020-11-30 17:09:13
 tags: [tool, port-forwarding, network]
-thumbnail: https://image.blog.chaosjohn.com/Port-Forwarding-1/banner.png
+thumbnail: Port-Forwarding-1/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Port-Forwarding-1.html)
@@ -123,4 +123,4 @@ logfile /var/log/rinetd.log
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

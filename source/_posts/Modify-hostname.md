@@ -2,14 +2,14 @@
 title: 在 Linux 和 Mac 上更改 hostname
 date: 2020-12-21 21:26:22
 tags: [shell, Linux, OS X & macOS, hostname]
-thumbnail: https://image.blog.chaosjohn.com/Modify-hostname/banner.png
+thumbnail: Modify-hostname/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Modify-hostname.html)
 
 ## 前言
 看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 `oh-my-zsh`，并且对 `RPROMPT` 进行了自定义
-![oh-my-zsh 自定义 PROMPT](https://image.blog.chaosjohn.com/Modify-hostname/oh-my-zsh-prompt.png)
+![oh-my-zsh 自定义 PROMPT](Modify-hostname/oh-my-zsh-prompt.png)
 
 笔者设置的是: 日期 + 时间 + 主机名(hostname)
 
@@ -108,11 +108,11 @@ usage: scutil
 
 我们可以看到，`scutil` 可以设置 `ComputerName` / `LocalHostName` / `HostName`。那三者有什么区别呢？
 
-- `ComputerName`：电脑名称，如果用过 `Time Machine` 的话，可以在其备份文件夹内看到以 `ComputerName.backupbundle` 命名的文件，其存的就是对应电脑的历史备份 ![Time Machine 备份](https://image.blog.chaosjohn.com/Modify-hostname/time-machine-backup-as-computer-name.png)
+- `ComputerName`：电脑名称，如果用过 `Time Machine` 的话，可以在其备份文件夹内看到以 `ComputerName.backupbundle` 命名的文件，其存的就是对应电脑的历史备份 ![Time Machine 备份](Modify-hostname/time-machine-backup-as-computer-name.png)
 - `LocalHostName`：局域网(`Bonjour`)内对外宣告的主机名，例如 `machine007.local`，则局域网内其他机子，可以通过 `machine007.local` 直接解析出局域网IP，进而直接访问到本机
 - `HostName`：通常是 `LocalHostName` 去除尾部的 `.local`，也就是我们要设定的 `hostname`
 
-![“系统设置->共享”](https://image.blog.chaosjohn.com/Modify-hostname/system-preferences-sharing.png)
+![“系统设置->共享”](Modify-hostname/system-preferences-sharing.png)
 
 所以我们设定 `hostname`，可以用：
 ```
@@ -122,4 +122,4 @@ usage: scutil
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

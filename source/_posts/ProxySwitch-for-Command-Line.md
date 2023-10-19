@@ -2,7 +2,7 @@
 title: 命令行下快捷开关代理
 date: 2020-12-09 17:36:41
 tags: [shell, proxy, zsh]
-thumbnail: https://image.blog.chaosjohn.com/ProxySwitch-for-Command-Line/banner.jpg
+thumbnail: ProxySwitch-for-Command-Line/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html)
@@ -66,4 +66,4 @@ function socks5off() {
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

@@ -2,7 +2,7 @@
 title: Tmux “传家” 配置
 date: 2020-12-17 19:04:13
 tags: [tmux, shell, Linux, OS X & macOS]
-thumbnail: https://image.blog.chaosjohn.com/my-tmux-config/banner.png
+thumbnail: my-tmux-config/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/my-tmux-config.html)
@@ -11,13 +11,13 @@ thumbnail: https://image.blog.chaosjohn.com/my-tmux-config/banner.png
 `Tmux` 是一个终端复用软件，在没有终端复用软件之前：
 
 - 如果要同时执行多项任务，得开多个终端窗口（`Terminal`），远程的话还得在多个终端窗口里发起多条 `SSH` 连接（入下图）
-![开多个终端窗口](https://image.blog.chaosjohn.com/my-tmux-config/multiple-terminals.png)
+![开多个终端窗口](my-tmux-config/multiple-terminals.png)
 - 如果在远程执行任务的时候，关闭终端，会强制性关闭 `SSH` 连接，进而导致任务执行直接中断
 
 如果用上 `Tmux` 这样的终端复用软件后：
 
 - 开启一个 `tmux session` 后，可以同时打开多个窗口，每个窗口可以分割为多个窗格，每个窗格都是一个 `tty`（即虚拟终端）
-![tmux 示例](https://image.blog.chaosjohn.com/my-tmux-config/tmux-sample.png)
+![tmux 示例](my-tmux-config/tmux-sample.png)
 - 关闭终端，运行在 `tmux session` 的 `tty` 中的任务，依旧会保持运行，重新打开终端，还能连接回该 session
 
 ## 笔者自用配置
@@ -92,7 +92,7 @@ set -g status-bg black
 set -g status-fg yellow
 ```
 
-效果对比入下图：![tmux 颜色方案调整前后对比](https://image.blog.chaosjohn.com/my-tmux-config/tmux-color-compair.png)
+效果对比入下图：![tmux 颜色方案调整前后对比](my-tmux-config/tmux-color-compair.png)
 
 
 ### 自定义状态栏的信息显示
@@ -121,4 +121,4 @@ set-option -g status-right-length 10
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

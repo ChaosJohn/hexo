@@ -17,7 +17,7 @@ tags: [hexo]
 
 ## 捐赠
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)
 
-[img01]: https://image.blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png
-[img02]: https://image.blog.chaosjohn.com/Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-markdown.png
+[img01]: Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-problem.png
+[img02]: Hexo-YAMLException-can-not-read-a-block-mapping-entry/screenshot-of-markdown.png

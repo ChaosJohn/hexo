@@ -2,7 +2,7 @@
 title: MySQL 交换两列值
 date: 2020-12-13 20:16:41
 tags: [MySQL]
-thumbnail: https://image.blog.chaosjohn.com/Swap-column-values-in-MySQL/banner.png
+thumbnail: Swap-column-values-in-MySQL/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Swap-column-values-in-MySQL.html)
@@ -56,4 +56,4 @@ UPDATE sample SET x=x+y,y=x-y,x=x-y;
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

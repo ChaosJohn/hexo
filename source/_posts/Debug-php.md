@@ -2,7 +2,7 @@
 title: php 调试指南（Xdebug版）
 date: 2020-12-01 23:33:41
 tags: [debug, php, xdebug]
-thumbnail: https://image.blog.chaosjohn.com/Debug-php/banner.png
+thumbnail: Debug-php/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Debug-php.html)
@@ -293,35 +293,35 @@ VSCode 将会自动创建两个配置：
 ## 2020-12-05 补充更新
 ### **PhpStorm 2020.3** 已发布
 [发布日志](https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+2020.3+Release+Notes)
-![PhpStorm 2020.3 发布日志](https://image.blog.chaosjohn.com/Debug-php/phpstorm-2020.3-release-notes.png)
-![PhpStorm 2020.3 新增对 "PHP 8" 和 "Xdebug 3" 的支持](https://image.blog.chaosjohn.com/Debug-php/phpstorm-2020.3-web-server-debug-validation.png)
+![PhpStorm 2020.3 发布日志](Debug-php/phpstorm-2020.3-release-notes.png)
+![PhpStorm 2020.3 新增对 "PHP 8" 和 "Xdebug 3" 的支持](Debug-php/phpstorm-2020.3-web-server-debug-validation.png)
 
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)
 
 
-[img01]: https://image.blog.chaosjohn.com/Debug-php/create-and-run-project.png
-[img02]: https://image.blog.chaosjohn.com/Debug-php/open-in-phpstorm.png
-[img03]: https://image.blog.chaosjohn.com/Debug-php/navigate-to-preferences.png
-[img04]: https://image.blog.chaosjohn.com/Debug-php/add-php-from-phpbrew-with-xdebug.png
-[img05]: https://image.blog.chaosjohn.com/Debug-php/apply-php-for-current-project.png
-[img06]: https://image.blog.chaosjohn.com/Debug-php/nginx-conf.png
-[img07]: https://image.blog.chaosjohn.com/Debug-php/web-server-debug-validation-error.png
-[img08]: https://image.blog.chaosjohn.com/Debug-php/web-server-debug-validation-error2.png
-[img09]: https://image.blog.chaosjohn.com/Debug-php/web-server-debug-validation-success.png
-[img10]: https://image.blog.chaosjohn.com/Debug-php/listening-button.png
-[img11]: https://image.blog.chaosjohn.com/Debug-php/chrome-xdebug-helper-options.png
-[img12]: https://image.blog.chaosjohn.com/Debug-php/chrome-xdebug-helper-activation.png
-[img13]: https://image.blog.chaosjohn.com/Debug-php/chrome-xdebug-helper-activation-fix.png
-[img14]: https://image.blog.chaosjohn.com/Debug-php/ready-for-debug-short.png
-[img15]: https://image.blog.chaosjohn.com/Debug-php/debug-start.png
-[img16]: https://image.blog.chaosjohn.com/Debug-php/debug-point.png
-[img17]: https://image.blog.chaosjohn.com/Debug-php/phpstorm-create-build-in-server-configuration.png
-[img18]: https://image.blog.chaosjohn.com/Debug-php/phpstorm-create-build-in-server-configuration-finish.png
-[img19]: https://image.blog.chaosjohn.com/Debug-php/phpstorm-run-build-in-configuration.png
-[img20]: https://image.blog.chaosjohn.com/Debug-php/vscode-create-run-configuration.png
-[img21]: https://image.blog.chaosjohn.com/Debug-php/vscode-php-debug-configurations.png
-[img22]: https://image.blog.chaosjohn.com/Debug-php/vscode-php-debug.png
-[img23]: https://image.blog.chaosjohn.com/Debug-php/phpstorm-remote-debug.png
+[img01]: Debug-php/create-and-run-project.png
+[img02]: Debug-php/open-in-phpstorm.png
+[img03]: Debug-php/navigate-to-preferences.png
+[img04]: Debug-php/add-php-from-phpbrew-with-xdebug.png
+[img05]: Debug-php/apply-php-for-current-project.png
+[img06]: Debug-php/nginx-conf.png
+[img07]: Debug-php/web-server-debug-validation-error.png
+[img08]: Debug-php/web-server-debug-validation-error2.png
+[img09]: Debug-php/web-server-debug-validation-success.png
+[img10]: Debug-php/listening-button.png
+[img11]: Debug-php/chrome-xdebug-helper-options.png
+[img12]: Debug-php/chrome-xdebug-helper-activation.png
+[img13]: Debug-php/chrome-xdebug-helper-activation-fix.png
+[img14]: Debug-php/ready-for-debug-short.png
+[img15]: Debug-php/debug-start.png
+[img16]: Debug-php/debug-point.png
+[img17]: Debug-php/phpstorm-create-build-in-server-configuration.png
+[img18]: Debug-php/phpstorm-create-build-in-server-configuration-finish.png
+[img19]: Debug-php/phpstorm-run-build-in-configuration.png
+[img20]: Debug-php/vscode-create-run-configuration.png
+[img21]: Debug-php/vscode-php-debug-configurations.png
+[img22]: Debug-php/vscode-php-debug.png
+[img23]: Debug-php/phpstorm-remote-debug.png

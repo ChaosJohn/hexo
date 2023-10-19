@@ -2,7 +2,7 @@
 title: 在 Flask 中集成 Django 的 ORM 模块
 date: 2020-12-18 18:16:47
 tags: [Python, Flask, Django, ORM]
-thumbnail: https://image.blog.chaosjohn.com/Flask-with-Django-ORM/banner.jpg
+thumbnail: Flask-with-Django-ORM/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Flask-with-Django-ORM.html)
@@ -246,7 +246,7 @@ $ python server.py
 
 ### 测试效果
 在新终端多次访问 `localhost:5000/`，可以看到返回从 `1` 开始依次递增
-![访问返回从 1 开始依次递增](https://image.blog.chaosjohn.com/Flask-with-Django-ORM/test-result.png)
+![访问返回从 1 开始依次递增](Flask-with-Django-ORM/test-result.png)
 
 查看下程序日志 
 ```
@@ -304,4 +304,4 @@ mysql> select * from app_visit;
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

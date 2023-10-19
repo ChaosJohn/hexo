@@ -2,7 +2,7 @@
 title: php 调试指南（Xdebug版）（续）
 date: 2020-12-05 16:04:14
 tags: [debug, php, xdebug]
-thumbnail: https://image.blog.chaosjohn.com/Debug-php-continued/banner.png
+thumbnail: Debug-php-continued/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Debug-php-continued.html)
@@ -61,7 +61,7 @@ thumbnail: https://image.blog.chaosjohn.com/Debug-php-continued/banner.png
 1. 本地和远程服务器同处一个局域网内，例如，都加入同一个 `VPN` 网络，本地通过 `VPN` 分配给服务器的 `私网IP` 访问服务器，服务器的 `Xdebug` 解析到的来源地址则也是通过 `VPN` 分配给本地的 `私网IP`，直接可达。
 2. 路由器本身从 `ISP（宽带运营商）` 通过 `PPPoE 拨号` 获取到了 `公网IP`，然后路由器上通过 `端口映射` 或 `DMZ 模式`，将本地的 `9000` 端口，映射到路由器的 `9000` 端口，这样服务器也可通过 `公网IP:9000` 访问到本地的 `9000` 端口。（该方式最推荐，但是在国内可行度不高，因为国内 `IP地址池` 即将枯竭，所以很难从运营商处申请到 `公网IP`）
 3. 其他环境只能借助 **移花接木大法**：借助 `SSH 反向隧道`，在本地和服务器之间建立一条 `TCP通道`，将本地的 `9000` 端口映射到服务器的 `9000` 端口。这样的话，服务器上的 `Xdebug` 访问 `localhost:9000` 就等于访问到了 `IDE本地` 的 `9000` 端口。（借用 JetBrains 官方文档里的一副插图）
-![JetBrains 官方文档关于 SSH 隧道的插图](https://image.blog.chaosjohn.com/Debug-php-continued/ssh-tunnel-explained.png)
+![JetBrains 官方文档关于 SSH 隧道的插图](Debug-php-continued/ssh-tunnel-explained.png)
 
 在这里，笔者将前两种环境归纳为 `回程网络直接可达`，否则则为 `回程网络不可直达`。
 
@@ -87,7 +87,7 @@ env["PHP_IDE_CONFIG"] = "serverName=UbuntuServer"
 - `Debugger` 选择 `Xdebug`
 - 勾选上 `Use path mappings`，并且设置好 `本地文件目录路径` 和 `服务器文件目录路径` 的映射（比如笔者本地的 `/Users/chaos/Work/php/demos/debug/` 与服务器的 `/home/chaos/Work/php/demos/debug/`）
 
-![PhpStorm 里配置 Server](https://image.blog.chaosjohn.com/Debug-php-continued/phpstorm-server-configuration.png)
+![PhpStorm 里配置 Server](Debug-php-continued/phpstorm-server-configuration.png)
 
 ## `VSCode` 的配置
 只需要比本地调试多配置一个 `路径映射`，即 `pathMappings` 键值对，附上 `launch.json` 文件内容：
@@ -203,12 +203,12 @@ xdebug.client_discovery_header="HTTP_X_XDEBUG_REMOTE_ADDR"
 - [DBGp Proxy Tool](https://xdebug.org/docs/dbgpProxy) Xdebug官方
 
 这块我不仅会略过，我还会狠狠的吐槽一下。先来看一下上述 "Multiuser debugging via Xdebug proxies" 这篇文里的一张插图
-![PhpStorm 提供的 DBGp 原理图](https://image.blog.chaosjohn.com/Debug-php-continued/phpstorm_xdebug_schema_proxy.png)
+![PhpStorm 提供的 DBGp 原理图](Debug-php-continued/phpstorm_xdebug_schema_proxy.png)
 
 看似很美妙是不是，在笔者下载了 `dbgpProxy` 并且反复实验后，发现这个工具真的是神坑。
 
 笔者在那台阿里云上运行 `./dbgpProxy -i 0.0.0.0:9001 -s 127.0.0.1:9000` 后，从本地的 `PhpStorm` 带着自定义`IDE key` `"PS"` 发起调试请求，结果 `dbgpProxy` 日志打印 `Connecting to 112.3.2.42:9000`，而笔者所在的本地宽带并没有公网IP，`112.3.2.42` 这个IP是多层 `NAT` 之前的IP，肯定访问不进来，只能上 `SSH 隧道方案`。
-![阿里云运行 dbgpProxy](https://image.blog.chaosjohn.com/Debug-php-continued/dbgp-confusion.png)
+![阿里云运行 dbgpProxy](Debug-php-continued/dbgp-confusion.png)
 
 那这个 `dbgpProxy` 的意义何在呢？笔者在网上找到了 `Xdebug` 的作者 `Derick Rethans`（他同时设计了 `DBGp 协议`）的一篇文章 - [Debugging with multiple users](https://derickrethans.nl/debugging-with-multiple-users.html)，在文中，他描绘了 `DBDp` 的使用场景：
 > Running a DBGp proxy also allows you to avoid NAT issues where (as seen from PHP+Xdebug on the server) all connections seem to come from the same IP (because your internal network is NATted). In this case, you can simple run the dbgp proxy on your NAT machine, configure xdebug.remote_host setting to the IP address of your NAT machine, and configure the IDEs to connect to the proxy running at <NAT-machine>:9001.
@@ -223,11 +223,11 @@ xdebug.client_discovery_header="HTTP_X_XDEBUG_REMOTE_ADDR"
 
 ## 结语
 为了写这两篇文，笔者是翻来覆去做了很多实验，还整理了很多知识点，打了很多草稿（真正意义上的纸质草稿），最后附上最满意的一张草稿。
-![笔者最满意的一张草稿](https://image.blog.chaosjohn.com/Debug-php-continued/handwrite.jpg)
+![笔者最满意的一张草稿](Debug-php-continued/handwrite.jpg)
 
 希望读者们能有所收获，感谢阅读！
 
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

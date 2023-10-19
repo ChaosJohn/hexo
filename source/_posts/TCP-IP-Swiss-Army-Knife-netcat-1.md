@@ -2,7 +2,7 @@
 title: TCP/IP 瑞士军刀 - netcat (篇一)
 date: 2020-12-10 15:53:50
 tags: [TCP/IP, netcat]
-thumbnail: https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg
+thumbnail: TCP-IP-Swiss-Army-Knife-netcat-1/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1.html)
@@ -99,32 +99,32 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
 - 连接成功后，两边均可键入字符，然后按下回车键发送给对方
 - 本地使用 `CTRL-D` 关闭连接，因默认为 `TCP` 模式，远端也会默认退出
 
-![一次性聊天室](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-ipv6.gif)
+![一次性聊天室](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-ipv6.gif)
 
 ### `伪常驻` 聊天室
 - 远端执行 `while true; do nc -l 1234; done`，使得连接一旦结束，远端会再次发起监听
 
-![伪常驻聊天室](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-loop.gif)
+![伪常驻聊天室](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-tcp-with-loop.gif)
 
 ### `UDP` 聊天室
 - 远端执行 `nc -l 1234 -u`，本地也需要加 `-u` 参数才能连接
 - 与 `TCP连接` 有开始有结束不同，`UDP` 模式并没有 `关闭连接` 之说，所以 `CTRL-D` 无效，只能在两端分别用 `CTRL-C` 结束进程
 - 默认情况下，远端处理完一次连接后，并不会再次监听新的请求，所以加上 `-k` 参数，可以维活处理多次连接
 
-![UDP 聊天室](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-udp.gif)
+![UDP 聊天室](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-chat-udp.gif)
 
 ### 发起 HTTP 请求（交互式）
 - 远端执行 `python3 -m simple.http 9876`，在 `9876` 端口开启一个文件 Web 服务器
 - 本地执行 `nc 192.168.1.39 9876`，连接上远端的 Web 服务器
 - 交互式的输入 `GET /` 或者 `GET / HTTP/1.0` 后，连按两下 `回车键`，即可发送 HTTP 请求，并收到远端的请求响应
 
-![发起 HTTP 请求（交互式）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-1.gif)
+![发起 HTTP 请求（交互式）](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-1.gif)
 
 ### 发起 HTTP 请求（命令式）
 - 本地执行 `echo -n "GET / HTTP/1.0\r\n\r\n" | nc 192.168.1.39 9876`（注：`GET / HTTP/1.0\r\n\r\n` 可缩写为 `GET /\r\n\r\n`）
 - 上则案例中的 "连按两下 `回车键`"，就是模拟的 "连续两个 `\r\n`"
 
-![发起 HTTP 请求（命令式）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-2.gif)
+![发起 HTTP 请求（命令式）](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-http-2.gif)
 
 
 ### 文件传输（简单）
@@ -132,26 +132,26 @@ usage: nc [-46CDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl]
 - 本地再执行 `nc 192.168.1.39 1234 < iTerm2.zip`，将文件 `iTerm2.zip` 传输过去
 - 用 `file` 和 `ls -al` 命令查看一下两边文件是否一致
 
-![文件传输（简单）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer.gif)
+![文件传输（简单）](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer.gif)
 
 ### 文件传输（使用 tar 归档传输多文件）
 - 远端先执行 `tar cvf - text1.txt text2.txt | nc -l 1234 -q 1`，先使用 `tar` 归档多个文件，并使用管道流向 `netcat` 并开启监听
 - 本地再执行 `nc 192.168.1.39 1234 | tar xvf -`，建立连接后读入字节流，由管道流向 `tar` 后解压出原多文件
 - `-q 1` 表示传输完毕后，等待1s后退出，如果是 `-q 0` 则可用 `-N` 来代替
 
-![文件传输（使用 tar 归档传输多文件）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif)
+![文件传输（使用 tar 归档传输多文件）](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-file-transfer-with-tar.gif)
 
 ### socket通信
 - 本地先执行 `nc -lU /tmp/socket`，使用 `-U` 参数使用并创建套接字文件
 - 本地新终端 `echo "hhh" | nc -U /tmp/socket`，将字符串 "hhh" 写入套接字文件，则在原终端会从套接字文件中读出 "hhh" 字符串
 
-![socket通信](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-socket.gif)
+![socket通信](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-socket.gif)
 
 ### 网络测速（配合 dd 使用）
 - 远端先执行 `nc -vl 1234 > /dev/null`，表示读入的字节流直接写入 `/dev/null` 文件，这么做的目的是排除真正文件读写的磁盘速度上限干扰
 - 本地再执行 `dd if=/dev/zero bs=1024 count=102400 | nc -vn 192.168.1.39 1234`，从 `/dev/zero` 中不断生成字节流，每个区块1024个字节，以供102400个区块，总计 **100MB**，最后 `dd` 报告得出，网络速率为 **7630165 KB/s**，即 **7.6 MB/s**（测试速度慢是因为远端 Linux 是树莓派，通过 `2.4GHz Wi-Fi` 接入局域网）
 
-![网络测速（配合 dd 使用）](https://image.blog.chaosjohn.com/TCP-IP-Swiss-Army-Knife-netcat-1/netcat-speedtest-with-dd.gif)
+![网络测速（配合 dd 使用）](TCP-IP-Swiss-Army-Knife-netcat-1/netcat-speedtest-with-dd.gif)
 
 ### 服务端口诊断
 案例背景：公司的 `Elastic Search` 服务器集群部署在阿里云，其 `9200/9300` 端口的防火墙直接采用阿里云的安全组配置，内网IP和公司所在的公网IP才可以访问。
@@ -187,4 +187,4 @@ nc: connect to es0.example.com (120.27.216.xxx) port 9200 (tcp) failed: Connecti
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

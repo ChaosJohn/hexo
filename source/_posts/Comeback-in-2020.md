@@ -3,7 +3,7 @@ title: 于2020年末的回归
 date: 2020-11-25 15:07:01
 tags:
 ---
-![](https://image.blog.chaosjohn.com/Comeback-in-2020/comback-in-2020.png)
+![](Comeback-in-2020/comback-in-2020.png)
 
 是的，我回来了。
 

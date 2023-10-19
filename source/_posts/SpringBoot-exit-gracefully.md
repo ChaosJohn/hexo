@@ -2,7 +2,7 @@
 title: SpringBoot 优雅退出
 date: 2020-12-08 23:11:54
 tags: [jvm, java, SpringBoot, kotlin]
-thumbnail: https://image.blog.chaosjohn.com/SpringBoot-exit-gracefully/banner.png
+thumbnail: SpringBoot-exit-gracefully/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/SpringBoot-exit-gracefully.html)
@@ -71,4 +71,4 @@ Signal.handle(Signal("TERM"), killHandler)
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

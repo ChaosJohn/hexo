@@ -2,10 +2,10 @@
 title: IPv6在虚拟机通过无线网卡桥接的网络下无法使用(VMware WorkStation)
 date: 2020-11-28 18:19:22
 tags: [Virtualization, IPv6, network, VMware]
-thumbnail: https://image.blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless/vmware.jpg
+thumbnail: IPv6-not-working-from-bridged-wireless/vmware.jpg
 ---
 
-[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://image.blog.chaosjohn.com/IPv6-not-working-from-bridged-wireless)
+[欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](IPv6-not-working-from-bridged-wireless)
 
 ## 背景
 今年年中的时候，在油管上看到 *悟空大大* 关于 [Minisforum GK41](https://store.minisforum.com/products/minisforum-gk41-mini-pc) 的视频，心里痒痒，于是也入手了一个。主要具体参数为：

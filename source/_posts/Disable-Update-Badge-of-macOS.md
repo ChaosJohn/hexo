@@ -9,7 +9,7 @@ tags: [OS X & macOS, Skills]
 ![](https://www.apple.com.cn/v/mac/home/ax/images/overview/hero/dark/mac_mini__gc148mlvnziq_large.jpg)
 
 近日来，苹果电脑的操作系统 *macOS Catalina* 接近了生命周期的尾声，新的操作系统 *Big Sur* 于2020年11月12日已经发布（很有意思的是正式版的首个版本号为11.0.1，而11.0.0并未对外发布，只预装在Apple M1的三台ARM新机上，详见下图，来源于维基百科）
-![](https://image.blog.chaosjohn.com/Disable-Update-Badge-of-macOS/big-sur-release-history.png)
+![](Disable-Update-Badge-of-macOS/big-sur-release-history.png)
 
 ---
 
@@ -21,10 +21,10 @@ tags: [OS X & macOS, Skills]
 
 可是问题来了，升级提醒小红点真是逼死我了！！！还不是一处！
 
-1. 系统左上角苹果标🍎，点击下拉菜单，在 *系统偏好设置(System Preferences)* 处提醒有更新 ![](https://image.blog.chaosjohn.com/Disable-Update-Badge-of-macOS/apple-logo-badge.png)
+1. 系统左上角苹果标🍎，点击下拉菜单，在 *系统偏好设置(System Preferences)* 处提醒有更新 ![](Disable-Update-Badge-of-macOS/apple-logo-badge.png)
 2. 如果把 *系统偏好设置* 锁定在Dock栏的话，小红点+1
 3. 在 *系统偏好设置* 内的 *软件更新(Software Update)* 上，小红点+2
-![](https://image.blog.chaosjohn.com/Disable-Update-Badge-of-macOS/preferences-and-dock-badge.png)
+![](Disable-Update-Badge-of-macOS/preferences-and-dock-badge.png)
 
 ## 解决策略
 ### - 系统版本 小于 *10.15.5* or 等于 *10.15.6* 
@@ -43,4 +43,4 @@ tags: [OS X & macOS, Skills]
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

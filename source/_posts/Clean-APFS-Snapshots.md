@@ -2,7 +2,7 @@
 title: 清理 APFS 快照的shell脚本
 date: 2020-11-29 23:26:03
 tags: [OS X & macOS, APFS, shell]
-thumbnail: https://image.blog.chaosjohn.com/Clean-APFS-Snapshots/DiskUtility.png
+thumbnail: Clean-APFS-Snapshots/DiskUtility.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Clean-APFS-Snapshots.html)
@@ -84,4 +84,4 @@ Deleted local snapshot '2020-11-29-234647'
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

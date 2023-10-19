@@ -2,7 +2,7 @@
 title: git 设置远端仓库
 date: 2020-12-04 17:27:41
 tags: [git]
-thumbnail: https://image.blog.chaosjohn.com/Git-set-remote/banner.png
+thumbnail: Git-set-remote/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Git-set-remote.html)
@@ -63,10 +63,10 @@ $ cat .git/config
 ---
 
 接下来去 [码云Gitee](https://gitee.com/) 上去创建一个 **空的** 私有仓库，模拟存放我们的 *已修改源码* 
-![创建一个空仓库](https://image.blog.chaosjohn.com/Git-set-remote/create-empty-repository.png)
+![创建一个空仓库](Git-set-remote/create-empty-repository.png)
 
 创建后会跳转到仓库主页
-![初始化空仓库](https://image.blog.chaosjohn.com/Git-set-remote/init-empty-repository.png)
+![初始化空仓库](Git-set-remote/init-empty-repository.png)
 
 我们可以看到，对于已存在的本地仓库，是可以直接推送到 `码云` 的
 ```
@@ -123,4 +123,4 @@ $ cat .git/config
 所以建议所有开发的小伙伴们，有时间要多去学习和熟悉 `git`。毕竟 **工欲善其事 必先利其器** 嘛！！！
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

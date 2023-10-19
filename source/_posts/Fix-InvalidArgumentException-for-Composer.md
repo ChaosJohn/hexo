@@ -2,7 +2,7 @@
 title: 解决 Composer 报错 InvalidArgumentException
 date: 2020-12-03 17:37:32
 tags: [php, fix, composer]
-thumbnail: https://image.blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer/logo-composer-transparent.png
+thumbnail: Fix-InvalidArgumentException-for-Composer/logo-composer-transparent.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer.html)
@@ -11,7 +11,7 @@ thumbnail: https://image.blog.chaosjohn.com/Fix-InvalidArgumentException-for-Com
 
 鉴于博客里描述新版在很多方面都做出了优化，特别是性能方面，提速了很多，于是笔者迫不及待地更新了。
 
-![测试的是无缓存下的耗时（"初始化update" + "install"），表现出了60%的提速](https://image.blog.chaosjohn.com/Fix-InvalidArgumentException-for-Composer/composer2-improvements.png)
+![测试的是无缓存下的耗时（"初始化update" + "install"），表现出了60%的提速](Fix-InvalidArgumentException-for-Composer/composer2-improvements.png)
 
 但是在写上一篇文章 [php 调试指南（Xdebug版）](https://blog.chaosjohn.com/Debug-php.html)的篇头处，执行 `composer require mikecao/flight` 却发生了异常
 ```
@@ -97,4 +97,4 @@ Composer 2 repository support for https://mirrors.xxx.com/composer has been disa
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

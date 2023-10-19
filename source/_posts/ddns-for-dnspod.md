@@ -2,7 +2,7 @@
 title: IPv4/IPv6 双栈 ddns (DNSPod版)
 date: 2020-12-16 19:25:06
 tags: [ddns]
-thumbnail: https://image.blog.chaosjohn.com/ddns-for-dnspod/banner.png
+thumbnail: ddns-for-dnspod/banner.png
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/ddns-for-dnspod.html)
@@ -265,4 +265,4 @@ while true; do logfile='/tmp/ddns6.log'; echo "\n$(date)" >> $logfile && curl 'h
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

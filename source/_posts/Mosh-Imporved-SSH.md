@@ -2,7 +2,7 @@ title: Mosh(Mobile Shell) -- 增强版SSH
 date: 2016-05-30 14:25:15
 tags: [Dev, Software] 
 ---
-![](https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/mosh.png) 
+![](Mosh-Imporved-SSH/mosh.png) 
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Mosh-Imporved-SSH.html)
 
@@ -75,11 +75,11 @@ tags: [Dev, Software]
 	
 ## 踩坑
 * 错误`Nothing received from the server on UDP port 60003`：简单来说，Mosh的网络通信由两部分组成，TCP用于SSH会话+UDP用于会话保持。TCP部分的端口就是SSH的端口，而UDP的端口则是60000~61000之间的随机数。该错误的解决方案将UDP端口加入防火墙的白名单`$ sudo iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT`
-* 笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。![](https://image.blog.chaosjohn.com/Mosh-Imporved-SSH/osx-mosh-exception.png)原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在`/usr/local/bin/`下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：
+* 笔者家里的那台老MacBook作为文件服务器，常年开着不关机，但是从外网通过Mosh访问回去，会出现找不到mosh-server的异常。![](Mosh-Imporved-SSH/osx-mosh-exception.png)原因是笔者用HomeBrew安装的Mosh，执行文件被默认放在`/usr/local/bin/`下，在高版本的OSX下，因安全方面的考虑，该路径不在系统的初始PATH里，所以会找不到mosh-server。解决方法是“显式指定执行文件的路径”：
 ```
 $ mosh macbook --server=/usr/local/bin/mosh-server
 ```
 	
 ## 结语
 自从两年前发现了这么个利器，在笔者的日常运维中，它已经完全替代了SSH的存在。最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

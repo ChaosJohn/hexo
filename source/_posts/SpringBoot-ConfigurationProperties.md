@@ -2,7 +2,7 @@
 title: SpringBoot @ConfigurationProperties
 date: 2020-12-31 14:34:46
 tags: [jvm, java, SpringBoot, kotlin]
-thumbnail: https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/banner.jpg
+thumbnail: SpringBoot-ConfigurationProperties/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/source/_posts/SpringBoot-ConfigurationProperties.html)
@@ -26,7 +26,7 @@ lateinit var port: String
 
 ## 使用 `@ConfigurationProperties`
 ### 环境准备: 开启 `annotationProcessor`
-如果不开启的话，`IDEA` 则会提示报错 `Spring Boot Configuration Annotation Processor not configured` ![annotation processor 报错](https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/Configuration-Annotation-Processor-not-configured-error.png)
+如果不开启的话，`IDEA` 则会提示报错 `Spring Boot Configuration Annotation Processor not configured` ![annotation processor 报错](SpringBoot-ConfigurationProperties/Configuration-Annotation-Processor-not-configured-error.png)
 
 所以，在 `build.gradle.kts` 文件的 `dependencies` 块里添加以下行 
 ```
@@ -64,9 +64,9 @@ order:
 ```
 
 ### `@ConfigurationProperties` 配置 `prefix` 
-如果不指定 `prefix`，`IDEA` 会提示警告 `Prefix must be specified` ![prefix 警告](https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/prefix-must-be-specified-warning.png)
+如果不指定 `prefix`，`IDEA` 会提示警告 `Prefix must be specified` ![prefix 警告](SpringBoot-ConfigurationProperties/prefix-must-be-specified-warning.png)
 
-对于 `greeting`，它的 `prefix` 为 `空`，但是如果指定为 `空字符串` 的话 `IDEA` 又会提示报错 `Prefix must be non-empty` ![prefix 非空报错](https://image.blog.chaosjohn.com/SpringBoot-ConfigurationProperties/prefix-must-be-non-empty.png)
+对于 `greeting`，它的 `prefix` 为 `空`，但是如果指定为 `空字符串` 的话 `IDEA` 又会提示报错 `Prefix must be non-empty` ![prefix 非空报错](SpringBoot-ConfigurationProperties/prefix-must-be-non-empty.png)
 
 所以建议使用 `多级配置`，类似于
 ```

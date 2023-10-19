@@ -2,7 +2,7 @@
 title: 缺席一周的解释
 date: 2020-12-31 09:59:01
 tags: [life]
-thumbnail: https://image.blog.chaosjohn.com/Explanation-of-absense-for-a-week/banner.jpg
+thumbnail: Explanation-of-absense-for-a-week/banner.jpg
 ---
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/Explanation-of-absense-for-a-week.html)

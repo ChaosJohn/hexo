@@ -65,4 +65,4 @@ thumbnail: https://brew.sh/assets/img/homebrew-256x256.png
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)

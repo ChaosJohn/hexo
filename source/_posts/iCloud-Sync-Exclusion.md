@@ -41,10 +41,10 @@ tags: [OS X & macOS, iCloud]
 ---
 
 最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)
 
 
-[img1]: https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/head-image.png
-[img2]: https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/npm-hell.jpg
-[img3]: https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/buting.png
-[img3]: https://image.blog.chaosjohn.com/iCloud-Sync-Exclusion/buting.png
+[img1]: iCloud-Sync-Exclusion/head-image.png
+[img2]: iCloud-Sync-Exclusion/npm-hell.jpg
+[img3]: iCloud-Sync-Exclusion/buting.png
+[img3]: iCloud-Sync-Exclusion/buting.png

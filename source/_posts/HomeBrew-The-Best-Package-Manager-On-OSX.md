@@ -3,7 +3,7 @@ date: 2016-05-26 17:23:57
 tags: [OS X & macOS,Software]
 ---
 
-![](https://image.blog.chaosjohn.com/HomeBrew-The-Best-Package-Manager-On-OSX/HomeBrewPoster.jpg)
+![](HomeBrew-The-Best-Package-Manager-On-OSX/HomeBrewPoster.jpg)
 
 [欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】](https://blog.chaosjohn.com/HomeBrew-The-Best-Package-Manager-On-OSX.html)
 
@@ -63,4 +63,4 @@ tags: [OS X & macOS,Software]
 
 ## 8. 结语
 HomeBrew以给我节省了很多找软件和安装软件的时间，导致我对它越来越喜欢，以至于，我系统里一切能用HomeBrew搜索到的软件，我全用它来搞定了。关于这篇博文，我觉得对某些人来说，那句给Cask进行upgrade的shell脚本，是最具有价值的。（那就~考虑给我点捐助进行鼓励吧，一元两元不嫌少，一百两百不嫌多）
-![](https://image.blog.chaosjohn.com/donate-me.png)
+![](hello-world/donate-me.png)
