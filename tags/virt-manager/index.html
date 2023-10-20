@@ -6,13 +6,13 @@
     
 
     
-    <title>标签: shell | 湿科技</title>
+    <title>标签: virt-manager | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="湿科技">
-<meta property="og:url" content="https://blog.chaosjohn.com/tags/shell/index.html">
+<meta property="og:url" content="https://blog.chaosjohn.com/tags/virt-manager/index.html">
 <meta property="og:site_name" content="湿科技">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Chaos John">
@@ -145,7 +145,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>shell</em>
+    <i class="icon fa fa-tag"></i>标签: <em>virt-manager</em>
     </h1>
 </div>
 
@@ -158,7 +158,7 @@
         
         <section class="archives-wrap">
             <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
+                <a href="/archives/2023" class="archive-year"><i class="icon fa fa-calendar-o"></i>2023</a>
             </div>
             <div class="archives">
     
@@ -169,17 +169,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/Modify-hostname.html" class="thumbnail">
+        <a href="/Install-libvirt-and-virt-manager-on-Ubuntu.html" class="thumbnail">
     
     
-        <span style="background-image:url(/Modify-hostname/banner.png)" alt="在 Linux 和 Mac 上更改 hostname" class="thumbnail-image"></span>
+        <span style="background-image:url(/Install-libvirt-and-virt-manager-on-Ubuntu/ubuntu.png)" alt="Ubuntu 安装libvirt / virt-manager" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Modify-hostname.html">0</span>
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.html">0</span>
     
 </span>
 
@@ -192,230 +192,26 @@
             <div class="category">
             
             </div>
-            <div class="date"><time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time></div>
+            <div class="date"><time datetime="2023-10-20T14:28:50.000Z" itemprop="datePublished">2023-10-20</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Modify-hostname.html">在 Linux 和 Mac 上更改 hostname</a>
+        <a href="/Install-libvirt-and-virt-manager-on-Ubuntu.html">Ubuntu 安装libvirt / virt-manager</a>
         </h1>
     
 
         <p class="article-excerpt">
             欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 oh-my-zsh，并且对 RPROMPT 进行了自定义
-笔者设置的是: 日期 + 时间 + 主机名(hostname)
-因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 hostname 对于笔者就格外重要，可以方便笔者一目了然
-        </p>
-    </div>
-</article>
-    
+两者的区别：
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/my-tmux-config.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/my-tmux-config/banner.png)" alt="Tmux “传家” 配置" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/my-tmux-config.html">0</span>
-    
-</span>
+libvirt是个虚拟化平台
+virt-manager是libvirt的管理工具（安装virt-manager会默认安装libvirt）
 
+在18.04以及之前版本，安装libvirt，只需要安装libvirt-bin
+1$ sudo apt install libvirt-bin
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-12-17T11:04:13.000Z" itemprop="datePublished">2020-12-17</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/my-tmux-config.html">Tmux “传家” 配置</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-介绍Tmux 是一个终端复用软件，在没有终端复用软件之前：
-
-如果要同时执行多项任务，得开多个终端窗口（Terminal），远程的话还得在多个终端窗口里发起多条 SSH 连接（入下图）
-如果在远程执行任务的时候，关闭终端，会强制性关闭 SSH 连接，进而导致任务执行直接中断
-
-如果用上 Tmux 这样的终端复用软件后：
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/ProxySwitch-for-Command-Line.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/ProxySwitch-for-Command-Line/banner.jpg)" alt="命令行下快捷开关代理" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-12-09T09:36:41.000Z" itemprop="datePublished">2020-12-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/ProxySwitch-for-Command-Line.html">命令行下快捷开关代理</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言笔者经常会遇到在命令行下不得不走代理的情况：
-
-Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人）
-从 Github 执行各种操作（clone / pull / push / fetch）
-
-旧方案笔者在本地的 1080 端口搭建了 socks5 代理开启代理：
-1export all_
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/GNU-sed-to-mac-sed.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/GNU-sed-to-mac-sed/banner.png)" alt="解决 mac 上 sed 报错" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/GNU-sed-to-mac-sed.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-12-05T03:13:25.000Z" itemprop="datePublished">2020-12-05</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/GNU-sed-to-mac-sed.html">解决 mac 上 sed 报错</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言之前在每篇文前都标注了 原文链接，想着把它替换成 转载申明，手动一篇一篇替换是不可能的，咱可是程序员，任何批量操作都可以 脚本化
-说干就干关于文本批处理工具，首先想到的就是 sed，它是一个“非交互式的”面向字符流的编辑器，能同时处理多个文件多行的内容，可以不对原文件改动，把整个文件输入到屏幕,可以把只匹配到模式的
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Clean-APFS-Snapshots.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/Clean-APFS-Snapshots/DiskUtility.png)" alt="清理 APFS 快照的shell脚本" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Clean-APFS-Snapshots.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-11-29T15:26:03.000Z" itemprop="datePublished">2020-11-29</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Clean-APFS-Snapshots.html">清理 APFS 快照的shell脚本</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。
-笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。
-快照的引入
+但是在18.10，
         </p>
     </div>
 </article>

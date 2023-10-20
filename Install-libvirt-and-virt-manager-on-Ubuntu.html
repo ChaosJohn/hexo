@@ -6,17 +6,29 @@
     
 
     
-    <title>标签: shell | 湿科技</title>
+    <title>Ubuntu 安装libvirt / virt-manager | 湿科技</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="湿科技">
-<meta property="og:url" content="https://blog.chaosjohn.com/tags/shell/index.html">
+    <meta name="keywords" content="Virtualization,ubuntu,libvirt,virt-manager" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 两者的区别：  libvirt是个虚拟化平台 virt-manager是libvirt的管理工具（安装virt-manager会默认安装libvirt）  在18.04以及之前版本，安装libvirt，只需要安装libvirt-bin 1$ sudo apt install libvirt-bin  但是在18.10，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 安装libvirt &#x2F; virt-manager">
+<meta property="og:url" content="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.html">
 <meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 两者的区别：  libvirt是个虚拟化平台 virt-manager是libvirt的管理工具（安装virt-manager会默认安装libvirt）  在18.04以及之前版本，安装libvirt，只需要安装libvirt-bin 1$ sudo apt install libvirt-bin  但是在18.10，">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu/ubuntu.png">
+<meta property="article:published_time" content="2023-10-20T14:28:50.000Z">
+<meta property="article:modified_time" content="2023-10-20T14:37:24.667Z">
 <meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="Virtualization">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="libvirt">
+<meta property="article:tag" content="virt-manager">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu/ubuntu.png">
     
 
     
@@ -145,286 +157,212 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签: <em>shell</em>
+    未分类
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Install-libvirt-and-virt-manager-on-Ubuntu" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Modify-hostname.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/Modify-hostname/banner.png)" alt="在 Linux 和 Mac 上更改 hostname" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Modify-hostname.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Modify-hostname.html">在 Linux 和 Mac 上更改 hostname</a>
+        Ubuntu 安装libvirt / virt-manager
         </h1>
     
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言看过我文章的朋友都可能发现，从我的终端截图可以看出，我使用的是 oh-my-zsh，并且对 RPROMPT 进行了自定义
-笔者设置的是: 日期 + 时间 + 主机名(hostname)
-因为笔者有很多电脑 + 虚拟机 + 云主机，所以在终端的命令提示符显示 hostname 对于笔者就格外重要，可以方便笔者一目了然
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/Install-libvirt-and-virt-manager-on-Ubuntu.html" class="article-date">
+       <time datetime="2023-10-20T14:28:50.000Z" itemprop="datePublished">2023-10-20</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/Install-libvirt-and-virt-manager-on-Ubuntu.html" class="article-date">
+     <time datetime="2023-10-20T14:37:24.667Z" itemprop="dateModified">2023-10-20</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Virtualization/" rel="tag">Virtualization</a>, <a class="tag-link-link" href="/tags/libvirt/" rel="tag">libvirt</a>, <a class="tag-link-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>, <a class="tag-link-link" href="/tags/virt-manager/" rel="tag">virt-manager</a>
     </div>
-</article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/my-tmux-config.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/my-tmux-config/banner.png)" alt="Tmux “传家” 配置" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/my-tmux-config.html">0</span>
-    
-</span>
+                
 
+                
 
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
             </div>
-            <div class="date"><time datetime="2020-12-17T11:04:13.000Z" itemprop="datePublished">2020-12-17</time></div>
-        </div>
         
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/my-tmux-config.html">Tmux “传家” 配置</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-介绍Tmux 是一个终端复用软件，在没有终端复用软件之前：
-
-如果要同时执行多项任务，得开多个终端窗口（Terminal），远程的话还得在多个终端窗口里发起多条 SSH 连接（入下图）
-如果在远程执行任务的时候，关闭终端，会强制性关闭 SSH 连接，进而导致任务执行直接中断
-
-如果用上 Tmux 这样的终端复用软件后：
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <a href="/ProxySwitch-for-Command-Line.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/ProxySwitch-for-Command-Line/banner.jpg)" alt="命令行下快捷开关代理" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/ProxySwitch-for-Command-Line.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
+        <div class="article-entry" itemprop="articleBody">
             
-            </div>
-            <div class="date"><time datetime="2020-12-09T09:36:41.000Z" itemprop="datePublished">2020-12-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/ProxySwitch-for-Command-Line.html">命令行下快捷开关代理</a>
-        </h1>
-    
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言笔者经常会遇到在命令行下不得不走代理的情况：
-
-Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人）
-从 Github 执行各种操作（clone / pull / push / fetch）
-
-旧方案笔者在本地的 1080 端口搭建了 socks5 代理开启代理：
-1export all_
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/GNU-sed-to-mac-sed.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/GNU-sed-to-mac-sed/banner.png)" alt="解决 mac 上 sed 报错" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/GNU-sed-to-mac-sed.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
             
-            </div>
-            <div class="date"><time datetime="2020-12-05T03:13:25.000Z" itemprop="datePublished">2020-12-05</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/GNU-sed-to-mac-sed.html">解决 mac 上 sed 报错</a>
-        </h1>
-    
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-前言之前在每篇文前都标注了 原文链接，想着把它替换成 转载申明，手动一篇一篇替换是不可能的，咱可是程序员，任何批量操作都可以 脚本化
-说干就干关于文本批处理工具，首先想到的就是 sed，它是一个“非交互式的”面向字符流的编辑器，能同时处理多个文件多行的内容，可以不对原文件改动，把整个文件输入到屏幕,可以把只匹配到模式的
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/Clean-APFS-Snapshots.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/Clean-APFS-Snapshots/DiskUtility.png)" alt="清理 APFS 快照的shell脚本" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.chaosjohn.com/Clean-APFS-Snapshots.html">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
             
-            </div>
-            <div class="date"><time datetime="2020-11-29T15:26:03.000Z" itemprop="datePublished">2020-11-29</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Clean-APFS-Snapshots.html">清理 APFS 快照的shell脚本</a>
-        </h1>
-    
 
-        <p class="article-excerpt">
-            欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
-背景macOS 从 10.13 High Sierra开始，引入了 APFS(Apple File System) 替代原先的 HFS+ 作为默认磁盘格式。
-笔者觉得最大的特色在于 写时拷贝(Copy-on-Write) 和 快照(Snapshots)。对于前者，以后有机会笔者再写文阐述，本文主要针对后者。
-快照的引入
-        </p>
+            <p><a href="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.md">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<p>两者的区别：</p>
+<ul>
+<li>libvirt是个虚拟化平台</li>
+<li>virt-manager是libvirt的管理工具（安装virt-manager会默认安装libvirt）</li>
+</ul>
+<p>在18.04以及之前版本，安装libvirt，只需要安装<strong>libvirt-bin</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install libvirt-bin</span><br></pre></td></tr></table></figure>
+
+<p>但是在18.10，libvirt-bin已经被拆分成两部分<strong>libvirt-daemon-system</strong>和<strong>libvirt-clients</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils</span><br></pre></td></tr></table></figure>
+
+<p>如果只想安装virt-manager，但又不想安装本地的虚拟化平台，可以执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install virt-manager ssh-askpass-gnome --no-install-recommends</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://libvirt.org/">libvirt</a> / <a target="_blank" rel="noopener" href="https://virt-manager.org/">virt-manager</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/KVM/VirtManager">KVMVirtManager on Ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="https://ubuntu.com/server/docs/virtualization-virt-tools">Virtualisation tools</a><ul>
+<li>virt-manager (Virtual Machine Manager)</li>
+<li>virt-viewer (Virtual Machine Viewer)</li>
+<li>virt-install</li>
+<li>virt-clone</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.arthurkoziel.com/running-virt-manager-and-libvirt-on-macos/">Running virt-manager and libvirt on macOS</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装libvirt([qemu在2018年提供了对Hypervisor.Framework的支持](https://wiki.qemu.org/ChangeLog/2.12))</span></span><br><span class="line">$ brew install libvirt</span><br><span class="line">$ brew services start libvirt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装virt-manager</span></span><br><span class="line">$ brew install virt-manager</span><br><span class="line">$ virt-manager --connect=<span class="string">&quot;qemu+ssh://chaos@ubuntu-w510.jeek.club/system?socket=/var/run/libvirt/libvirt-sock&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://www.arthurkoziel.com/qemu-ubuntu-20-04/">Using QEMU to create a Ubuntu 20.04 Desktop VM on macOS</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/davesilva/da709c6f6862d5e43ae9a86278f79188">Remote virt-manager from Mac OS @gist</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Step 1: Allow your user non-root access to KVM</span></span><br><span class="line"><span class="comment">## SSH to the Linux machine and add your SSH user to the libvirt group</span></span><br><span class="line">$ sudo usermod -a -G libvirt $(whoami)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Running id $(whoami) should list the libvirt group. You may also need to edit /etc/libvirt/libvirtd.conf to ensure that the socket has the right owner and permissions. Make sure you have these lines in there:</span></span><br><span class="line">unix_sock_group = <span class="string">&quot;libvirt&quot;</span></span><br><span class="line">unix_sock_rw_perms = <span class="string">&quot;0770&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 2: Install virt-manager for Mac OS</span></span><br><span class="line">$ brew install virt-manager</span><br><span class="line"></span><br><span class="line"><span class="comment"># Step 3: Connect virt-manager to the Linux machine over SSH</span></span><br><span class="line"><span class="comment">## If you try to tell virt-manager to connect over SSH by just specifying the hostname it might not work though. You&#x27;ll see an error like End of file while reading data: nc: unix connect failed: No such file or directory: Input/output error. The file it&#x27;s referring to is the libvirtd socket and the reason it can&#x27;t find it is because it&#x27;s looking in the wrong place. It&#x27;s looking for the sock file in /usr/local/lib but it actually lives at /var/run/libvirt/libvirt-sock (at least it does on Debian). Luckily there&#x27;s a query param you can pass in the SSH URL to override the socket location:</span></span><br><span class="line">$ virt-manager --connect=<span class="string">&quot;qemu+ssh://USER@HOSTNAME/system?socket=/var/run/libvirt/libvirt-sock&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://knowledge.ipason.com/ipKnowledge/knowledgedetail.html/1347">《统信UOS》UOS系统安装KVM虚拟机</a> → 最原始需求<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install virtinst python-libvirt virt-viewer virt-manager bridge-utils uml-utilities ovmf qemu-efi libvirt-daemon-system libvirt-clients libvirt-daemon qemuctl qemu-utils qemu-user qemu-system qemu qemu-system-common qemu-system-gui</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="hello-world/donate-me.png"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.html" data-id="clnypvtlj0000hzqc9e5mc4hi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "Ubuntu 安装libvirt / virt-manager",
+        "image": "https://blog.chaosjohn.comInstall-libvirt-and-virt-manager-on-Ubuntu/ubuntu.png",
+        "keywords": "Virtualization ubuntu libvirt virt-manager",
+        "genre": "",
+        "datePublished": "2023-10-20",
+        "dateCreated": "2023-10-20",
+        "dateModified": "2023-10-20",
+        "url": "https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+两者的区别：
+
+libvirt是个虚拟化平台
+virt-manager是libvirt的管理工具（安装virt-manager会默认安装libvirt）
+
+在18.04以及之前版本，安装libvirt，只需要安装libvirt-bin
+1$ sudo apt install libvirt-bin
+
+但是在18.10，",
+        "wordCount": 374
+    }
+</script>
+
 </article>
+
+    <section id="comments">
     
-        </div>
-    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -454,6 +392,19 @@ Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人）
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Ubuntu 22.04 单网卡创建br0(免断网)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -659,11 +610,13 @@ Homebrew &amp; Cask（特别是后者，不走代理的话速度简直感人）
     var disqus_shortname = 'hexo-chaosjohn';
     
     
+    var disqus_url = 'https://blog.chaosjohn.com/Install-libvirt-and-virt-manager-on-Ubuntu.html';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
