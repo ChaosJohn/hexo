@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Ubuntu 22.04 单网卡创建br0(免断网) | 湿科技</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="network,ubuntu,bridge" />
+    
+    <meta name="description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 在译文《通过 libvirt 和 KVM 使用桥接网络》（原文&lt;How to use bridged networking with libvirt and KVM&gt;）中，提到了如何用ip命令创建桥接网卡br0，以及如何用virsh命令将br0同步给libvirt虚拟机知道。 1234# 创建新网桥br0$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 22.04 单网卡创建br0(免断网)">
+<meta property="og:url" content="https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04.html">
+<meta property="og:site_name" content="湿科技">
+<meta property="og:description" content="欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】 在译文《通过 libvirt 和 KVM 使用桥接网络》（原文&lt;How to use bridged networking with libvirt and KVM&gt;）中，提到了如何用ip命令创建桥接网卡br0，以及如何用virsh命令将br0同步给libvirt虚拟机知道。 1234# 创建新网桥br0$">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04/ubuntu.png">
+<meta property="article:published_time" content="2023-10-20T14:12:20.000Z">
+<meta property="article:modified_time" content="2023-10-20T14:23:52.985Z">
+<meta property="article:author" content="Chaos John">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="bridge">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04/ubuntu.png">
+    
+
+    
+        <link rel="alternate" href="/" title="湿科技" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Create-br0-without-losing-connection-under-Ubuntu-22-04" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Ubuntu 22.04 单网卡创建br0(免断网)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" class="article-date">
+       <time datetime="2023-10-20T14:12:20.000Z" itemprop="datePublished">2023-10-20</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" class="article-date">
+     <time datetime="2023-10-20T14:23:52.985Z" itemprop="dateModified">2023-10-20</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bridge/" rel="tag">bridge</a>, <a class="tag-link-link" href="/tags/network/" rel="tag">network</a>, <a class="tag-link-link" href="/tags/ubuntu/" rel="tag">ubuntu</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><a href="https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04.md">欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】</a></p>
+<p>在译文《<a target="_blank" rel="noopener" href="https://www.zml.me/post/316051871548702720"><strong>通过 libvirt 和 KVM 使用桥接网络</strong></a>》（原文&lt;<a target="_blank" rel="noopener" href="https://linuxconfig.org/how-to-use-bridged-networking-with-libvirt-and-kvm">How to use bridged networking with libvirt and KVM</a>&gt;）中，提到了如何用<code>ip</code>命令创建桥接网卡br0，以及如何用virsh命令将br0同步给libvirt虚拟机知道。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建新网桥br0</span></span><br><span class="line">$ sudo ip link add br0 <span class="built_in">type</span> bridge</span><br><span class="line"><span class="comment"># 验证br0是否创建成功</span></span><br><span class="line">$ sudo ip link show <span class="built_in">type</span> bridge</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用额外的物理网卡</span></span><br><span class="line">$ sudo ip link <span class="built_in">set</span> enp0s29u1u1 up</span><br><span class="line"><span class="comment"># 将网卡添加到br0</span></span><br><span class="line">$ sudo ip link <span class="built_in">set</span> enp0s29u1u1 master br0</span><br></pre></td></tr></table></figure>
+
+<p>这边我们需要注意，创建br0没啥问题，但是将物理网卡添加到br0，是需要引起注意的。原文中提到：</p>
+<blockquote>
+<p>注意，在这种情况下，你不能使用你的主以太网接口，因为一旦它被添加到网桥，你就会失去连接，因为它将失去它的 IP 地址。在这种情况下，我们将使用一个额外的接口，enp0s29u1u1：这是一个由连接在我的机器上的以太网转USB适配器提供的接口。</p>
+</blockquote>
+<p>所以，如果是单网卡的主板，且没有额外的网卡（USB或PICe），这样的配置是非常危险的，因为系统会立马断网，且无法自动恢复。</p>
+<p>但也不用很担心系统挂了，因为配置没有持久化（持久化在原文中有写，但不适用于改用了netplan的Ubuntu），只需重启系统即可恢复。</p>
+<p>那怎么办呢？</p>
+<p>我想到我另一台rk3356的ARM单板，正运行着ProxmoxVE，单物理网卡但同时每台虚拟机/容器都是从上级路由器直接获取IP地址，就是通过vmbr0桥接了物理网卡</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/network/interfaces</span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">iface eth0 inet manual</span><br><span class="line"></span><br><span class="line">auto vmbr0</span><br><span class="line">iface vmbr0 inet static</span><br><span class="line">        hwaddress ether 42:87:5c:c9:b8:12</span><br><span class="line">        address 10.1.1.190/24</span><br><span class="line">        broadcast 10.1.1.255</span><br><span class="line">        netmask 255.255.255.0</span><br><span class="line">        gateway 10.1.1.1</span><br><span class="line">        bridge-ports eth0</span><br><span class="line">        bridge-stp off</span><br><span class="line">        bridge-fd 0</span><br><span class="line">        dns-nameservers 10.1.1.1</span><br></pre></td></tr></table></figure>
+
+<p>参考这个方案改在Ubuntu上不适用，因为找不到<code>/etc/network/interfaces</code>文件，Ubuntu 18.04 开始改用了netplan</p>
+<p>经过几番搜索，在另一篇文章中《<a target="_blank" rel="noopener" href="https://aoyouer.com/posts/kvm-bridge/">kvm单网卡桥接模式</a>》，发现了适用于netplan的配置方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/netplan/01-network-manager-all.yaml</span><br><span class="line">network:</span><br><span class="line">  ethernets:</span><br><span class="line">    enp125s0f0:</span><br><span class="line">      dhcp4: no</span><br><span class="line">  bridges:</span><br><span class="line">    br0:</span><br><span class="line">      interfaces: [enp125s0f0]</span><br><span class="line">      dhcp4: no</span><br><span class="line">      addresses: [10.1.1.168/24]</span><br><span class="line">      gateway4: 10.1.1.1</span><br><span class="line">      parameters:</span><br><span class="line">        stp: <span class="literal">true</span></span><br><span class="line">        forward-delay: 4</span><br><span class="line">      nameservers:</span><br><span class="line">        addresses: [10.1.1.1]</span><br><span class="line">  version: 2</span><br><span class="line"></span><br><span class="line">$ sudo netplan apply</span><br></pre></td></tr></table></figure>
+
+<p>然后用新创建的br0给虚拟机定义一个新的“网络”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 任意路径创建文件</span></span><br><span class="line">$ vim virsh-br0-network.xml</span><br><span class="line">&lt;network&gt;</span><br><span class="line">    &lt;name&gt;br0-network&lt;/name&gt;</span><br><span class="line">    &lt;forward mode=<span class="string">&quot;bridge&quot;</span> /&gt;</span><br><span class="line">    &lt;bridge name=<span class="string">&quot;br0&quot;</span> /&gt;</span><br><span class="line">&lt;/network&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过virsh定义新的桥接网络</span></span><br><span class="line">$ sudo virsh net-define virsh-br0-network.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活新网络</span></span><br><span class="line">$ sudo virsh net-start br0-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使其自动启动</span></span><br><span class="line">$ sudo virsh net-autostart br0-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网络列表</span></span><br><span class="line">$ sudo virsh net-list --all</span><br><span class="line"> Name          State    Autostart   Persistent</span><br><span class="line">------------------------------------------------</span><br><span class="line"> br0-network   active   yes         yes</span><br><span class="line"> default       active   yes         yes</span><br></pre></td></tr></table></figure>
+
+<p>然后libvirt就能用这个br0桥接网卡，从上级路由器获取IP地址并且联网了，而不是<code>NAT</code>模式。</p>
+<hr>
+<p>参考资料:</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.zml.me/post/316051871548702720">通过 libvirt 和 KVM 使用桥接网络</a> / <a target="_blank" rel="noopener" href="https://linuxconfig.org/how-to-use-bridged-networking-with-libvirt-and-kvm">How to use bridged networking with libvirt and KVM</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://aoyouer.com/posts/kvm-bridge/">kvm单网卡桥接模式</a> ⇒ netplan</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/359864370">KVM虚拟机网络配置 Bridge方式，NAT方式</a>  / <a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/530814">linux中KVM桥接网卡br0</a> / <a target="_blank" rel="noopener" href="https://v2ex.com/t/654887">Linux 下如何配置桥接网卡，可以实现主机与虚拟机互通？</a>/ <a target="_blank" rel="noopener" href="https://www.cnblogs.com/itfriend/archive/2012/05/30/2526660.html">转: Linux下单网卡多vlan多虚拟机</a>  ⇒ /etc/sysconfig/network-scripts/ifcfg-br0</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1432883/how-to-create-sub-interface">how to create sub-interface</a> ⇒ netplan</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/179508/kvm-bridged-network-not-working">KVM Bridged Network Not Working</a> / <a target="_blank" rel="noopener" href="https://www.cnblogs.com/openstackteam/p/5519961.html">OpenStack Neutron单网卡桥接模式访问外网</a> ⇒ /etc/network/interfaces</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000009491002">Linux虚拟网络设备之bridge(桥)</a></p>
+</li>
+</ul>
+<hr>
+<p>最后，如果该文对读者有些许帮助，考虑下给点捐助鼓励一下呗😊<br><img src="hello-world/donate-me.png"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" data-id="clnypc9ca0000p8qc4jhegdsk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Chaos John"
+        },
+        "headline": "Ubuntu 22.04 单网卡创建br0(免断网)",
+        "image": "https://blog.chaosjohn.comCreate-br0-without-losing-connection-under-Ubuntu-22-04/ubuntu.png",
+        "keywords": "network ubuntu bridge",
+        "genre": "",
+        "datePublished": "2023-10-20",
+        "dateCreated": "2023-10-20",
+        "dateModified": "2023-10-20",
+        "url": "https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04.html",
+        "description": "欢迎转载，但请在开头或结尾注明原文出处【blog.chaosjohn.com】
+在译文《通过 libvirt 和 KVM 使用桥接网络》（原文&lt;How to use bridged networking with libvirt and KVM&gt;）中，提到了如何用ip命令创建桥接网卡br0，以及如何用virsh命令将br0同步给libvirt虚拟机知道。
+1234# 创建新网桥br0$",
+        "wordCount": 557
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ChaosJohn" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/SpringBoot-ConfigurationProperties.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">SpringBoot @ConfigurationProperties</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(/Create-br0-without-losing-connection-under-Ubuntu-22-04/ubuntu.png)" alt="Ubuntu 22.04 单网卡创建br0(免断网)" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Create-br0-without-losing-connection-under-Ubuntu-22-04.html" class="title">Ubuntu 22.04 单网卡创建br0(免断网)</a></p>
+                            <p class="item-date"><time datetime="2023-10-20T14:12:20.000Z" itemprop="datePublished">2023-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/SpringBoot-ConfigurationProperties.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(/SpringBoot-ConfigurationProperties/banner.jpg)" alt="SpringBoot @ConfigurationProperties" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/SpringBoot-ConfigurationProperties.html" class="title">SpringBoot @ConfigurationProperties</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T06:34:46.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Explanation-of-absense-for-a-week.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(/Explanation-of-absense-for-a-week/banner.jpg)" alt="缺席一周的解释" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Explanation-of-absense-for-a-week.html" class="title">缺席一周的解释</a></p>
+                            <p class="item-date"><time datetime="2020-12-31T01:59:01.000Z" itemprop="datePublished">2020-12-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Modify-hostname.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(/Modify-hostname/banner.png)" alt="在 Linux 和 Mac 上更改 hostname" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Modify-hostname.html" class="title">在 Linux 和 Mac 上更改 hostname</a></p>
+                            <p class="item-date"><time datetime="2020-12-21T13:26:22.000Z" itemprop="datePublished">2020-12-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Flask-with-Django-ORM.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(/Flask-with-Django-ORM/banner.jpg)" alt="在 Flask 中集成 Django 的 ORM 模块" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Flask-with-Django-ORM.html" class="title">在 Flask 中集成 Django 的 ORM 模块</a></p>
+                            <p class="item-date"><time datetime="2020-12-18T10:16:47.000Z" itemprop="datePublished">2020-12-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APFS/" rel="tag">APFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crack/" rel="tag">Crack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Developer/" rel="tag">Developer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hardware/" rel="tag">Hardware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homebrew/" rel="tag">Homebrew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPv6/" rel="tag">IPv6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORM/" rel="tag">ORM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X-macOS/" rel="tag">OS X & macOS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAC/" rel="tag">PAC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Skills/" rel="tag">Skills</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Software/" rel="tag">Software</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ThinkPad/" rel="tag">ThinkPad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Toy/" rel="tag">Toy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TrackPoint/" rel="tag">TrackPoint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Utility/" rel="tag">Utility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VMware/" rel="tag">VMware</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Virtualization/" rel="tag">Virtualization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bridge/" rel="tag">bridge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ddns/" rel="tag">ddns</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/" rel="tag">debug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dev/" rel="tag">dev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fix/" rel="tag">fix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostname/" rel="tag">hostname</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iCloud/" rel="tag">iCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">kotlin</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcat/" rel="tag">netcat</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package-manager/" rel="tag">package manager</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port-forwarding/" rel="tag">port-forwarding</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proxy/" rel="tag">proxy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sed/" rel="tag">sed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/" rel="tag">tool</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v2ray/" rel="tag">v2ray</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xdebug/" rel="tag">xdebug</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/APFS/" style="font-size: 10px;">APFS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crack/" style="font-size: 10px;">Crack</a> <a href="/tags/Dev/" style="font-size: 10px;">Dev</a> <a href="/tags/Developer/" style="font-size: 10px;">Developer</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hardware/" style="font-size: 10px;">Hardware</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/OS-X-macOS/" style="font-size: 20px;">OS X & macOS</a> <a href="/tags/PAC/" style="font-size: 10px;">PAC</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Skills/" style="font-size: 10px;">Skills</a> <a href="/tags/Software/" style="font-size: 17.5px;">Software</a> <a href="/tags/SpringBoot/" style="font-size: 12.5px;">SpringBoot</a> <a href="/tags/TCP-IP/" style="font-size: 12.5px;">TCP/IP</a> <a href="/tags/ThinkPad/" style="font-size: 10px;">ThinkPad</a> <a href="/tags/Toy/" style="font-size: 10px;">Toy</a> <a href="/tags/TrackPoint/" style="font-size: 10px;">TrackPoint</a> <a href="/tags/Utility/" style="font-size: 10px;">Utility</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/Virtualization/" style="font-size: 10px;">Virtualization</a> <a href="/tags/bridge/" style="font-size: 10px;">bridge</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/ddns/" style="font-size: 10px;">ddns</a> <a href="/tags/debug/" style="font-size: 12.5px;">debug</a> <a href="/tags/dev/" style="font-size: 10px;">dev</a> <a href="/tags/fix/" style="font-size: 10px;">fix</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/hostname/" style="font-size: 10px;">hostname</a> <a href="/tags/iCloud/" style="font-size: 10px;">iCloud</a> <a href="/tags/java/" style="font-size: 12.5px;">java</a> <a href="/tags/jvm/" style="font-size: 12.5px;">jvm</a> <a href="/tags/kotlin/" style="font-size: 12.5px;">kotlin</a> <a href="/tags/life/" style="font-size: 10px;">life</a> <a href="/tags/netcat/" style="font-size: 12.5px;">netcat</a> <a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/package-manager/" style="font-size: 10px;">package manager</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/port-forwarding/" style="font-size: 12.5px;">port-forwarding</a> <a href="/tags/proxy/" style="font-size: 12.5px;">proxy</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/shell/" style="font-size: 17.5px;">shell</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/tool/" style="font-size: 12.5px;">tool</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/v2ray/" style="font-size: 10px;">v2ray</a> <a href="/tags/xdebug/" style="font-size: 12.5px;">xdebug</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2023 Chaos John</p>
+                
+                <!-- <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p> -->
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2023036504号</a> 
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-chaosjohn';
+    
+    
+    var disqus_url = 'https://blog.chaosjohn.com/Create-br0-without-losing-connection-under-Ubuntu-22-04.html';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
